@@ -37,9 +37,10 @@ symlink_dotfiles() {
     handle_symlink_from_path "${i}";
     find_exclude="${find_exclude} -path \"${i}\" -prune -or ";
   done
-
   find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
   eval "${find_command}"
+
+  ! ${TESTMODE} && exec -l ${SHELL}
 }
 
 configure_system() {
@@ -155,8 +156,12 @@ initialize() {
     mkdir -p ${HOME}/.ssh
     ssh-keygen -t rsa -b 4096 -C "ooulwluoo@gmail.com"
     ssh-keyscan -t rsa github.com >> ${HOME}/.ssh/known_hosts
-    curl -u "ulwlu" --data "{\"title\":\"NewSSHKey\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" https://api.github.com/user/keys
+    # Password auth is deprecated at 2020/11/13. This can't be automated now.
+    # curl -u "ulwlu" --data "{\"title\":\"NewSSHKey\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" https://api.github.com/user/keys
+    echo "Please add ~/.ssh/id_rsa.pub into https://github.com/settings/keys manually."
 
+    brew install gh
+    gh auth login
     mkdir -p ${HOME}/.ghq/github.com/ulwlu/dotfiles && cd $_
     git clone --recursive https://github.com/ulwlu/dotfiles .
   fi

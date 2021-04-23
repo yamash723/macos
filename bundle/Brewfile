@@ -35,6 +35,7 @@ brew "git-delta"
 brew "hyperfine"
 brew "youtube-dl"
 brew "git-secrets"
+brew "shellcheck"
 
 ## ========== Shell ==========
 brew "zsh"
