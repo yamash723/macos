@@ -11,9 +11,6 @@ https://chrome.google.com/webstore/detail/elly-theme/fmmbppkbdanfmmejahpkpkecbod
 ### Clear Cache
 https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn
 
-### cookies.txt
-https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg
-
 ### Lighthouse
 https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk
 
@@ -31,9 +28,6 @@ https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfb
 
 ### Youtube Repeat Button
 https://chrome.google.com/webstore/detail/youtube-repeat-button/aihdpnkmhcbjkfonmmfepcjjfaenobip
-
-### Web Sniffer
-https://chrome.google.com/webstore/detail/web-sniffer/ndfgffclcpdbgghfgkmooklaendohaef
 
 
 ## Vimium
