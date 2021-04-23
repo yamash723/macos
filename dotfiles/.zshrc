@@ -12,11 +12,9 @@ fi
 export ENHANCD_FILTER=fzf
 export TERM=xterm-256color
 export HOMEBREW_NO_AUTO_UPDATE=1
-export PATH="$PATH:${HOME}/perl5/bin"
 export PATH="$PATH:${HOME}/.local/bin"
 export PATH="$PATH:/usr/local/opt/openjdk/bin"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
-export TODO_DB_PATH="${HOME}/.todo.json"
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 ## ----------------------------------------
@@ -92,7 +90,13 @@ alias python='python3' py='python' pip='/usr/local/bin/pip3'
 alias fd='fd -iH --no-ignore-vcs -E ".git|node_modules"' rmds='fd .DS_Store -X rm'
 alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
-vv()   {
+catp() { cat "$1" | pbcopy }
+mkcd() { mkdir "$1" && cd "$1"; }
+rgr() { rg -l "$1" | xargs sd "$1" "$2"; }
+fdr() { fd "$1" -x rename "s/${2}/${3}/ if -f" }
+cmpr() { ffmpeg -i "$1" -vcodec h264 -acodec mp2 output.mp4; }
+absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
+vv() {
   [ -z "$1" ] && code -r ./ && return 0;
   code -r "$1";
 }
@@ -101,19 +105,13 @@ lnsv() {
   abspath=$(absp $1);
   ln -sfnv "${abspath}" "$2";
 }
-rgf()  {
+rgf() {
   [ -z "$2" ] && matches=`rg "$1" -l` || matches=`rg --files | rg "$1"`;
   [ -z "${matches}" ] && echo "no matches\n" && return 0;
   selected=`echo "${matches}" | fzf --preview "rg -pn '$1' {}"`;
   [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
   vi "${selected}";
 }
-catp() { cat "$1" | pbcopy }
-mkcd() { mkdir "$1" && cd "$1"; }
-rgr()  { rg -l "$1" | xargs sd "$1" "$2"; }
-fdr()  { fd "$1" -x rename "s/${2}/${3}/ if -f" }
-cmpr() { ffmpeg -i "$1" -vcodec h264 -acodec mp2 output.mp4; }
-absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
 
 ## ========== Global Alias ==========
 alias -g G='| grep'
@@ -121,12 +119,7 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g X='| xargs'
 alias -g C='| wc -l'
-alias -g L='| less S'
 alias -g CP='| pbcopy'
-alias -g AT='| as-tree'
-alias -g TA='> ~/work/temp/a.log'
-alias -g TB='> ~/work/temp/b.log'
-alias dflg='delta ~/work/temp/a.log ~/work/temp/b.log'
 
 ## ========== Suffix Alias ==========
 alias -s {png,jpg,jpeg}='imgcat'

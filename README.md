@@ -1,8 +1,6 @@
 # Dotfiles
 
-ᓚᘏᗢ Just personal settings.
-
-If you came here for MacOS full-auto-setup script, [it's here](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh).
+If you came here for MacOS full-auto-setup script, [it's here](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh). Read this [article](https://dev.to/ulwlu/i-think-i-automated-all-the-initial-settings-you-ll-do-when-you-buy-a-mac-20i5) as well.
 
 ## Preview
 
@@ -12,13 +10,14 @@ The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
 
 ## Configurations Shortcut
 
-- **Bar** : [Übersicht](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Uebersicht/widgets/simple-bar), [yabai](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.yabairc)
-- **Terminal** : [iTerm2](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/Library/Preferences/com.googlecode.iterm2.plist)
-- **Shell** : [zsh](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.zshrc), [tmux](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.tmux.conf)
-- **Fonts** : HackNerdFontsItalic
-- **Editor** : [Neovim](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.vimrc), [VSCode](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Code/User), [Emacs](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.emacs.el)
-- **App Launcher** : [Alfred](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support)
-- **Window Manager** : [Rectangle](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/Library/Preferences/com.knollsoft.Rectangle.plist), [karabinar](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.config/karabiner/karabiner.json)
+- **Shell** : [zsh](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.zshrc)
+- **Terminal** : [iTerm2](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/Library/Preferences/com.googlecode.iterm2.plist), [tmux](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.tmux.conf)
+- **Fonts** : [HackNerdFontsItalic](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Italic)
+- **Editor** : [Neovim](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.vimrc), [VSCode](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Code/User)
+- **Bar** : [Übersicht](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Uebersicht/widgets/simple-bar)
+- **Launcher** : [Alfred](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support)
+- **Window Manager** : [Rectangle](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/Library/Preferences/com.knollsoft.Rectangle.plist), [Karabinar](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.config/karabiner/karabiner.json)
+- **Templates** : [alias](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/.aliases), [snippet](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/.snippets), [git_template](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/.git_template)
 
 ## Articles
 
