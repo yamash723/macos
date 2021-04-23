@@ -20,13 +20,13 @@ symlink_dotfiles() {
     relpath=$(echo "${file}" | sed "s|^\./dotfiles/||")
     target="${HOME}/${relpath}"
     mkdir -p "$(dirname "${target}")"
-    ln -sfnv "${abspath}" "${target}" > /dev/null
+    ln -sfnv "${abspath}" "${target}"
   }
   export -f handle_symlink_from_path
 
   bulk_symlink_target=(
-    "./dotfiles/Library/Application Support/Alfred"
-    "./dotfiles/Library/Application Support/ﾃ彙ersicht/widgets/simple-bar"
+    "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
+    "./dotfiles/Library/Application Support/Uebersicht/widgets"
     "./dotfiles/.aliases"
     "./dotfiles/.git_template"
     "./dotfiles/.snippets"
@@ -40,14 +40,6 @@ symlink_dotfiles() {
 
   find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
   eval "${find_command}"
-
-  if ! ${TESTMODE}; then
-    zinit self-update
-    source ${HOME}/.zshrc
-    vim  +'PlugInstall --sync' +qa
-    nvim +'PlugInstall --sync' +qa
-    /bin/bash ${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
-  fi
 }
 
 configure_system() {
@@ -88,16 +80,18 @@ install_bundle() {
   done
 
   ## ========== Perl ==========
-  PERL_MM_USE_DEFAULT=1 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5" cpan local::lib
-  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-  cpan App::cpanminus
-  cpanm $(cat ${CWD}/Cpanfile)
+  # PERL_MM_USE_DEFAULT=1 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5" cpan local::lib
+  # eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+  # cpan App::cpanminus
+  # cpanm $(cat ${CWD}/Cpanfile)
 
   ## ========== Git ==========
   sudo ln -sfnv /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+  gh auth login
 
   ## ========== Zsh ==========
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+  exec -l ${SHELL}
   zinit self-update
   source ${HOME}/.zshrc
 
@@ -117,7 +111,7 @@ install_bundle() {
   # - [Ref] https://gist.github.com/Mins/4602864
 
   ## ========== Gcloud ==========
-  curl https://sdk.cloud.google.com | /bin/bash -s -- --disable-prompts
+  # curl https://sdk.cloud.google.com | /bin/bash -s -- --disable-prompts
 
   ## ========== iTerm2 ==========
   curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
@@ -134,7 +128,7 @@ install_bundle() {
 
   ## ========== Yabai ==========
   # brew services start skhd
-  brew services start yabai
+  # brew services start yabai
 
   ## ========== Remote pbcopy ==========
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
@@ -164,7 +158,7 @@ initialize() {
     curl -u "ulwlu" --data "{\"title\":\"NewSSHKey\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" https://api.github.com/user/keys
 
     mkdir -p ${HOME}/.ghq/github.com/ulwlu/dotfiles && cd $_
-    git clone https://github.com/ulwlu/dotfiles .
+    git clone --recursive https://github.com/ulwlu/dotfiles .
   fi
 
   brew tap homebrew/bundle
@@ -226,7 +220,7 @@ for opt in ${argv[@]}; do
     --bundle)   install_bundle; ;;
     --system)   configure_system; ;;
     --dotfiles) symlink_dotfiles; ;;
-    --all)      install_bundle; symlink_dotfiles; configure_system; ;;
+    --all)      symlink_dotfiles; install_bundle; configure_system; ;;
     *)          echo "invalid option $1"; ;;
   esac
 done
