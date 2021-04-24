@@ -76,6 +76,7 @@ bindkey "^E" end-of-line
 alias vi='nvim'
 alias cdh='cd ~'
 alias op='open ./'
+alias grep='ggrep'
 alias pp='pbpaste >'
 alias cdwk='cd ~/work'
 alias hf='hyperfine --max-runs 3'

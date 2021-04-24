@@ -87,16 +87,16 @@ General() {
   LSSC=("http" "https" "mailto")
   LSCT=("public.xhtml" "public.html")
   PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" ${PLIST} | grep -P '^[\s]*Dict' | wc -l | tr -d ' ')
-  for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-    THIS_LSSC=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerURLScheme" ${PLIST} 2>/dev/null)
+  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
+  for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
+    THIS_LSSC=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerURLScheme" "${PLIST}" 2>/dev/null)
     if [[ ${LSSC[@]} =~ $THIS_LSSC ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" ${PLIST}
+      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
     fi
 
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" ${PLIST} 2>/dev/null)
+    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2>/dev/null)
     if [[ ${LSCT[@]} =~ $THIS_LSCT ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" ${PLIST}
+      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
     fi
   done
 
@@ -165,7 +165,7 @@ DesktopScreenSaver() {
 
   # ========== desktop ==========
   # !!! You can forcely command below to set, but you SHOULD NOT.
-  # !!! sqlite3 ${HOME}/Application Support/Dock/desktoppicture.db -c "~~~"
+  # !!! sqlite3 "${HOME}"/Application Support/Dock/desktoppicture.db -c "~~~"
   # !!! Because defaults can be safe if the value is not validate, but sqlite3 will break MacOS.
   # - Fill Screen
   # - Fit to Screen
@@ -417,18 +417,18 @@ Spotlight() {
     # System Preferences
     "SYSTEM_PREFS"               true
   )
-  SNUM=$(expr $# / 2)
+  SNUM=$(expr ${#SCAT[@]} / 2)
   PLIST="${HOME}/Library/Preferences/com.apple.Spotlight"
-  /usr/libexec/PlistBuddy -c "Add orderedItems array" ${PLIST}
-  for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-    CATN=${SCAT[$(( ${idx} * 2     ))]}
-    CATB=${SCAT[$(( ${idx} * 2 + 1 ))]}
+  /usr/libexec/PlistBuddy -c "Add orderedItems array" "${PLIST}"
+  for idx in $(seq 0 $(expr "${SNUM}" - 1)); do
+    CATN=${SCAT[$(( idx * 2     ))]}
+    CATB=${SCAT[$(( idx * 2 + 1 ))]}
 
     /usr/libexec/PlistBuddy \
       -c "Add persistent-apps:${idx} dict" \
       -c "Add persistent-apps:${idx}:enabled bool ${CATB}" \
       -c "Add persistent-apps:${idx}:name string ${CATN}" \
-      ${PLIST}
+      "${PLIST}"
   done
 
   # ========== Allow Spotlight Suggestions in Look up ==========
@@ -474,7 +474,7 @@ LanguageRegion() {
   # - Gregorian
   # defaults write .GlobalPreferences AppleLocale -string ${ALOCAL}
   # - Japanese
-  defaults write .GlobalPreferences AppleLocale -string ${ALOCAL}"@calendar=japanese"
+  defaults write .GlobalPreferences AppleLocale -string "${ALOCAL}@calendar=japanese"
 
   # ========== Time format: 24-Hour Time ==========
   # - Checked
@@ -542,7 +542,7 @@ Notifications() {
 UsersGroups() {
   # ========== Profile Picture ==========
   UNM=$(whoami)
-  sudo dscl . create /Users/${UNM} Picture "${EXEPATH}/icon.jpg"
+  sudo dscl . create /Users/"${UNM}" Picture "${EXEPATH}/icon.jpg"
 }
 
 SecurityPrivacy() {
@@ -569,30 +569,30 @@ Network() {
   # ========== Show Wi-Fi status in menu bar ==========
   # - Checked
   IS_AIRPORT=$(defaults read com.apple.systemuiserver menuExtras | grep "AirPort")
-  [[ -z ${IS_AIRPORT} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/AirPort.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  [[ -z ${IS_AIRPORT} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/AirPort.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
   # IS_AIRPORT=$(defaults read com.apple.systemuiserver menuExtras | grep "AirPort")
-  # [[ -n ${IS_AIRPORT} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/AirPort.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  # [[ -n ${IS_AIRPORT} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/AirPort.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 }
 
 Bluetooth() {
   # ========== Show Bluetooth status in menu bar ==========
   # - Checked
   IS_BLUETOOTH=$(defaults read com.apple.systemuiserver menuExtras | grep "Bluetooth")
-  [[ -z ${IS_BLUETOOTH} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Bluetooth.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  [[ -z ${IS_BLUETOOTH} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Bluetooth.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
   # IS_BLUETOOTH=$(defaults read com.apple.systemuiserver menuExtras | grep "Bluetooth")
-  # [[ -n ${IS_BLUETOOTH} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Bluetooth.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  # [[ -n ${IS_BLUETOOTH} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Bluetooth.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 }
 
 Sound() {
   # ========== Show Volume status in menu bar ==========
   # - Checked
   IS_VOLUME=$(defaults read com.apple.systemuiserver menuExtras | grep "Volume")
-  [[ -z ${IS_VOLUME} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Volume.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  [[ -z ${IS_VOLUME} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Volume.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
   # IS_VOLUME=$(defaults read com.apple.systemuiserver menuExtras | grep "Volume")
-  # [[ -n ${IS_VOLUME} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Volume.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  # [[ -n ${IS_VOLUME} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Volume.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 }
 
 Displays() {
@@ -637,34 +637,34 @@ Displays() {
 
   # ========== Nightshift Schedule ==========
   NPLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
-  currentUUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2)
-  currentUUID="CBUser-${currentUserUID}"
+  CurrentUUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2)
+  CurrentUUID="CBUser-${CurrentUUID}"
   # - Off
-  # /usr/libexec/PlistBuddy -c "Set :${currentUserUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 0" ${NPLIST}
+  # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 0" ${NPLIST}
   # - Custom
   sudo /usr/libexec/PlistBuddy \
-    -c "Set :${currentUserUID}:CBBlueReductionStatus:BlueReductionEnabled 1" \ 
-    -c "Set :${currentUserUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartHour 23" \ 
-    -c "Set :${currentUserUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartMinute 59" \ 
-    -c "Set :${currentUserUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartHour 0" \ 
-    -c "Set :${currentUserUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartMinute 0" \ 
+    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueReductionEnabled 1" \
+    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartHour 23" \
+    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartMinute 59" \
+    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartHour 0" \
+    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartMinute 0" \
     ${NPLIST}
   # - Sunset to Sunrise
-  # /usr/libexec/PlistBuddy -c "Set :${currentUserUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 1" ${NPLIST}
+  # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 1" ${NPLIST}
 
   # Color Temperature
   # @int: warmest.2700 coldest.6000
-  /usr/libexec/PlistBuddy -c "Set :${currentUserUID}:CBBlueLightReductionCCTTargetRaw 2700" ${NPLIST}
+  /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueLightReductionCCTTargetRaw 2700" ${NPLIST}
 }
 
 EnergySaver() {
   # ========== Show Battery status in menu bar ==========
   # - Checked
   IS_BATTERY=$(defaults read com.apple.systemuiserver menuExtras | grep "Battery")
-  [[ -z ${IS_BATTERY} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Battery.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  [[ -z ${IS_BATTERY} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Battery.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
   # IS_BATTERY=$(defaults read com.apple.systemuiserver menuExtras | grep "Battery")
-  # [[ -n ${IS_BATTERY} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Battery.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  # [[ -n ${IS_BATTERY} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Battery.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 
   # ========== Show Battery percentage in menu bar ==========
   # - Show
@@ -730,10 +730,10 @@ DateTime() {
   # ========== Show date and time in menu bar ==========
   # - Checked
   IS_CLOCK=$(defaults read com.apple.systemuiserver menuExtras | grep "Clock")
-  [[ -z ${IS_CLOCK} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Clock.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  [[ -z ${IS_CLOCK} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Clock.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
   # IS_CLOCK=$(defaults read com.apple.systemuiserver menuExtras | grep "Clock")
-  # [[ -n ${IS_CLOCK} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Clock.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  # [[ -n ${IS_CLOCK} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Clock.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 
   # ========== Time options ==========
   # - Digital
@@ -793,10 +793,10 @@ TimeMachine() {
   # ========== Show Time Machine in menu bar ==========
   # - Checked
   # IS_TIMEMACHINE=$(defaults read com.apple.systemuiserver menuExtras | grep "TimeMachine")
-  # [[ -z ${IS_TIMEMACHINE} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/TimeMachine.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  # [[ -z ${IS_TIMEMACHINE} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/TimeMachine.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
   IS_TIMEMACHINE=$(defaults read com.apple.systemuiserver menuExtras | grep "TimeMachine")
-  [[ -n ${IS_TIMEMACHINE} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/TimeMachine.menu\"" ${HOME}/Library/Preferences/com.apple.systemuiserver.plist
+  [[ -n ${IS_TIMEMACHINE} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/TimeMachine.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 }
 
 Keyboard() {
@@ -810,8 +810,8 @@ Keyboard() {
 
   # ========== Adjust keyboard brightness in low light ==========
   NPLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
-  currentUUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2)
-  currentUUID="CBUser-${currentUserUID}"
+  CurrentUUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2)
+  CurrentUUID="CBUser-${CurrentUUID}"
   # - Checked
   # sudo /usr/libexec/PlistBuddy -c "Set :KeyboardBacklight:KeyboardBacklightABEnabled 1" ${NPLIST}
   # - Unchecked
@@ -848,22 +848,22 @@ Keyboard() {
 
   # ========== Show keyboard and emoji viewers in menu bar ==========
   PLIST="${HOME}/Library/Preferences/com.apple.HIToolbox.plist"
-  IS_EMOJI=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" ${PLIST} | grep 'com.apple.CharacterPaletteIM')
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" ${PLIST} | grep -P '^[\s]*Dict' | wc -l | tr -d ' ')
+  IS_EMOJI=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | grep 'com.apple.CharacterPaletteIM')
+  HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | ggrep -cP '^[\s]*Dict')
   # - Checked
   if [[ -z  ${IS_EMOJI} ]]; then
     /usr/libexec/PlistBuddy \
-       -c "Add AppleEnabledInputSources:${HNUM} dict" \
-       -c "Add AppleEnabledInputSources:${HNUM}:InputSourceKind string \"Non Keyboard Input Method\"" \
-       -c "Add AppleEnabledInputSources:${HNUM}:\"Bundle ID\" string \"com.apple.CharacterPaletteIM\"" \
-      ${PLIST}
+      -c "Add AppleEnabledInputSources:${HNUM} dict" \
+      -c "Add AppleEnabledInputSources:${HNUM}:InputSourceKind string \"Non Keyboard Input Method\"" \
+      -c "Add AppleEnabledInputSources:${HNUM}:\"Bundle ID\" string \"com.apple.CharacterPaletteIM\"" \
+      "${PLIST}"
   fi
   # - Unchecked
   if [[ -n  ${IS_EMOJI} ]]; then
-    for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-      BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources:${idx}:\"Bundle ID\"" ${PLIST} 2>/dev/null)
+    for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
+      BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources:${idx}:\"Bundle ID\"" "${PLIST}" 2>/dev/null)
       if [[ $BUNDLE_ID == "com.apple.CharacterPaletteIM" ]]; then
-        /usr/libexec/PlistBuddy -c "Delete AppleEnabledInputSources:${idx}" ${PLIST}
+        /usr/libexec/PlistBuddy -c "Delete AppleEnabledInputSources:${idx}" "${PLIST}"
       fi
     done
   fi
@@ -974,13 +974,13 @@ Keyboard() {
 
   # ========== Input Sources ==========
   GJIME=$(defaults read com.apple.HIToolbox AppleEnabledInputSources | grep "InputSourceKind = \"Keyboard Input Method\"")
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" ${PLIST} | grep -P '^[\s]*Dict' | wc -l | tr -d ' ')
+  HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | ggrep -cP '^[\s]*Dict')
   if [[ -z  ${GJIME} ]]; then
     /usr/libexec/PlistBuddy \
        -c "Add AppleEnabledInputSources:${HNUM} dict" \
        -c "Add AppleEnabledInputSources:${HNUM}:InputSourceKind string \"Keyboard Input Method\"" \
        -c "Add AppleEnabledInputSources:${HNUM}:\"Bundle ID\" string \"com.google.inputmethod.Japanese\"" \
-      ${HOME}/Library/Preferences/com.apple.HIToolbox.plist
+      "${HOME}"/Library/Preferences/com.apple.HIToolbox.plist
   fi
 
   # ========== Show Input menu in menu bar ==========
@@ -1227,10 +1227,10 @@ Finder() {
   # defaults write com.apple.Finder FXPreferredViewStyle -string Flwv
 
   # ========== Icon Size ==========
-  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 36" ${HOME}/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 36" "${HOME}"/Library/Preferences/com.apple.finder.plist
 
   # ========== Text Size ==========
-  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 12" ${HOME}/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 12" "${HOME}"/Library/Preferences/com.apple.finder.plist
 
   # ========== Show Toolbar ==========
   # - Checked
@@ -1264,10 +1264,10 @@ Finder() {
 ## ----------------------------------------
 Desktop() {
   # ========== Icon Size ==========
-  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 36" ${HOME}/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 36" "${HOME}"/Library/Preferences/com.apple.finder.plist
 
   # ========== Text Size ==========
-  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 12" ${HOME}/Library/Preferences/com.apple.finder.plist
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 12" "${HOME}"/Library/Preferences/com.apple.finder.plist
 }
 
 ## ----------------------------------------
@@ -1429,21 +1429,21 @@ ExtraSettings() {
   # - Editor - TextEdit
   LSCT=("public.json" "com.netscape.javascript-source")
   PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" ${PLIST} | grep -P '^[\s]*Dict' | wc -l | tr -d ' ')
-  for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" ${PLIST} 2>/dev/null)
-    if [[ ${LSCT[@]} =~ $THIS_LSCT ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.textedit" ${PLIST}
+  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
+  for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
+    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2>/dev/null)
+    if [[ ${LSCT[@]} =~ ${THIS_LSCT} ]]; then
+      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.textedit" "${PLIST}"
     fi;
   done
 
   # - MP3 - QuickTimePlayer
   PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" ${PLIST} | grep -P '^[\s]*Dict' | wc -l | tr -d ' ')
-  for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" ${PLIST} 2>/dev/null)
-    if [[ $THIS_LSCT == "public.mp3" ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.quicktimeplayerx" ${PLIST}
+  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
+  for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
+    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2>/dev/null)
+    if [[ "${THIS_LSCT}" == "public.mp3" ]]; then
+      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.quicktimeplayerx" "${PLIST}"
     fi;
   done
 
@@ -1522,11 +1522,11 @@ ExtraSettings() {
 ##  Main
 ## ----------------------------------------
 MACOS=$(/usr/libexec/PlistBuddy -c "Print:ProductVersion" /System/Library/CoreServices/SystemVersion.plist | awk -F. '{print $1"."$2}')
-if [[ $MACOS == "11.2" ]]; then
+if [[ "${MACOS}" == "11.2" ]]; then
   echo "You are using BigSur OS. It may cause errors since this shell is maintained with Catalina OS."
   read -p "Will you continue? (Y/n): " Ans;
   [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0;
-elif [[ $MACOS == "10.15" ]]; then
+elif [[ "${MACOS}" == "10.15" ]]; then
   # Catalina Version is maintained.
   # If the latest version is updated, add warning message here.
   :
@@ -1574,7 +1574,7 @@ if ! ${TESTMODE}; then
     "Contacts" "Dock" "Finder" "Mail" "Messages" \
     "SystemUIServer" "Terminal" "Transmission" "iCal"
   do
-    killall ${app}
+    killall "${app}"
   done
 fi
 
@@ -1586,4 +1586,3 @@ fi
 ## - Press Fn key to do nothing
 ## - Turn keyboard backlight off
 ## ----------------------------------------
-
