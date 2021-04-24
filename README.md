@@ -1,12 +1,12 @@
 # Dotfiles
 
-If you came here for MacOS full-auto-setup script, [it's here](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh). Read this [article](https://dev.to/ulwlu/i-think-i-automated-all-the-initial-settings-you-ll-do-when-you-buy-a-mac-20i5) as well.
+If you came here for MacOS full-auto-setup script, [it's here](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh). Read [this article](https://dev.to/ulwlu/i-think-i-automated-all-the-initial-settings-you-ll-do-when-you-buy-a-mac-20i5) as well.
 
 ## Preview
 
 The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
 
-<img alt="elly iterm2" src="https://user-images.githubusercontent.com/41639488/98157819-3f36ca00-1f1d-11eb-962c-17f33996bd48.png">
+![elly iterm2](https://user-images.githubusercontent.com/41639488/98157819-3f36ca00-1f1d-11eb-962c-17f33996bd48.png)
 
 ## Configurations Shortcut
 
