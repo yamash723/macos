@@ -55,7 +55,7 @@ install_bundle() {
   brew bundle --file "${CWD}"/Brewfile
 
   ## ========== Xcode ==========
-  sudo xcodebuild -license accept
+  # sudo xcodebuild -license accept
 
   ## ========== Npm ==========
   ## - npm list -g --depth 0 | sed '1d' | awk '{ print $2 }' | awk -F'@[0-9]' '{ print $1 }' > Npmfile
