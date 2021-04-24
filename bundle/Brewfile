@@ -33,9 +33,9 @@ brew "minikube"
 brew "neofetch"
 brew "git-delta"
 brew "hyperfine"
+brew "shellcheck"
 brew "youtube-dl"
 brew "git-secrets"
-brew "shellcheck"
 
 ## ========== Shell ==========
 brew "zsh"

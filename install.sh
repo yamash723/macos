@@ -39,14 +39,12 @@ symlink_dotfiles() {
   done
   find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
   eval "${find_command}"
-
-  ! ${TESTMODE} && exec -l ${SHELL}
 }
 
 configure_system() {
   CWD=${EXEPATH}/system
   osascript -e 'tell application "System Preferences" to quit' > /dev/null 2>&1
-  /bin/bash ${CWD}/macos.sh ${TESTMODE}
+  /bin/bash "${CWD}"/macos.sh ${TESTMODE}
 }
 
 install_bundle() {
@@ -54,7 +52,7 @@ install_bundle() {
 
   ## ========== Brew Bundle ==========
   brew upgrade
-  brew bundle --file ${CWD}/Brewfile
+  brew bundle --file "${CWD}"/Brewfile
 
   ## ========== Xcode ==========
   sudo xcodebuild -license accept
@@ -62,23 +60,20 @@ install_bundle() {
   ## ========== Npm ==========
   ## - npm list -g --depth 0 | sed '1d' | awk '{ print $2 }' | awk -F'@[0-9]' '{ print $1 }' > Npmfile
   npm update -g npm
-  npm install -g $(cat ${CWD}/Npmfile)
+  npm install -g $(cat "${CWD}"/Npmfile)
 
   ## ========== Pip ==========
   pip3 install --upgrade pip
-  pip3 install -r ${CWD}/Pipfile
+  pip3 install -r "${CWD}"/Pipfile
 
   ## ========== Rust ==========
   rustup-init -y
-  source ${HOME}/.cargo/env
+  source "${HOME}"/.cargo/env
   rustup component add rls --toolchain stable
   rustup component add rust-src --toolchain stable
   rustup component add rls-preview --toolchain stable
   rustup component add rust-analysis --toolchain stable
-  crates=($(cat ${CWD}/Cargofile))
-  for crate in ${crates}; do
-    cargo install -f --git "${crate}"
-  done
+  cargo install $(cat "${CWD}"/Cargofile)
 
   ## ========== Perl ==========
   # PERL_MM_USE_DEFAULT=1 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5" cpan local::lib
@@ -92,19 +87,18 @@ install_bundle() {
 
   ## ========== Zsh ==========
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-  exec -l ${SHELL}
   zinit self-update
-  source ${HOME}/.zshrc
+  source "${HOME}"/.zshrc
 
   ## ========== Vim ==========
-  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo "${HOME}"/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   vim +'PlugInstall --sync' +qa
-  curl -fLo ${HOME}/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim +'PlugInstall --sync' +qa
 
   ## ========== Tmux ==========
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  /bin/bash ${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
+  /bin/bash "${HOME}"/.tmux/plugins/tpm/scripts/install_plugins.sh
 
   ## ========== MySQL ==========
   # mysql_secure_installation
@@ -141,9 +135,8 @@ install_bundle() {
   ## ========== VSCode ==========
   ## - code --list-extensions > Vsplug
   if ! ${TESTMODE}; then
-    plugins=($(cat ${CWD}/Vsplug))
-    for plugin in ${plugins}; do
-      code --install-extension ${plugin}
+    for plugin in $(cat "${CWD}"/Vsplug); do
+      code --install-extension "${plugin}"
     done
   fi
 }
@@ -153,16 +146,16 @@ initialize() {
     xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    mkdir -p ${HOME}/.ssh
+    mkdir -p "${HOME}"/.ssh
     ssh-keygen -t rsa -b 4096 -C "ooulwluoo@gmail.com"
-    ssh-keyscan -t rsa github.com >> ${HOME}/.ssh/known_hosts
+    ssh-keyscan -t rsa github.com >> "${HOME}"/.ssh/known_hosts
     # Password auth is deprecated at 2020/11/13. This can't be automated now.
     # curl -u "ulwlu" --data "{\"title\":\"NewSSHKey\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" https://api.github.com/user/keys
     echo "Please add ~/.ssh/id_rsa.pub into https://github.com/settings/keys manually."
 
     brew install gh
     gh auth login
-    mkdir -p ${HOME}/.ghq/github.com/ulwlu/dotfiles && cd $_
+    mkdir -p "${HOME}"/.ghq/github.com/ulwlu/dotfiles && cd "$_" || exit 1
     git clone --recursive https://github.com/ulwlu/dotfiles .
   fi
 
@@ -172,9 +165,7 @@ initialize() {
   sudo chsh -s /usr/local/bin/zsh
   chmod 755 /usr/local/share/zsh
   chmod 755 /usr/local/share/zsh/site-functions
-  mkdir -p ${HOME}/work
-
-  ! ${TESTMODE} && exec -l ${SHELL}
+  mkdir -p "${HOME}"/work
 }
 
 usage() {
