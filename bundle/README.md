@@ -6,7 +6,7 @@
 https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom
 
 ### Elly Theme
-https://chrome.google.com/webstore/detail/elly-theme/fmmbppkbdanfmmejahpkpkecbodackhg
+https://chrome.google.com/webstore/detail/elly-theme/bcgeoaoekdiakmhobofhbdnpeibbhaom
 
 ### Clear Cache
 https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn
