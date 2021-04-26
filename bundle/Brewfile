@@ -59,13 +59,10 @@ cask "font-fontawesome"
 cask "font-hack-nerd-font"
 
 ## ========== Applications ==========
-cask "zoom"
-cask "slack"
 cask "alfred"
 cask "docker"
 cask "kindle"
 cask "iterm2"
-cask "notion"
 cask "postman"
 cask "gpg-suite"
 cask "rectangle"
