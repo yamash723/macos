@@ -101,13 +101,15 @@ if [[ ${argv[@]} =~ "--help" || $# -eq 0 ]]; then
   usage
   exit 0
 fi
+
 if [[ ${argv[@]} =~ "--force" ]]; then
   argv=( ${argv[@]/"--force"} )
 else
   read -p "Your file will be overwritten. OK? (Y/n): " Ans;
-  [[ ${argv[@]} =~ "--init" ]] && Ans='Y';
-  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0;
+  [[ ${argv[@]} =~ "--init" ]] && Ans='Y'
+  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0
 fi
+
 if [[ ${argv[@]} =~ "--test" ]]; then
   TESTMODE=true
   argv=( ${argv[@]/"--test"} )
