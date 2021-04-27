@@ -88,14 +88,13 @@ alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
 alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
 alias python='python3' py='python' pip='/usr/local/bin/pip3'
-alias fd='fd -iH --no-ignore-vcs -E ".git|node_modules"' rmds='fd .DS_Store -X rm'
+alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
 alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
 catp() { cat "$1" | pbcopy }
 mkcd() { mkdir "$1" && cd "$1"; }
 rgr() { rg -l "$1" | xargs sd "$1" "$2"; }
 fdr() { fd "$1" -x rename "s/${2}/${3}/ if -f" }
-cmpr() { ffmpeg -i "$1" -vcodec h264 -acodec mp2 output.mp4; }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
 vv() {
   [ -z "$1" ] && code -r ./ && return 0;
