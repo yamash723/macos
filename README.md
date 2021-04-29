@@ -1,6 +1,4 @@
-# Dotfiles
-
-If you came here for MacOS full-auto-setup script, [it's here](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh). Read [this article](https://dev.to/ulwlu/i-think-i-automated-all-the-initial-settings-you-ll-do-when-you-buy-a-mac-20i5) as well.
+If you came here for MacOS full-auto-setup script, [it's here (system/macos.sh)](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh). Read [this article](https://dev.to/ulwlu/i-think-i-automated-all-the-initial-settings-you-ll-do-when-you-buy-a-mac-20i5) as well.
 
 ## Preview
 
