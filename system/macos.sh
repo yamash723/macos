@@ -985,9 +985,9 @@ Keyboard() {
 
   # ========== Show Input menu in menu bar ==========
   # - Checked
-  defaults write com.apple.TextInputMenu -bool true
+  defaults write com.apple.TextInputMenu visible -bool true
   # - Unchecked
-  # defaults write com.apple.TextInputMenu -bool true
+  # defaults write com.apple.TextInputMenu visible -bool false
 }
 
 Trackpad() {
