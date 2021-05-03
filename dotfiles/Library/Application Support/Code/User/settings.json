@@ -75,6 +75,7 @@
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
   "editor.matchBrackets": "never",
+  "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
     "other": true,
     "strings": true,

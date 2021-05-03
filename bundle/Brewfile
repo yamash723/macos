@@ -59,6 +59,8 @@ cask "font-fontawesome"
 cask "font-hack-nerd-font"
 
 ## ========== Applications ==========
+cask "zoom"
+cask "slack"
 cask "alfred"
 cask "docker"
 cask "kindle"
@@ -74,4 +76,5 @@ cask "google-chrome"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "google-japanese-ime"
+mas  "LINE", id: 539883307
 # mas  "Xcode", id: 497799835
