@@ -1046,11 +1046,13 @@ Trackpad() {
   # @int:Slow.0 Fast.3
   defaults write -g com.apple.trackpad.scaling 3
 
-  # ========== Silent Click ==========
+  # ========== Silent Click ( deprecated? ) ==========
   # - Checked
+  # defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength -int 0
   # - Unchecked
-  defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength
+  # defaults delete com.apple.AppleMultitouchTrackpad ActuationStrength
+  # defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength
 
   # ========== Force Click and haptic feedback ==========
   # - Checked
