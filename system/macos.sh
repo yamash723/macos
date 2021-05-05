@@ -995,30 +995,42 @@ Trackpad() {
   # - Checked
   #  - Force Click with one finger
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 1
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 1
   #  - Tap with Three fingers
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 2
   # - Unchecked
   defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 0
 
   # ========== Secondary click ==========
   # - Checked
   #  - Click or tap with two fingers
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  defaults write com.apple.AppleMultitouchTrackpad  TrackpadCornerSecondaryClick -int 0
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
   #  - Click in bottom right corner
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad  TrackpadCornerSecondaryClick -int 1
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 1
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
   #  - Click in bottom left corner
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad  TrackpadCornerSecondaryClick -int 2
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
 
   # ========== Tap to click ==========
   # - Checked
   defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad Clicking -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
 
   # ========== Click ==========
   # @int:Light.0 Medium.1 Firm.2
@@ -1030,17 +1042,17 @@ Trackpad() {
 
   # ========== Silent Click ==========
   # - Checked
-  # defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength -int 0
   # - Unchecked
-  defaults delete com.apple.AppleMultitouchTrackpad ActuationStrength
+  defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength
 
   # ========== Force Click and haptic feedback ==========
   # - Checked
-  # defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuateDetents -bool true
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ForceSuppressed -bool false
   # - Unchecked
-  defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
-  defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuateDetents -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ForceSuppressed -bool true
 
   # ========== Scroll direction: Natural ==========
   # - Checked
@@ -1051,20 +1063,26 @@ Trackpad() {
   # ========== Zoom in or out ==========
   # - Checked
   defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool true
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool false
 
   # ========== Smart zoom ==========
   # - Checked
   defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool true
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool false
 
   # ========== Rotate ==========
   # - Checked
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool true
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool true
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool false
 
   # ========== Swipe between pages ==========
   # - Checked
@@ -1084,48 +1102,48 @@ Trackpad() {
   # - Checked
   #  - Scroll left or right with three fingers
   defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 2
   #   - Scroll left or right with four fingers
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerHorizSwipeGesture -int 2
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 0
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerHorizSwipeGesture -int 0
 
   # ========== Notification Center ==========
   # - Checked
   defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 0
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 0
 
   # ========== Mission Control ==========
   # - Checked
   #  - Swipe up with three fingers
   defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 2
   #   - Swipe up with four fingers
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 2
   # - Unchecked
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 0
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 0
 
   # ========== App Expose ==========
   # - Checked
   #  - Swipe down with three fingers
   # defaults write com.apple.dock showAppExposeGestureEnabled -bool true
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 2
   #   - Swipe down with four fingers
   # defaults write com.apple.dock showAppExposeGestureEnabled -bool true
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 2
   # - Unchecked
   defaults write com.apple.dock showAppExposeGestureEnabled -bool false
 
@@ -1577,12 +1595,3 @@ if ! ${TESTMODE}; then
     killall "${app}"
   done
 fi
-
-## ----------------------------------------
-##  TODO for big sur
-## - allow wallpaper tinting in windows
-## - keyboard brightness in menu bar
-## - fast user switching in menu bar
-## - Press Fn key to do nothing
-## - Turn keyboard backlight off
-## ----------------------------------------
