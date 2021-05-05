@@ -1054,9 +1054,13 @@ Trackpad() {
 
   # ========== Force Click and haptic feedback ==========
   # - Checked
+  # defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
+  # defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuateDetents -bool true
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ForceSuppressed -bool false
   # - Unchecked
+  defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
+  defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool true
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuateDetents -bool false
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ForceSuppressed -bool true
 
