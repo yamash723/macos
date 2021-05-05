@@ -1006,23 +1006,29 @@ Trackpad() {
   # ========== Secondary click ==========
   # - Checked
   #  - Click or tap with two fingers
+  defaults write .GlobalPreferences ContextMenuGesture -int 1
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
   defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
   #  - Click in bottom right corner
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 1
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
-  #  - Click in bottom left corner
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-  # - Unchecked
+  # defaults write .GlobalPreferences ContextMenuGesture -int 1
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+  #  - Click in bottom left corner
+  # defaults write .GlobalPreferences ContextMenuGesture -int 1
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 1
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
+  # - Unchecked
+  # defaults write .GlobalPreferences ContextMenuGesture -int 0
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
 
   # ========== Tap to click ==========
   # - Checked
