@@ -1101,14 +1101,23 @@ Trackpad() {
   #  - Scroll left or right with two fingers
   defaults write .GlobalPreferences AppleEnableSwipeNavigateWithScrolls -bool true
   defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
-  #   - Swipe with three fingers
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+  defaults write ~/Library/Preferences/ByHost/.GlobalPreferences com.apple.trackpad.threeFingerHorizSwipeGesture -int 0
+  #  - Swipe with three fingers
   # defaults write .GlobalPreferences AppleEnableSwipeNavigateWithScrolls -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
-  #   - Swipe with two or three fingers
-  # defaults write .GlobalPreferences AppleEnableSwipeNavigateWithScrolls -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 1
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
+  # defaults write ~/Library/Preferences/ByHost/.GlobalPreferences com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
+  #  - Swipe with two or three fingers
+  # defaults write .GlobalPreferences AppleEnableSwipeNavigateWithScrolls -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 1
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
+  # defaults write ~/Library/Preferences/ByHost/.GlobalPreferences com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
   # - Unchecked
   # defaults write .GlobalPreferences AppleEnableSwipeNavigateWithScrolls -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+  # defaults write ~/Library/Preferences/ByHost/.GlobalPreferences com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
 
   # ========== Swipe between full-screen apps ==========
   # - Checked
