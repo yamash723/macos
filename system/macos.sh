@@ -1006,23 +1006,29 @@ Trackpad() {
   # ========== Secondary click ==========
   # - Checked
   #  - Click or tap with two fingers
+  defaults write .GlobalPreferences ContextMenuGesture -int 1
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
   defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
   #  - Click in bottom right corner
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 1
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
-  #  - Click in bottom left corner
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-  # - Unchecked
+  # defaults write .GlobalPreferences ContextMenuGesture -int 1
   # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+  #  - Click in bottom left corner
+  # defaults write .GlobalPreferences ContextMenuGesture -int 1
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 1
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 1
+  # - Unchecked
+  # defaults write .GlobalPreferences ContextMenuGesture -int 0
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool false
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
 
   # ========== Tap to click ==========
   # - Checked
@@ -1040,17 +1046,23 @@ Trackpad() {
   # @int:Slow.0 Fast.3
   defaults write -g com.apple.trackpad.scaling 3
 
-  # ========== Silent Click ==========
+  # ========== Silent Click ( deprecated? ) ==========
   # - Checked
+  # defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength -int 0
   # - Unchecked
-  defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength
+  # defaults delete com.apple.AppleMultitouchTrackpad ActuationStrength
+  # defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad ActuationStrength
 
   # ========== Force Click and haptic feedback ==========
   # - Checked
+  # defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
+  # defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuateDetents -bool true
   # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ForceSuppressed -bool false
   # - Unchecked
+  defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool false
+  defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool true
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ActuateDetents -bool false
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ForceSuppressed -bool true
 
