@@ -57,6 +57,8 @@ export SAVEHIST=10000
 export HISTFILE=${HOME}/.zsh_history
 export FPATH="${HOME}/.zinit/completions:${FPATH}"
 autoload -Uz compinit && compinit -i && compinit
+autoload -Uz up-line-or-beginning-search && zle -N up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search && zle -N down-line-or-beginning-search
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
@@ -68,6 +70,8 @@ bindkey '^F' forward-word
 bindkey '^B' backward-word
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
+bindkey "^[[1;2A" up-line-or-beginning-search
+bindkey "^[[1;2B" down-line-or-beginning-search
 
 ## ----------------------------------------
 ##  Alias & Function
