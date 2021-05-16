@@ -1,6 +1,6 @@
 #! /bin/bash
 
-EXEPATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
+EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
 ## ----------------------------------------
 ##  System Preferences
@@ -89,12 +89,12 @@ General() {
   PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
   HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
   for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-    THIS_LSSC=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerURLScheme" "${PLIST}" 2>/dev/null)
+    THIS_LSSC=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerURLScheme" "${PLIST}" 2> /dev/null)
     if [[ ${LSSC[@]} =~ $THIS_LSSC ]]; then
       /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
     fi
 
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2>/dev/null)
+    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
     if [[ ${LSCT[@]} =~ $THIS_LSCT ]]; then
       /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
     fi
@@ -375,54 +375,54 @@ Spotlight() {
   defaults delete com.apple.Spotlight orderedItems
   SCAT=(
     # Applications
-    "APPLICATIONS"               true
+    "APPLICATIONS" true
     # Bookmarks & History
-    "BOOKMARKS"                  true
+    "BOOKMARKS" true
     # Calculator
-    "MENU_EXPRESSION"            true
+    "MENU_EXPRESSION" true
     # Contacts
-    "CONTACT"                    true
+    "CONTACT" true
     # Conversion
-    "MENU_CONVERSION"            true
+    "MENU_CONVERSION" true
     # Conversion
-    "MENU_DEFINITION"            true
+    "MENU_DEFINITION" true
     # Developer
-    "SOURCE"                     true
+    "SOURCE" true
     # Documents
-    "DOCUMENTS"                  true
+    "DOCUMENTS" true
     # Events & Reminders
-    "EVENT_TODO"                 true
+    "EVENT_TODO" true
     # Folders
-    "DIRECTORIES"                true
+    "DIRECTORIES" true
     # Fonts
-    "FONTS"                      true
+    "FONTS" true
     # Images
-    "IMAGES"                     true
+    "IMAGES" true
     # Mail & Messages
-    "MESSAGES"                   true
+    "MESSAGES" true
     # Movies
-    "MOVIES"                     true
+    "MOVIES" true
     # Music
-    "MUSIC"                      true
+    "MUSIC" true
     # Other
-    "MENU_OTHER"                 true
+    "MENU_OTHER" true
     # PDF Documents
-    "PDF"                        true
+    "PDF" true
     # Presentations
-    "PRESENTATIONS"              true
+    "PRESENTATIONS" true
     # Spreadsheets
-    "SPREADSHEETS"               true
+    "SPREADSHEETS" true
     # Spotlight Suggestions
     "MENU_SPOTLIGHT_SUGGESTIONS" true
     # System Preferences
-    "SYSTEM_PREFS"               true
+    "SYSTEM_PREFS" true
   )
   SNUM=$(expr ${#SCAT[@]} / 2)
   PLIST="${HOME}/Library/Preferences/com.apple.Spotlight"
   /usr/libexec/PlistBuddy -c "Add orderedItems array" "${PLIST}"
   for idx in $(seq 0 $(expr "${SNUM}" - 1)); do
-    CATN=${SCAT[$(( idx * 2     ))]}
-    CATB=${SCAT[$(( idx * 2 + 1 ))]}
+    CATN=${SCAT[$((idx * 2))]}
+    CATB=${SCAT[$((idx * 2 + 1))]}
 
     /usr/libexec/PlistBuddy \
       -c "Add persistent-apps:${idx} dict" \
@@ -851,7 +851,7 @@ Keyboard() {
   IS_EMOJI=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | grep 'com.apple.CharacterPaletteIM')
   HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | ggrep -cP '^[\s]*Dict')
   # - Checked
-  if [[ -z  ${IS_EMOJI} ]]; then
+  if [[ -z ${IS_EMOJI} ]]; then
     /usr/libexec/PlistBuddy \
       -c "Add AppleEnabledInputSources:${HNUM} dict" \
       -c "Add AppleEnabledInputSources:${HNUM}:InputSourceKind string \"Non Keyboard Input Method\"" \
@@ -859,9 +859,9 @@ Keyboard() {
       "${PLIST}"
   fi
   # - Unchecked
-  if [[ -n  ${IS_EMOJI} ]]; then
+  if [[ -n ${IS_EMOJI} ]]; then
     for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-      BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources:${idx}:\"Bundle ID\"" "${PLIST}" 2>/dev/null)
+      BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources:${idx}:\"Bundle ID\"" "${PLIST}" 2> /dev/null)
       if [[ $BUNDLE_ID == "com.apple.CharacterPaletteIM" ]]; then
         /usr/libexec/PlistBuddy -c "Delete AppleEnabledInputSources:${idx}" "${PLIST}"
       fi
@@ -975,11 +975,11 @@ Keyboard() {
   # ========== Input Sources ==========
   GJIME=$(defaults read com.apple.HIToolbox AppleEnabledInputSources | grep "InputSourceKind = \"Keyboard Input Method\"")
   HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | ggrep -cP '^[\s]*Dict')
-  if [[ -z  ${GJIME} ]]; then
+  if [[ -z ${GJIME} ]]; then
     /usr/libexec/PlistBuddy \
-       -c "Add AppleEnabledInputSources:${HNUM} dict" \
-       -c "Add AppleEnabledInputSources:${HNUM}:InputSourceKind string \"Keyboard Input Method\"" \
-       -c "Add AppleEnabledInputSources:${HNUM}:\"Bundle ID\" string \"com.google.inputmethod.Japanese\"" \
+      -c "Add AppleEnabledInputSources:${HNUM} dict" \
+      -c "Add AppleEnabledInputSources:${HNUM}:InputSourceKind string \"Keyboard Input Method\"" \
+      -c "Add AppleEnabledInputSources:${HNUM}:\"Bundle ID\" string \"com.google.inputmethod.Japanese\"" \
       "${HOME}"/Library/Preferences/com.apple.HIToolbox.plist
   fi
 
@@ -1470,20 +1470,20 @@ ExtraSettings() {
   PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
   HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
   for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2>/dev/null)
+    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
     if [[ ${LSCT[@]} =~ ${THIS_LSCT} ]]; then
       /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.textedit" "${PLIST}"
-    fi;
+    fi
   done
 
   # - MP3 - QuickTimePlayer
   PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
   HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
   for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2>/dev/null)
+    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
     if [[ "${THIS_LSCT}" == "public.mp3" ]]; then
       /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.quicktimeplayerx" "${PLIST}"
-    fi;
+    fi
   done
 
   # ========== Remove Notification ==========
@@ -1563,8 +1563,8 @@ ExtraSettings() {
 MACOS=$(/usr/libexec/PlistBuddy -c "Print:ProductVersion" /System/Library/CoreServices/SystemVersion.plist | awk -F. '{print $1"."$2}')
 if [[ "${MACOS}" == "11.2" ]]; then
   echo "You are using BigSur OS. It may cause errors since this shell is maintained with Catalina OS."
-  read -p "Will you continue? (Y/n): " Ans;
-  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0;
+  read -p "Will you continue? (Y/n): " Ans
+  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0
 elif [[ "${MACOS}" == "10.15" ]]; then
   # Catalina Version is maintained.
   # If the latest version is updated, add warning message here.
@@ -1611,8 +1611,7 @@ if ! ${TESTMODE}; then
     "cfprefsd" \
     "Activity Monitor" "Address Book" "Calendar" \
     "Contacts" "Dock" "Finder" "Mail" "Messages" \
-    "SystemUIServer" "Terminal" "Transmission" "iCal"
-  do
+    "SystemUIServer" "Terminal" "Transmission" "iCal"; do
     killall "${app}"
   done
 fi

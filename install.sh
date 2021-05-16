@@ -7,7 +7,7 @@ fi
 
 TESTMODE=false
 shopt -s dotglob
-EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
+EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
 ## ----------------------------------------
 ##  Functions
@@ -34,8 +34,8 @@ symlink_dotfiles() {
 
   find_exclude=""
   for i in "${bulk_symlink_target[@]}"; do
-    handle_symlink_from_path "${i}";
-    find_exclude="${find_exclude} -path \"${i}\" -prune -or ";
+    handle_symlink_from_path "${i}"
+    find_exclude="${find_exclude} -path \"${i}\" -prune -or "
   done
   find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
   eval "${find_command}"
@@ -103,27 +103,35 @@ if [[ ${argv[@]} =~ "--help" || $# -eq 0 ]]; then
 fi
 
 if [[ ${argv[@]} =~ "--force" ]]; then
-  argv=( ${argv[@]/"--force"} )
+  argv=(${argv[@]/"--force"/})
 else
-  read -p "Your file will be overwritten. OK? (Y/n): " Ans;
+  read -p "Your file will be overwritten. OK? (Y/n): " Ans
   [[ ${argv[@]} =~ "--init" ]] && Ans='Y'
   [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0
 fi
 
 if [[ ${argv[@]} =~ "--test" ]]; then
   TESTMODE=true
-  argv=( ${argv[@]/"--test"} )
+  argv=(${argv[@]/"--test"/})
 fi
 
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2> /dev/null &
 for opt in ${argv[@]}; do
   case $opt in
-    --init)     initialize; ;;
-    --bundle)   install_bundle; ;;
-    --system)   configure_system; ;;
-    --dotfiles) symlink_dotfiles; ;;
-    --all)      symlink_dotfiles; install_bundle; configure_system; ;;
-    *)          echo "invalid option $1"; ;;
+    --init) initialize ;;
+    --bundle) install_bundle ;;
+    --system) configure_system ;;
+    --dotfiles) symlink_dotfiles ;;
+    --all)
+      symlink_dotfiles
+      install_bundle
+      configure_system
+      ;;
+    *) echo "invalid option $1" ;;
   esac
 done

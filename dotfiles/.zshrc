@@ -85,6 +85,7 @@ alias pp='pbpaste >'
 alias cdwk='cd ~/work'
 alias hf='hyperfine --max-runs 3'
 alias weather='curl -Acurl wttr.in/Tokyo'
+alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
 alias ydl='youtube-dl -x --audio-format mp3'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 alias bat='bat --color=always --style=header,grid'
