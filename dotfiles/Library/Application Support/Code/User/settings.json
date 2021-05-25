@@ -108,6 +108,7 @@
   ],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
   "files.autoGuessEncoding": true,
   "files.autoSave": "off",
   "files.insertFinalNewline": false,
@@ -149,7 +150,12 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.fontFamily": "HackNerdFontComplete-Italic",
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/usr/local/bin/zsh"
+    }
+  },
   "window.title": "${activeEditorLong}${separator}${rootName}",
   "workbench.colorTheme": "elly",
   "workbench.editor.closeOnFileDelete": true,
