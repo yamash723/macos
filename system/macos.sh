@@ -357,7 +357,7 @@ MissionControl() {
 }
 
 Siri() {
-  # ========== Enable Adk Siri ==========
+  # ========== Enable Ask Siri ==========
   # - Checked
   # defaults write com.apple.assistant.support.plist Assistant Enabled -bool true
   # - Unchecked
@@ -436,6 +436,12 @@ Spotlight() {
   defaults write com.apple.lookup.shared LookupSuggestionsDisabled -bool true
   # - Unchecked
   # defaults write com.apple.lookup.shared LookupSuggestionsDisabled -bool false
+
+  # ========== Display Spotlight in menu bar ==========
+  # - Checked
+  # defaults write ~/Library/Preferences/ByHost/com.apple.Spotlight MenuItemHidden -bool true
+  # - Unchecked
+  defaults write ~/Library/Preferences/ByHost/com.apple.Spotlight MenuItemHidden -bool false
 }
 
 LanguageRegion() {
@@ -568,31 +574,31 @@ SoftwareUpdate() {
 Network() {
   # ========== Show Wi-Fi status in menu bar ==========
   # - Checked
-  IS_AIRPORT=$(defaults read com.apple.systemuiserver menuExtras | grep "AirPort")
-  [[ -z ${IS_AIRPORT} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/AirPort.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -bool true
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist WiFi -int 18
   # - Unchecked
-  # IS_AIRPORT=$(defaults read com.apple.systemuiserver menuExtras | grep "AirPort")
-  # [[ -n ${IS_AIRPORT} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/AirPort.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  # defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -bool false
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist WiFi -int 24
 }
 
 Bluetooth() {
   # ========== Show Bluetooth status in menu bar ==========
   # - Checked
-  IS_BLUETOOTH=$(defaults read com.apple.systemuiserver menuExtras | grep "Bluetooth")
-  [[ -z ${IS_BLUETOOTH} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Bluetooth.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 18
   # - Unchecked
-  # IS_BLUETOOTH=$(defaults read com.apple.systemuiserver menuExtras | grep "Bluetooth")
-  # [[ -n ${IS_BLUETOOTH} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Bluetooth.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  # defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool false
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 24
 }
 
 Sound() {
   # ========== Show Volume status in menu bar ==========
   # - Checked
-  IS_VOLUME=$(defaults read com.apple.systemuiserver menuExtras | grep "Volume")
-  [[ -z ${IS_VOLUME} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Volume.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Sound -int 18
   # - Unchecked
-  # IS_VOLUME=$(defaults read com.apple.systemuiserver menuExtras | grep "Volume")
-  # [[ -n ${IS_VOLUME} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Volume.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  # defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool false
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Sound -int 24
 }
 
 Displays() {
@@ -660,17 +666,17 @@ Displays() {
 EnergySaver() {
   # ========== Show Battery status in menu bar ==========
   # - Checked
-  IS_BATTERY=$(defaults read com.apple.systemuiserver menuExtras | grep "Battery")
-  [[ -z ${IS_BATTERY} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Battery.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool true
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Battery -int 18
   # - Unchecked
-  # IS_BATTERY=$(defaults read com.apple.systemuiserver menuExtras | grep "Battery")
-  # [[ -n ${IS_BATTERY} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Battery.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
+  # defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool false
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Battery -int 24
 
   # ========== Show Battery percentage in menu bar ==========
   # - Show
-  # defaults write com.apple.menuextra.battery ShowPercent -string "Yes"
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
   # - Hide
-  defaults write com.apple.menuextra.battery ShowPercent -string "NO"
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool false
 
   # ========== Turn display off after ==========
   # @int: minutes
@@ -743,9 +749,9 @@ DateTime() {
 
   # ========== Display the time with seconds ==========
   # - Checked
-  # defaults write com.apple.menuextra.clock DateFormat -string "HH:mm:ss"
+  defaults write com.apple.menuextra.clock ShowSeconds -bool true
   # - Unchecked
-  defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+  # defaults write com.apple.menuextra.clock ShowSeconds -bool false
 
   # ========== Flash the time separators ==========
   # - Checked
@@ -755,27 +761,27 @@ DateTime() {
 
   # ========== Use a 24-hour clock ==========
   # - Checked
-  defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+  defaults write com.apple.menuextra.clock Show24Hour -bool true
   # - Unchecked
-  # defaults write com.apple.menuextra.clock DateFormat -string "H:mm"
+  # defaults write com.apple.menuextra.clock Show24Hour -bool false
 
   # ========== Show AM/PM ==========
   # - Checked
-  # defaults write com.apple.menuextra.clock DateFormat -string "H:mm"
+  defaults write com.apple.menuextra.clock ShowAMPM -bool true
   # - Unchecked
-  defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+  # defaults write com.apple.menuextra.clock ShowAMPM -bool false
 
   # ========== Show the day of the week ==========
   # - Checked
-  # defaults write com.apple.menuextra.clock DateFormat -string "EEE HH:mm"
+  defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
   # - Unchecked
-  defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+  # defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
 
-  # ========== Show date ==========
+  # ========== Show date (In BigSur, time always appears) ==========
   # - Checked
-  # defaults write com.apple.menuextra.clock DateFormat -string "MMM d EEE HH:mm"
+  defaults write com.apple.menuextra.clock ShowDayOfMonth -bool true
   # - Unchecked
-  defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+  # defaults write com.apple.menuextra.clock ShowDayOfMonth -bool false
 }
 
 iCloud() {
@@ -792,9 +798,11 @@ TimeMachine() {
 
   # ========== Show Time Machine in menu bar ==========
   # - Checked
+  # defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.TimeMachine" -bool true
   # IS_TIMEMACHINE=$(defaults read com.apple.systemuiserver menuExtras | grep "TimeMachine")
   # [[ -z ${IS_TIMEMACHINE} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/TimeMachine.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
   # - Unchecked
+  defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.TimeMachine" -bool false
   IS_TIMEMACHINE=$(defaults read com.apple.systemuiserver menuExtras | grep "TimeMachine")
   [[ -n ${IS_TIMEMACHINE} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/TimeMachine.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
 }
@@ -1555,6 +1563,30 @@ ExtraSettings() {
 
   # ========== Never start sleep mode ==========
   # sudo systemsetup -setcomputersleep Off > /dev/null
+
+  # ========== Show Airdrop in menu bar ==========
+  # - Checked
+  # defaults write com.apple.controlcenter "NSStatusItem Visible Airdrop" -bool true
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Airdrop -int 2
+  # - Unchecked
+  defaults write com.apple.controlcenter "NSStatusItem Visible Airdrop" -bool false
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Airdrop -int 8
+
+  # ========== Show Now Playing in menu bar ==========
+  # - Checked
+  defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool true
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist NowPlaying -int 18
+  # - Unchecked
+  # defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool false
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist NowPlaying -int 24
+
+  # ========== Show Accessibility Shortcuts in menu bar ==========
+  # - Checked
+  # defaults write com.apple.controlcenter "NSStatusItem Visible AccessibilityShortcuts" -bool true
+  # defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist AccessibilityShortcuts -int 2
+  # - Unchecked
+  defaults write com.apple.controlcenter "NSStatusItem Visible AccessibilityShortcuts" -bool false
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist AccessibilityShortcuts -int 8
 }
 
 ## ----------------------------------------
@@ -1562,16 +1594,13 @@ ExtraSettings() {
 ## ----------------------------------------
 MACOS=$(/usr/libexec/PlistBuddy -c "Print:ProductVersion" /System/Library/CoreServices/SystemVersion.plist | awk -F. '{print $1"."$2}')
 if [[ "${MACOS}" == "11.2" ]]; then
-  echo "You are using BigSur OS. It may cause errors since this shell is maintained with Catalina OS."
-  read -p "Will you continue? (Y/n): " Ans
-  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0
-elif [[ "${MACOS}" == "10.15" ]]; then
-  # Catalina Version is maintained.
+  # Big Sur Version is maintained.
   # If the latest version is updated, add warning message here.
   :
 else
-  echo "MacOS upper than Catalina is supported."
-  exit 1
+  echo "You are using MacOS lower than BigSur. It may cause errors since this shell isn't maintained with your OS."
+  read -p "Will you continue? (Y/n): " Ans
+  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0
 fi
 
 Appstore

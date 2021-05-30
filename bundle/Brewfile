@@ -32,7 +32,6 @@ brew "ripgrep"
 brew "minikube"
 brew "neofetch"
 brew "git-delta"
-brew "hyperfine"
 brew "shellcheck"
 brew "youtube-dl"
 brew "git-secrets"
@@ -78,5 +77,5 @@ cask "google-chrome"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "google-japanese-ime"
-mas  "LINE", id: 539883307
+# mas  "LINE", id: 539883307
 # mas  "Xcode", id: 497799835

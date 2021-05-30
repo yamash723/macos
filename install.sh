@@ -1,5 +1,11 @@
 #!/bin/bash
 
+## ----------------------------------------
+##  By default, you don't have any CLI such as git.
+##  Run the command below to install dependencies.
+##  curl https://raw.githubusercontent.com/ulwlu/dotfiles/master/install.sh | /bin/bash -s -- --init
+## ----------------------------------------
+
 if [[ "$OSTYPE" != "darwin"* ]]; then
   echo "MacOS only available."
   exit 1
