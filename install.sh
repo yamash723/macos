@@ -36,6 +36,7 @@ symlink_dotfiles() {
     "./dotfiles/.aliases"
     "./dotfiles/.git_template"
     "./dotfiles/.snippets"
+    "./dotfiles/.trashrc"
   )
 
   find_exclude=""
