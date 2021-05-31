@@ -4,7 +4,7 @@ If you came here for MacOS full-auto-setup script, [it's here](https://github.co
 
 The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
 
-![elly iterm2](https://user-images.githubusercontent.com/41639488/98157819-3f36ca00-1f1d-11eb-962c-17f33996bd48.png)
+<img alt="elly.vim" src="https://user-images.githubusercontent.com/41639488/98123673-814c1580-1ef5-11eb-8520-06af6404e738.png">
 
 ## Configurations Shortcut
 

@@ -6,6 +6,9 @@ EXEPATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
 brew upgrade
 brew bundle --file "${EXEPATH}"/Brewfile
 
+## ========== asdf ==========
+asdf install
+
 ## ========== Xcode ==========
 # sudo xcodebuild -license accept
 

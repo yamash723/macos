@@ -83,6 +83,7 @@ alias op='open ./'
 alias grep='ggrep'
 alias pp='pbpaste >'
 alias cdwk='cd ~/work'
+alias py='python' pip='pip3'
 alias hf='hyperfine --max-runs 3'
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
@@ -92,7 +93,6 @@ alias bat='bat --color=always --style=header,grid'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
 alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
-alias python='python3' py='python' pip='/usr/local/bin/pip3'
 alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
 alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
@@ -205,11 +205,12 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-source "$HOME/.zinit/bin/zinit.zsh"
+source "${HOME}/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 zinit ice wait'0'
 zinit lucid for \
+  asdf-vm/asdf \
   ulwlu/enhancd \
   zsh-users/zsh-completions \
   zsh-users/zsh-autosuggestions \
@@ -218,6 +219,7 @@ zinit lucid for \
   as'completion' is-snippet 'https://github.com/docker/machine/blob/master/contrib/completion/zsh/_docker-machine' \
   as'completion' is-snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose' \
   as'completion' is-snippet 'https://github.com/lukechilds/zsh-better-npm-completion/blob/master/zsh-better-npm-completion.plugin.zsh'
+source "${HOME}/.zinit/plugins/asdf-vm---asdf/asdf.sh"
 
 ## ----------------------------------------
 ##  Prompt
