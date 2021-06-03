@@ -37,7 +37,6 @@
 ;; tab width
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
-(setq tab-stop-list (number-sequence 4 200 4))
 ;; auto indent
 (electric-indent-mode -1)
 (global-set-key "\C-m" 'newline-and-indent)
