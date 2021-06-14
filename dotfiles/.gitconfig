@@ -60,6 +60,7 @@
   sp  = !git stash pop `git stash list | awk -F':' '{print $1}' | fzf --preview 'git -c color.ui=always stash show -p {}'`
   sd  = !git stash drop `git stash list | awk -F':' '{print $1}' | fzf --preview 'git -c color.ui=always stash show -p {}'`
   sk  = update-index --skip-worktree
+  su  = ls-files --others --exclude-standard
   usk = update-index --no-skip-worktree
   vi  = !nvim ~/.gitconfig
   lf  = !git lfs install
