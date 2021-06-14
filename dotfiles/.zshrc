@@ -118,9 +118,9 @@ rgf() {
   vi "${selected}";
 }
 hst() {
-  cmd=`history 1 | awk ‘{$1=“”;print $0;}’ | fzf`
-  [ -z “${cmd}” ] && echo “fzf Canceled.” && return 0;
-  echo “${cmd}” && eval “${cmd}”
+  cmd=`history 1 | awk '{$1="";print $0;}' | fzf`
+  [ -z "${cmd}" ] && echo "fzf Canceled." && return 0;
+  echo "${cmd}" && eval "${cmd}"
 }
 
 ## ========== Global Alias ==========
