@@ -150,6 +150,10 @@ gcre() {
   gh repo view --web;
 }
 
+## ========== Kubernetes ==========
+alias k='kubectl' && compdef _kubectl k
+source <(kubectl completion zsh)
+
 ## ========== Tmux ==========
 alias tm='tmux' && compdef _tmux tm
 alias tmn='tmux attach -t 1 || tmux new -s 1'
@@ -215,7 +219,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 zinit ice wait'0'
 zinit lucid for \
-  asdf-vm/asdf \
   ulwlu/enhancd \
   zsh-users/zsh-completions \
   zsh-users/zsh-autosuggestions \
@@ -224,7 +227,8 @@ zinit lucid for \
   as'completion' is-snippet 'https://github.com/docker/machine/blob/master/contrib/completion/zsh/_docker-machine' \
   as'completion' is-snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose' \
   as'completion' is-snippet 'https://github.com/lukechilds/zsh-better-npm-completion/blob/master/zsh-better-npm-completion.plugin.zsh'
-source "${HOME}/.zinit/plugins/asdf-vm---asdf/asdf.sh"
+source $(brew --prefix asdf)/asdf.sh
+source $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 ## ----------------------------------------
 ##  Prompt

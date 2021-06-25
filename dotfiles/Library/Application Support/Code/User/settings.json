@@ -164,11 +164,8 @@
   "workbench.settings.editor": "json",
   "workbench.tree.indent": 16,
   "workbench.tree.renderIndentGuides": "always",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "window.zoomLevel": -1
 }
