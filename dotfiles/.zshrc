@@ -98,8 +98,8 @@ alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
 catp() { cat "$1" | pbcopy }
 mkcd() { mkdir "$1" && cd "$1"; }
-rgr() { rg -l "$1" | xargs sd "$1" "$2"; }
-fdr() { fd "$1" -x rename "s/${2}/${3}/ if -f" }
+rgsd() { rg -l "$1" | xargs sd "$1" "$2"; }
+fdsd() { fd "$1" -x rename "s/${2}/${3}/ if -f" }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
 vv() {
   [ -z "$1" ] && code -r ./ && return 0;
@@ -110,10 +110,17 @@ lnsv() {
   abspath=$(absp $1);
   ln -sfnv "${abspath}" "$2";
 }
-rgf() {
-  [ -z "$2" ] && matches=`rg "$1" -l` || matches=`rg --files | rg "$1"`;
+rgvi() {
+  [ -z "$2" ] && matches=`rg "$1" -l`;
   [ -z "${matches}" ] && echo "no matches\n" && return 0;
   selected=`echo "${matches}" | fzf --preview "rg -pn '$1' {}"`;
+  [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
+  vi "${selected}";
+}
+fdvi() {
+  [ -z "$2" ] && matches=`fd "$1"`;
+  [ -z "${matches}" ] && echo "no matches\n" && return 0;
+  selected=`echo "${matches}" | fzf --preview "bat --color=always {}"`;
   [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
   vi "${selected}";
 }
