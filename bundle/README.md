@@ -11,6 +11,11 @@ https://chrome.google.com/webstore/detail/elly-theme/bcgeoaoekdiakmhobofhbdnpeib
 ### Clear Cache
 https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn
 
+### Leoh New Tab
+https://chrome.google.com/webstore/detail/leoh-new-tab/ijhhakihjccpanbibbcceofpjnebokcb
+
+background: http://cdn.leoh.io/images/base_zero/image_3.jpg
+
 ### Lighthouse
 https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk
 

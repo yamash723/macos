@@ -36,6 +36,7 @@ call plug#end()
 ""  Configure
 "" ----------------------------------------
 set nobomb
+set number
 set lazyredraw
 set laststatus=0
 set termguicolors
