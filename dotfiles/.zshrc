@@ -149,7 +149,9 @@ alias cdgh='cd `ghq list -p | fzf`'
 alias cdg='cd `git rev-parse --show-toplevel`'
 gcre() {
   [ -z "$(ls -A ./)" ] && echo "Fail: Directory is empty." && return 0;
-  git init && git add -A && git commit;
+  git init;
+  git secrets --install && git secrets --register-aws;
+  git add -A && git commit;
   read        name"?type repo name        : ";
   read description"?type repo description : ";
   gh repo create ${name} --description ${description} --private;

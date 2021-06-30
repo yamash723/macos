@@ -1,5 +1,5 @@
 #! /bin/bash
-
+set -u
 EXEPATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
 
 ## ========== Brew Bundle ==========
@@ -7,6 +7,11 @@ brew upgrade
 brew bundle --file "${EXEPATH}"/Brewfile
 
 ## ========== asdf ==========
+asdf plugin-add nodejs
+asdf plugin-add python
+asdf plugin-add golang
+asdf plugin-add gradle
+asdf plugin-add java
 asdf install
 
 ## ========== Xcode ==========
