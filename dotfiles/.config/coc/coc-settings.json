@@ -6,7 +6,9 @@
   "explorer.keyMappings.global": {
     "<tab>": "actionMenu",
     "<cr>": ["wait", "expanded?", "collapse", "expand"],
-    "cd": ["wait", "expandable?", "cd", "open"]
+    "cd": ["wait", "expandable?", "cd", "open"],
+    "s": "open:split",
+    "v": "open:vsplit"
   },
   "git.removedSign.text": "-",
   "git.addedSign.hlGroup": "CocDiffAdd",
