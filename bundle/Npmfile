@@ -4,3 +4,4 @@ yarn
 degit
 prettier
 typescript
+@squoosh/cli

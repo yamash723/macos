@@ -129,6 +129,13 @@ hst() {
   [ -z "${cmd}" ] && echo "fzf Canceled." && return 0;
   echo "${cmd}" && eval "${cmd}"
 }
+cimg() {
+  case "$1" in
+    *.jpeg|*.jpg) opt="--mozjpeg";;
+    *.png)        opt="--oxipng";;
+  esac
+  squoosh-cli "$opt" auto "$1"
+}
 
 ## ========== Global Alias ==========
 alias -g G='| grep'
