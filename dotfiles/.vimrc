@@ -163,6 +163,8 @@ nn <silent> <Leader>ff :<C-u>CocCommand fzf-preview.FromResources project_mru gi
 let g:fzf_preview_disable_mru = 0
 let g:fzf_preview_command = 'bat --color=always --plain {-1}'
 let g:fzf_preview_default_fzf_options = { '--reverse': v:true, '--preview-window': 'wrap:70%' }
+let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading --color=never --hidden'
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'
 let g:fzf_preview_git_status_preview_command =
   \ "[[ $(git diff --cached -- {-1}) != \"\" ]] && git diff --cached --color=always -- {-1} | delta || " .
   \ "[[ $(git diff -- {-1}) != \"\" ]] && git diff --color=always -- {-1} | delta || " .
