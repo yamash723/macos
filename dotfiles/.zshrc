@@ -134,7 +134,7 @@ cimg() {
     *.jpeg|*.jpg) opt="--mozjpeg";;
     *.png)        opt="--oxipng";;
   esac
-  squoosh-cli "$opt" auto "$1"
+  squoosh-cli "$opt" '{}' "$1"
 }
 
 ## ========== Global Alias ==========

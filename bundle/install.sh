@@ -7,11 +7,9 @@ brew upgrade
 brew bundle --file "${EXEPATH}"/Brewfile
 
 ## ========== asdf ==========
-asdf plugin-add nodejs
-asdf plugin-add python
-asdf plugin-add golang
-asdf plugin-add gradle
-asdf plugin-add java
+for plugin in $(cat "${HOME}"/.tool-versions | cut -d' ' -f1); do
+  asdf plugin-add "${plugin}"
+done
 asdf install
 
 ## ========== Xcode ==========
