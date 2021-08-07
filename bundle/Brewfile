@@ -69,3 +69,4 @@ cask "visual-studio-code"
 cask "google-japanese-ime"
 # mas  "LINE", id: 539883307
 # mas  "Xcode", id: 497799835
+mas "Amphetamine", id: 937984704
