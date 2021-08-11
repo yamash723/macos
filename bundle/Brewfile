@@ -45,6 +45,8 @@ cask "font-fontawesome"
 cask "font-hack-nerd-font"
 
 ## ========== Language ==========
+brew "gcc"
+brew "gdb"
 brew "asdf"
 brew "rustup"
 
