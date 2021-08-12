@@ -10,6 +10,8 @@ fi
 ##  Env
 ## ----------------------------------------
 export ENHANCD_FILTER=fzf
+export ENHANCD_DOT_ARG=""
+export ENHANCD_HYPHEN_ARG=""
 export TERM=xterm-256color
 export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="$PATH:${HOME}/.local/bin"

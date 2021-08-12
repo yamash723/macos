@@ -167,12 +167,7 @@
                 },
                 {
                     "from": {
-                        "key_code": "fn",
-                        "modifiers": {
-                            "mandatory": [
-                                "shift"
-                            ]
-                        }
+                        "key_code": "right_option"
                     },
                     "to": [
                         {
