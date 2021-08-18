@@ -96,7 +96,7 @@ alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
 alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
 alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
-alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i'
+alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i' rgn='rgi --no-ignore'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
 catp() { cat "$1" | pbcopy }
 mkcd() { mkdir "$1" && cd "$1"; }
