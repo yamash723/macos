@@ -167,11 +167,24 @@
                 },
                 {
                     "from": {
-                        "key_code": "right_option"
+                        "key_code": "right_command"
                     },
                     "to": [
                         {
                             "apple_vendor_top_case_key_code": "keyboard_fn"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [ "right_option" ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "osascript ~/.aliases/createSpace.scpt"
                         }
                     ]
                 }
