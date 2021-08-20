@@ -22,9 +22,6 @@ https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjp
 ### Refined Github
 https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf
 
-### VisBug
-https://chrome.google.com/webstore/detail/visbug/cdockenadnadldjbbgcallicgledbeoc
-
 ### Vimium
 https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb
 
@@ -38,12 +35,11 @@ https://chrome.google.com/webstore/detail/youtube-repeat-button/aihdpnkmhcbjkfon
 ## Vimium
 
 ```
-map t createTab
-map x removeTab
-map p previousTab
-map n nextTab
-map i LinkHints.activateMode
-map I LinkHints.activateModeToOpenInNewTab
+map . createTab
+map ; removeTab
+map ' nextTab
+map / LinkHints.activateMode
+map ? LinkHints.activateModeToOpenInNewTab
 ```
 
 ## Slack theme
