@@ -72,7 +72,6 @@ bindkey '^F' forward-word
 bindkey '^B' backward-word
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
-bindkey "^D" forward-kill-word
 bindkey "^W" backward-kill-word
 bindkey "^U" kill-whole-line
 bindkey "^L" clear-screen

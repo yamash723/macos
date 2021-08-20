@@ -167,7 +167,10 @@
                 },
                 {
                     "from": {
-                        "key_code": "right_command"
+                        "key_code": "slash",
+                        "modifiers": {
+                            "mandatory": [ "right_option" ]
+                        }
                     },
                     "to": [
                         {
