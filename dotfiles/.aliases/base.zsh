@@ -141,3 +141,16 @@ extract() {
   esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+## ----------------------------------------
+##  misc
+## ----------------------------------------
+resize_img() {
+  input_dir="$1"
+  for target in $(ls -d "$input_dir"/*); do
+    info=$(identify -format '%w\n%h' "$target")
+    length=$(echo "$info" | sort -nr | head -n1)
+    filename=$(basename "$target")
+    convert -background black -gravity center "$target" -resize ${length}x${length} -extent ${length}x${length} ./resized_"$filename"
+  done
+}

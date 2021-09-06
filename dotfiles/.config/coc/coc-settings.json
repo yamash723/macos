@@ -50,5 +50,6 @@
     "snippet": "\ue60b",
     "typeParameter": "\uf728",
     "default": "\uf29c"
-  }
+  },
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }
