@@ -1,0 +1,36 @@
+[tool.poetry]
+name = ""
+version = ""
+description = ""
+authors = ["ulwlu <ooulwluoo@gmail.com>"]
+
+
+[tool.poetry.dependencies]
+python = "3.9.0"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.6.2"
+black = "^20.8b1"
+flake8 = "^3.8.4"
+mypy = "^0.790"
+pep8-naming = "^0.11.1"
+pytest = "^6.1.1"
+pytest-mock = "^3.5.1"
+
+
+[tool.black]
+line-length = 120
+
+
+[tool.isort]
+line_length = 120
+include_trailing_comma = false
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[virtualenvs]
+in-project = true
