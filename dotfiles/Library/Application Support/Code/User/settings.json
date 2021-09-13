@@ -167,6 +167,5 @@
   "workbench.tree.renderIndentGuides": "always",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
-  },
-  "window.zoomLevel": -1
+}
 }
