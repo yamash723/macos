@@ -21,13 +21,15 @@ endif
 call plug#begin(s:plugdir)
   Plug 'ulwlu/elly.vim'
   Plug 'mattn/emmet-vim'
+  Plug 'ap/vim-css-color'
+  Plug 'cohama/lexima.vim'
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
   Plug 'bfredl/nvim-miniyank'
+  Plug 'machakann/vim-sandwich'
+  Plug 'rhysd/conflict-marker.vim'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'ConradIrwin/vim-bracketed-paste'
-  Plug 'ap/vim-css-color' | Plug 'sheerun/vim-polyglot'
-  Plug 'cohama/lexima.vim' | Plug 'machakann/vim-sandwich'
-  Plug 'tpope/vim-fugitive' | Plug 'rhysd/conflict-marker.vim'
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 call plug#end()
@@ -149,9 +151,6 @@ fun! TabShiftComp()
   endif
 endfun
 im <expr> <S-Tab> TabShiftComp()| smap <expr> <S-Tab> TabShiftComp()
-
-"" ========== Polyglot ==========
-let g:polyglot_excludes = ['csv']
 
 "" ========== FzfPreview ==========
 nn <silent> <Leader>fm :<C-u>CocCommand fzf-preview.Marks<CR>
