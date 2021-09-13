@@ -11,14 +11,6 @@ https://chrome.google.com/webstore/detail/elly-theme/bcgeoaoekdiakmhobofhbdnpeib
 ### Clear Cache
 https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn
 
-### Leoh New Tab
-https://chrome.google.com/webstore/detail/leoh-new-tab/ijhhakihjccpanbibbcceofpjnebokcb
-
-background: http://cdn.leoh.io/images/base_zero/image_3.jpg
-
-### Lighthouse
-https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk
-
 ### Refined Github
 https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf
 
@@ -28,16 +20,13 @@ https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcme
 ### Wappalyzer
 https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg
 
-### Youtube Repeat Button
-https://chrome.google.com/webstore/detail/youtube-repeat-button/aihdpnkmhcbjkfonmmfepcjjfaenobip
-
-
 ## Vimium
 
 ```
-map . createTab
-map ; removeTab
+map ; createTab
+map : removeTab
 map ' nextTab
+map " previousTab
 map / LinkHints.activateMode
 map ? LinkHints.activateModeToOpenInNewTab
 ```
