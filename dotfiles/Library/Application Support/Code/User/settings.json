@@ -1,16 +1,4 @@
 {
-  "bracketPairColorizer.colorMode": "Independent",
-  "bracketPairColorizer.independentPairColors": [
-    ["()", ["#738C9C90"], "#810002"],
-    ["[]", ["#738C9C90"], "#810002"],
-    ["{}", ["#738C9C90"], "#810002"]
-  ],
-  "bracketPairColorizer.scopeLineCSS": [
-    "borderStyle : solid",
-    "borderWidth : 1px",
-    "borderColor : #738C9C80",
-    "opacity: 1"
-  ],
   "cSpell.userWords": [
     "Hotp",
     "Inno",
@@ -130,9 +118,6 @@
       }
     ]
   },
-  "material-icon-theme.folders.color": "#224249",
-  "material-icon-theme.folders.theme": "classic",
-  "material-icon-theme.saturation": 0.7,
   "[perl]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "sfodje.perltidy"
@@ -158,7 +143,6 @@
     }
   },
   "window.title": "${activeEditorLong}${separator}${rootName}",
-  "workbench.colorTheme": "elly",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.fontAliasing": "antialiased",
   "workbench.iconTheme": "material-icon-theme",
@@ -167,5 +151,16 @@
   "workbench.tree.renderIndentGuides": "always",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
-}
+  },
+  "workbench.colorTheme": "Ayu Dark",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": ["variable.parameter", "meta.parameter"],
+        "settings": {
+          "foreground": "#b3b1ad"
+        }
+      }
+    ]
+  }
 }
