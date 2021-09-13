@@ -5,7 +5,7 @@
 ### AdBlock
 https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom
 
-### Elly Theme
+### Ayu Theme
 https://chrome.google.com/webstore/detail/ayu-theme/jekepjlclfpcgdhemihaacdpkhiaiimp
 
 ### Clear Cache
@@ -34,5 +34,5 @@ map ? LinkHints.activateModeToOpenInNewTab
 ## Slack theme
 
 ```
-#111A1F,#350d36,#738C9C,#C0C7CA,#2D3640,#C0C7CA,#798362,#810002,#111A1F,#C0C7CA
+#0A0E14,#000000,#0576B9,#FFFFFF,#0A0E14,#FFFFFF,#39E500,#CC4400,#0A0E14,#F0F0F0
 ```
