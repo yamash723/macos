@@ -16,7 +16,6 @@ if empty(glob(s:plugfile))
 endif
 
 call plug#begin(s:plugdir)
-  Plug 'ulwlu/elly.vim'
   Plug 'mattn/emmet-vim'
   Plug 'ap/vim-css-color'
   Plug 'ayu-theme/ayu-vim'
@@ -85,7 +84,6 @@ nn <Leader>rr :vertical resize -5<CR>| nn <Leader>ll :vertical resize +5<CR>
 ""  PluginSetting
 "" ----------------------------------------
 "" ========== Theme ==========
-" colo elly
 let ayucolor="dark" | colo ayu
 hi User1 guifg=#545759
 hi Normal guibg=#0A0E14
