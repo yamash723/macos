@@ -1,3 +1,4 @@
 nodejs 16.0.0
 golang 1.16.3
 python 3.9.1
+mysql 8.0.24

@@ -10,6 +10,7 @@ cask_args appdir: "/Applications"
 brew "fd"
 brew "gh"
 brew "sd"
+brew "xz"
 brew "act"
 brew "bat"
 brew "exa"
@@ -72,6 +73,5 @@ cask "google-chrome"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "google-japanese-ime"
-# mas  "LINE", id: 539883307
 # mas  "Xcode", id: 497799835
-mas "Amphetamine", id: 937984704
+# mas "Amphetamine", id: 937984704
