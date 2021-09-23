@@ -1506,15 +1506,10 @@ ExtraSettings() {
   defaults write com.apple.finder AppleShowAllFiles true
 
   # ========== Show Directory Details ==========
-  defaults write com.apple.finder ShowPathbar -bool true
-  defaults write com.apple.finder ShowStatusBar -bool true
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
   # ========== Search current directory when exec search in Finder ==========
   defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-  # ========== Disable the warning when changing the extension ==========
-  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
   # ========== Disable System Preferences Red Bubble Notification ==========
   defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
