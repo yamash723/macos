@@ -418,16 +418,16 @@ Spotlight() {
     "SYSTEM_PREFS" true
   )
   SNUM=$(expr ${#SCAT[@]} / 2)
-  PLIST="${HOME}/Library/Preferences/com.apple.Spotlight"
+  PLIST="${HOME}/Library/Preferences/com.apple.Spotlight.plist"
   /usr/libexec/PlistBuddy -c "Add orderedItems array" "${PLIST}"
   for idx in $(seq 0 $(expr "${SNUM}" - 1)); do
     CATN=${SCAT[$((idx * 2))]}
     CATB=${SCAT[$((idx * 2 + 1))]}
 
     /usr/libexec/PlistBuddy \
-      -c "Add persistent-apps:${idx} dict" \
-      -c "Add persistent-apps:${idx}:enabled bool ${CATB}" \
-      -c "Add persistent-apps:${idx}:name string ${CATN}" \
+      -c "Add orderedItems:${idx} dict" \
+      -c "Add orderedItems:${idx}:enabled bool ${CATB}" \
+      -c "Add orderedItems:${idx}:name string ${CATN}" \
       "${PLIST}"
   done
 
@@ -1412,9 +1412,9 @@ ExtraSettings() {
   # ========== Dock Applications ==========
   defaults delete com.apple.dock persistent-apps
   # dockitem=(
-  #   "Mail"                "com.apple.mail"                            "file:///Applications/Mail.app/"
+  #   "Mail"                "com.apple.mail"                            "file:///System/Applications/Mail.app/"
   #   "Docker"              "com.docker.docker"                         "file:///Applications/Docker.app/"
-  #   "App Store"           "com.apple.AppStore"                        "file:///Applications/App%20Store.app/"
+  #   "App Store"           "com.apple.AppStore"                        "file:///System/Applications/App%20Store.app/"
   #   "Xcode"               "com.apple.dt.Xcode"                        "file:///Applications/Xcode.app/"
   #   "Kindle"              "com.amazon.Kindle"                         "file:///Applications/Kindle.app/"
   #   "Rectangle"           "com.knollsoft.Rectangle"                   "file:///Applications/Rectangle.app/"
@@ -1424,7 +1424,7 @@ ExtraSettings() {
   #   "Discord"             "com.hnc.Discord"                            "file:///Applications/Discord.app/"
   #   "Transmit"            "com.panic.Transmit"                        "file:///Applications/Transmit.app/"
   #   "VirtualBox"          "org.virtualbox.app.VirtualBox"             "file:///Applications/VirtualBox.app/"
-  #   "QuickTime Player"    "com.apple.QuickTimePlayerX"                "file:///Applications/QuickTime%20Player.app/"
+  #   "QuickTime Player"    "com.apple.QuickTimePlayerX"                "file:///System/Applications/QuickTime%20Player.app/"
   #   "MongoDB Compass"     "com.mongodb.compass"                       "file:///Applications/MongoDB%20Compass.app/"
   #   "LimeChat"            "net.limechat.LimeChat-AppStore"            "file:///Applications/LimeChat.app/"
   #   "Android Studio"      "com.google.android.studio"                 "file:///Applications/Android%20Studio.app/"
@@ -1432,32 +1432,33 @@ ExtraSettings() {
   #   "Local"               "com.getflywheel.lightning.local"           "file:///Applications/Local.app/"
   #   "Sequel Pro"          "com.sequelpro.SequelPro"                   "file:///Applications/Sequel%20Pro.app/"
   #   "Slack"               "com.tinyspeck.slackmacgap"                 "file:///Applications/Slack.app/"
-  #   "Calendar"            "com.apple.iCal"                            "file:///Applications/Calendar.app/"
+  #   "Calendar"            "com.apple.iCal"                            "file:///System/Applications/Calendar.app/"
+  #   "Contacts"            "com.apple.AddressBook"                     "file:///System/Applications/Contacts.app/"
   #   "Burp Suite"          "com.install4j.9806-1938-4586-6531.70"      "file:///Applications/Burp%20Suite%20Community%20Edition.app/"
   #   "Postman"             "com.postmanlabs.mac"                       "file:///Applications/Postman.app/"
   #   "Google Chrome"       "com.google.Chrome"                         "file:///Applications/Google%20Chrome.app/"
   #   "Adobe XD"            "com.adobe.xd"                              "file:///Applications/Adobe%20XD/Adobe%20XD.app/"
   #   "Skitch"              "com.skitch.skitch"                         "file:///Applications/Skitch.app/"
-  #   "Voice Memos"         "com.apple.VoiceMemos"                      "file:///Applications/VoiceMemos.app/"
+  #   "Voice Memos"         "com.apple.VoiceMemos"                      "file:///System/Applications/VoiceMemos.app/"
   #   "Gifski"              "com.sindresorhus.Gifski"                   "file:///Applications/Gifski.app/"
   #   "Alfred Preferences"  "com.runningwithcrayons.Alfred-Preferences" "file:///Applications/Alfred%204.app/Contents/Preferences/Alfred%20Preferences.app/"
   #   "Tor Browser"         "org.torproject.torbrowser"                 "file:///Applications/Tor%20Browser.app/"
   #   "iTerm"               "com.googlecode.iterm2"                     "file:///Applications/iTerm.app/"
   #   "Karabiner-Elements"  "org.pqrs.Karabiner-Elements.Preferences"   "file:///Applications/Karabiner-Elements.app/"
-  #   "Automator"           "com.apple.Automator"                       "file:///Applications/Automator.app/"
-  #   "Digital Color Meter" "com.apple.DigitalColorMeter"               "file:///Applications/Utilities/Digital%20Color%20Meter.app/"
+  #   "Automator"           "com.apple.Automator"                       "file:///System/Applications/Automator.app/"
+  #   "Digital Color Meter" "com.apple.DigitalColorMeter"               "file:///System/Applications/Utilities/Digital%20Color%20Meter.app/"
   #   "GPG Keychain"        "org.gpgtools.gpgkeychain"                  "file:///Applications/GPG%20Keychain.app/"
-  #   "System Preferences"  "com.apple.systempreferences"               "file:///Applications/System%20Preferences.app/"
-  #   "Script Editor"       "com.apple.ScriptEditor2"                   "file:///Applications/Utilities/Script%20Editor.app/"
+  #   "System Preferences"  "com.apple.systempreferences"               "file:///System/Applications/System%20Preferences.app/"
+  #   "Script Editor"       "com.apple.ScriptEditor2"                   "file:///System/Applications/Utilities/Script%20Editor.app/"
   #   "Notion"              "notion.id"                                 "file:///Applications/Notion.app/"
   # )
   # PLIST="${HOME}/Library/Preferences/com.apple.dock.plist"
   # /usr/libexec/PlistBuddy -c "Add persistent-apps array" ${PLIST}
-  # DNUM=$(expr ${dockitem[(I)$dockitem[-1]]} / 3)
-  # for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-  #   NAMEIDX=${dockitem[$(( ${idx} * 3 + 1 ))]}
-  #   ITEMIDX=${dockitem[$(( ${idx} * 3 + 2 ))]}
-  #   PATHIDX=${dockitem[$(( ${idx} * 3 + 3 ))]}
+  # DNUM=$(expr ${#dockitem[@]} / 3)
+  # for idx in $(seq 0 $(expr ${DNUM} - 1)); do
+  #   NAMEIDX=${dockitem[$(( ${idx} * 3 + 0 ))]}
+  #   ITEMIDX=${dockitem[$(( ${idx} * 3 + 1 ))]}
+  #   PATHIDX=${dockitem[$(( ${idx} * 3 + 2 ))]}
 
   #   /usr/libexec/PlistBuddy \
   #     -c "Add persistent-apps:${idx} dict" \
@@ -1505,15 +1506,10 @@ ExtraSettings() {
   defaults write com.apple.finder AppleShowAllFiles true
 
   # ========== Show Directory Details ==========
-  defaults write com.apple.finder ShowPathbar -bool true
-  defaults write com.apple.finder ShowStatusBar -bool true
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
   # ========== Search current directory when exec search in Finder ==========
   defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-  # ========== Disable the warning when changing the extension ==========
-  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
   # ========== Disable System Preferences Red Bubble Notification ==========
   defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
