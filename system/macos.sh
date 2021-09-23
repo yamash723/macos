@@ -1433,6 +1433,7 @@ ExtraSettings() {
   #   "Sequel Pro"          "com.sequelpro.SequelPro"                   "file:///Applications/Sequel%20Pro.app/"
   #   "Slack"               "com.tinyspeck.slackmacgap"                 "file:///Applications/Slack.app/"
   #   "Calendar"            "com.apple.iCal"                            "file:///System/Applications/Calendar.app/"
+  #   "Contacts"            "com.apple.AddressBook"                     "file:///System/Applications/Contacts.app/"
   #   "Burp Suite"          "com.install4j.9806-1938-4586-6531.70"      "file:///Applications/Burp%20Suite%20Community%20Edition.app/"
   #   "Postman"             "com.postmanlabs.mac"                       "file:///Applications/Postman.app/"
   #   "Google Chrome"       "com.google.Chrome"                         "file:///Applications/Google%20Chrome.app/"
