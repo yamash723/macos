@@ -1454,11 +1454,11 @@ ExtraSettings() {
   # )
   # PLIST="${HOME}/Library/Preferences/com.apple.dock.plist"
   # /usr/libexec/PlistBuddy -c "Add persistent-apps array" ${PLIST}
-  # DNUM=$(expr ${dockitem[(I)$dockitem[-1]]} / 3)
-  # for idx in $(seq 0 $(expr ${HNUM} - 1)); do
-  #   NAMEIDX=${dockitem[$(( ${idx} * 3 + 1 ))]}
-  #   ITEMIDX=${dockitem[$(( ${idx} * 3 + 2 ))]}
-  #   PATHIDX=${dockitem[$(( ${idx} * 3 + 3 ))]}
+  # DNUM=$(expr ${#dockitem[@]} / 3)
+  # for idx in $(seq 0 $(expr ${DNUM} - 1)); do
+  #   NAMEIDX=${dockitem[$(( ${idx} * 3 + 0 ))]}
+  #   ITEMIDX=${dockitem[$(( ${idx} * 3 + 1 ))]}
+  #   PATHIDX=${dockitem[$(( ${idx} * 3 + 2 ))]}
 
   #   /usr/libexec/PlistBuddy \
   #     -c "Add persistent-apps:${idx} dict" \
