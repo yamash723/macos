@@ -418,16 +418,16 @@ Spotlight() {
     "SYSTEM_PREFS" true
   )
   SNUM=$(expr ${#SCAT[@]} / 2)
-  PLIST="${HOME}/Library/Preferences/com.apple.Spotlight"
+  PLIST="${HOME}/Library/Preferences/com.apple.Spotlight.plist"
   /usr/libexec/PlistBuddy -c "Add orderedItems array" "${PLIST}"
   for idx in $(seq 0 $(expr "${SNUM}" - 1)); do
     CATN=${SCAT[$((idx * 2))]}
     CATB=${SCAT[$((idx * 2 + 1))]}
 
     /usr/libexec/PlistBuddy \
-      -c "Add persistent-apps:${idx} dict" \
-      -c "Add persistent-apps:${idx}:enabled bool ${CATB}" \
-      -c "Add persistent-apps:${idx}:name string ${CATN}" \
+      -c "Add orderedItems:${idx} dict" \
+      -c "Add orderedItems:${idx}:enabled bool ${CATB}" \
+      -c "Add orderedItems:${idx}:name string ${CATN}" \
       "${PLIST}"
   done
 
