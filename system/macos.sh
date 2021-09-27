@@ -1219,7 +1219,7 @@ Finder() {
   defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 
   # ========== New Finder windows show ==========
-  defaults write com.apple.finder NewWindowTarget -string "${HOME}/work"
+  defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/work"
 
   # ========== Open folders in tabs instead of new windows ==========
   # - Checked
