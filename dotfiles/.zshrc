@@ -89,7 +89,7 @@ alias op='open ./'
 alias grep='ggrep'
 alias pp='pbpaste >'
 alias cdwk='cd ~/work'
-alias py='python' pip='pip3'
+alias python='python3' py='python' pip='pip3'
 alias hf='hyperfine --max-runs 3'
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
