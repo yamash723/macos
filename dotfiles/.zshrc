@@ -91,6 +91,7 @@ alias pp='pbpaste >'
 alias cdwk='cd ~/work'
 alias python='python3' py='python' pip='pip3'
 alias hf='hyperfine --max-runs 3'
+alias k6run='k6 run --vus 10 --duration 40s'
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
 alias ydl='youtube-dl -x --audio-format mp3'

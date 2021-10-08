@@ -122,6 +122,9 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "sfodje.perltidy"
   },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
+  },
   "perlcritic.executable": "~/perl5/bin/perlcritic",
   "perlcritic.additionalArguments": ["--profile", "~/.perlcriticrc"],
   "perltidy.executable": "~/perl5/bin/perltidy",
