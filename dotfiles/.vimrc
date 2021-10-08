@@ -16,9 +16,9 @@ if empty(glob(s:plugfile))
 endif
 
 call plug#begin(s:plugdir)
+  Plug 'ulwlu/elly.vim'
   Plug 'mattn/emmet-vim'
   Plug 'ap/vim-css-color'
-  Plug 'ayu-theme/ayu-vim'
   Plug 'cohama/lexima.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
@@ -84,13 +84,8 @@ nn <Leader>rr :vertical resize -5<CR>| nn <Leader>ll :vertical resize +5<CR>
 ""  PluginSetting
 "" ----------------------------------------
 "" ========== Theme ==========
-let ayucolor="dark" | colo ayu
+colo elly
 hi User1 guifg=#545759
-hi Normal guibg=#0A0E14
-hi SignColumn guibg=#0A0E14
-hi CocDiffAdd guifg=#037500
-hi CocDiffChange guifg=#817E00
-hi CocDiffDelete guifg=#810002
 
 "" ========== Emmet ==========
 let g:user_emmet_leader_key='<C-E>'

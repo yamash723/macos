@@ -105,8 +105,8 @@
 
 [delta]
   line-numbers = true
-  file-style = "#4196E9"
-  file-decoration-style = "#4196E9" ul
+  file-style = "#338ECF"
+  file-decoration-style = "#338ECF" ul
   commit-decoration-style = "#3D424D" ol
   hunk-header-decoration-style = "#3D424D" box
   syntax-theme = Monokai Extended

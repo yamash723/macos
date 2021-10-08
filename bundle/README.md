@@ -5,11 +5,16 @@
 ### AdBlock
 https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom
 
-### Ayu Theme
-https://chrome.google.com/webstore/detail/ayu-theme/jekepjlclfpcgdhemihaacdpkhiaiimp
+### Elly Theme
+https://chrome.google.com/webstore/detail/elly-theme/bcgeoaoekdiakmhobofhbdnpeibbhaom
 
 ### Clear Cache
 https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn
+
+### Leoh New Tab
+https://chrome.google.com/webstore/detail/leoh-new-tab/ijhhakihjccpanbibbcceofpjnebokcb
+
+background: http://cdn.leoh.io/images/base_zero/image_3.jpg
 
 ### Refined Github
 https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf
@@ -34,5 +39,5 @@ map ? LinkHints.activateModeToOpenInNewTab
 ## Slack theme
 
 ```
-#0A0E14,#000000,#0576B9,#FFFFFF,#0A0E14,#FFFFFF,#39E500,#CC4400,#0A0E14,#F0F0F0
+#111A1F,#350d36,#738C9C,#C0C7CA,#2D3640,#C0C7CA,#798362,#810002,#111A1F,#C0C7CA
 ```

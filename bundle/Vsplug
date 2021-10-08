@@ -17,7 +17,6 @@ eg2.vscode-npm-script
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 formulahendry.docker-explorer
-GitHub.vscode-pull-request-github
 golang.go
 jcbuisson.vue
 jebbs.plantuml
@@ -58,7 +57,6 @@ sfodje.perltidy
 shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
 svelte.svelte-vscode
-teabyii.ayu
 twxs.cmake
 ulwlu.elly
 VisualStudioExptTeam.vscodeintellicode
