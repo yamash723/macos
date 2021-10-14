@@ -138,16 +138,24 @@
     "editor.defaultFormatter": "sfodje.perltidy"
   },
   "[rust]": {
+    "editor.formatOnSave": false,
     "editor.defaultFormatter": "rust-lang.rust"
   },
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "black",
   "perlcritic.executable": "~/perl5/bin/perlcritic",
   "perlcritic.additionalArguments": ["--profile", "~/.perlcriticrc"],
   "perltidy.executable": "~/perl5/bin/perltidy",
   "perltidy.profile": "~/.perltidyrc",
-  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.defaultInterpreterPath": "/Users/kohei.murakami/.asdf/shims/python3",
   "python.languageServer": "Pylance",
   "python.autoComplete.extraPaths": ["__pypackages__/3.9/lib"],
   "python.analysis.extraPaths": ["__pypackages__/3.9/lib"],
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.indexing": true,
   "redhat.telemetry.enabled": true,
   "rust-client.channel": "stable",
   "terminal.external.osxExec": "iTerm.app",
@@ -170,5 +178,5 @@
   "workbench.tree.renderIndentGuides": "always",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
-}
+  }
 }
