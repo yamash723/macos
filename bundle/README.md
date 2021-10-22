@@ -5,6 +5,9 @@
 ### AdBlock
 https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom
 
+## AWS Extend Switch Roles
+https://chrome.google.com/webstore/detail/aws-extend-switch-roles/jpmkfafbacpgapdghgdpembnojdlgkdl
+
 ### Elly Theme
 https://chrome.google.com/webstore/detail/elly-theme/bcgeoaoekdiakmhobofhbdnpeibbhaom
 
