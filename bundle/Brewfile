@@ -37,6 +37,7 @@ brew "minikube"
 brew "git-delta"
 brew "shellcheck"
 brew "youtube-dl"
+brew "imagemagick"
 brew "git-secrets"
 
 ## ========== Shell ==========
