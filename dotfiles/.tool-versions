@@ -4,3 +4,4 @@ python 3.9.1
 mysql 8.0.24
 sqlite 3.36.0
 java adoptopenjdk-11.0.11+9
+postgres 14.0

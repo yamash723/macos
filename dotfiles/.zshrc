@@ -251,7 +251,7 @@ zinit lucid for \
   as'completion' is-snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose' \
   as'completion' is-snippet 'https://github.com/lukechilds/zsh-better-npm-completion/blob/master/zsh-better-npm-completion.plugin.zsh'
 source $(brew --prefix asdf)/asdf.sh
-source $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+bash $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 ## ----------------------------------------
 ##  Prompt
