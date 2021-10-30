@@ -14,10 +14,8 @@ if empty(glob(s:plugfile))
   endif
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 call plug#begin(s:plugdir)
   Plug 'ulwlu/elly.vim'
-  Plug 'mattn/emmet-vim'
   Plug 'ap/vim-css-color'
   Plug 'cohama/lexima.vim'
   Plug 'tpope/vim-fugitive'
@@ -26,7 +24,6 @@ call plug#begin(s:plugdir)
   Plug 'machakann/vim-sandwich'
   Plug 'rhysd/conflict-marker.vim'
   Plug 'bronson/vim-trailing-whitespace'
-  Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 call plug#end()
@@ -49,7 +46,6 @@ set fileformats=unix,dos,mac
 set whichwrap=b,s,h,l,<,>,[,]
 set ignorecase wildignorecase
 set hidden nobackup noswapfile
-set rulerformat=%40(%1*%=%F%)%*
 set expandtab tabstop=2 softtabstop=2 shiftwidth=2 smartindent
 set encoding=utf-8 fileencodings=cp932,sjis,euc-jp,utf-8,iso-2022-jp
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -85,14 +81,6 @@ nn <Leader>rr :vertical resize -5<CR>| nn <Leader>ll :vertical resize +5<CR>
 "" ----------------------------------------
 "" ========== Theme ==========
 colo elly
-hi User1 guifg=#545759
-
-"" ========== Emmet ==========
-let g:user_emmet_leader_key='<C-E>'
-let g:user_emmet_settings = {
-  \ 'typescript' : { 'extends' : 'jsx' },
-  \ 'javascript.jsx' : { 'extends' : 'jsx' }
-\ }
 
 "" ========== VimPlug ==========
 nn <Leader>clean :PlugClean<CR>
@@ -108,6 +96,8 @@ let g:coc_global_extensions = [
   \ 'coc-rls',
   \ 'coc-json',
   \ 'coc-html',
+  \ 'coc-emmet',
+  \ 'coc-clangd',
   \ 'coc-docker',
   \ 'coc-python',
   \ 'coc-explorer',
@@ -116,14 +106,14 @@ let g:coc_global_extensions = [
   \ 'coc-fzf-preview',
 \ ]
 nn <Leader>cup :CocUpdate<CR>
-nn <Leader>cdi :CocDisable<CR>
+nn <Leader>cstop :CocDisable<CR>
 nn <Leader>ee :CocCommand explorer<CR>
-nm <silent> <Leader>gn <Plug>(coc-git-nextchunk)
-nm <silent> <Leader>gp <Plug>(coc-git-prevchunk)
-nm <silent> <Leader>cn <Plug>(coc-diagnostic-next)
-nm <silent> <Leader>cp <Plug>(coc-diagnostic-prev)
-nm <silent> <Leader>ch :call CocAction('doHover')<CR>
-nm <silent> <Leader>cd :call CocAction('jumpDefinition','split')<CR>
+nm <silent> <Leader>gnn <Plug>(coc-git-nextchunk)
+nm <silent> <Leader>gpp <Plug>(coc-git-prevchunk)
+nm <silent> <Leader>nn <Plug>(coc-diagnostic-next)
+nm <silent> <Leader>pp <Plug>(coc-diagnostic-prev)
+nm <silent> <Leader>see :call CocAction('doHover')<CR>
+nm <silent> <Leader>jj :call CocAction('jumpDefinition','split')<CR>
 
 "" ========== Completion ==========
 ino <expr> <UP> pumvisible() ? '<C-e><UP>' : '<UP>'
@@ -150,11 +140,9 @@ endfun
 im <expr> <S-Tab> TabShiftComp()| smap <expr> <S-Tab> TabShiftComp()
 
 "" ========== FzfPreview ==========
-nn <silent> <Leader>fm :<C-u>CocCommand fzf-preview.Marks<CR>
-nn <silent> <Leader>fo :<C-u>CocCommand fzf-preview.OldFiles<CR>
-nn <silent> <Leader>gs :<C-u>CocCommand fzf-preview.GitStatus<CR>
-nn <silent> <Leader>ga :<C-u>CocCommand fzf-preview.GitActions<CR>
-nn          <Leader>gr :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
+nn <silent> <Leader>gg :<C-u>CocCommand fzf-preview.GitActions<CR>
+nn <silent> <Leader>hist :<C-u>CocCommand fzf-preview.OldFiles<CR>
+nn          <Leader>rg :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
 nn <silent> <Leader>ff :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
 let g:fzf_preview_disable_mru = 0
 let g:fzf_preview_command = 'bat --color=always --plain {-1}'
@@ -168,16 +156,8 @@ let g:fzf_preview_git_status_preview_command =
 
 "" ========== VimFugitive ==========
 set diffopt+=vertical
-nn <Leader>gw :Gw<CR>
 nn <Leader>gd :Gdiff<CR>
-nn <Leader>gp :Gpush<CR>
-nn <Leader>gb :Gblame<CR>
-nn <Leader>gc :Gcommit<CR>
-nn <Leader>du :diffupdate<CR>
-nn <Leader>gm :Gdiffsplit!<CR>
-nn <Leader>dp :diffput 1 \| diffupdate<CR>
-nn <Leader>dl :diffget //2 \| diffupdate<CR>
-nn <Leader>dr :diffget //3 \| diffupdate<CR>
+nn <Leader>gb :Git blame<CR>
 
 "" ========== NvimMiniyank ==========
 if has("nvim")

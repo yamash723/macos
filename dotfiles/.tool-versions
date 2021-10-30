@@ -1,7 +1,11 @@
-nodejs 16.0.0
+dart 2.10.5
 golang 1.16.3
-python 3.9.1
-mysql 8.0.24
-sqlite 3.36.0
 java adoptopenjdk-11.0.11+9
+leiningen 2.9.6
+maven 3.6.3
+mysql 8.0.24
+nodejs 16.0.0
 postgres 14.0
+python 3.9.1
+sqlite 3.36.0
+
