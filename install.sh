@@ -1,5 +1,5 @@
 #!/bin/bash
-set -u
+set -eux
 
 ## ----------------------------------------
 ##  By default, you don't have any CLI such as git.
