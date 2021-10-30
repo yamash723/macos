@@ -10,7 +10,7 @@ jobs:
 
     - name: Run initial setup.
       run: |
-        curl https://raw.githubusercontent.com/ulwlu/dotfiles/master/install.sh | /bin/bash -s -- --init
+        curl https://raw.githubusercontent.com/ulwlu/dotfiles/master/install.sh | /bin/bash -s -- --init --test
 
     - name: Run dotfiles setup.
       run: |
