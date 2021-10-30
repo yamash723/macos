@@ -1,5 +1,6 @@
 #! /bin/bash
 set -eux
+TESTMODE=$1
 EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
 ## ----------------------------------------
@@ -1589,14 +1590,13 @@ ExtraSettings() {
 ##  Main
 ## ----------------------------------------
 MACOS=$(/usr/libexec/PlistBuddy -c "Print:ProductVersion" /System/Library/CoreServices/SystemVersion.plist | awk -F. '{print $1"."$2}')
-if [[ "${MACOS}" == "11.2" ]]; then
+if [[ "${MACOS}" == "11.2" && ! ${TESTMODE} ]]; then
   # Big Sur Version is maintained.
   # If the latest version is updated, add warning message here.
   :
 else
   echo "You are using MacOS lower than BigSur. It may cause errors since this shell isn't maintained with your OS."
-  read -p "Will you continue? (Y/n): " Ans
-  [[ $Ans != 'Y' ]] && echo 'Canceled' && exit 0
+  echo 'Canceled' && exit 0
 fi
 
 Appstore
@@ -1630,7 +1630,6 @@ UsersGroups
 ## ----------------------------------------
 ##  Cache Clear
 ## ----------------------------------------
-TESTMODE=$1
 if ! ${TESTMODE}; then
   for app in \
     "cfprefsd" \
