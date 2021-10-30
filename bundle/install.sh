@@ -6,12 +6,6 @@ EXEPATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
 brew upgrade
 brew bundle --file "${EXEPATH}"/Brewfile
 
-## ========== asdf ==========
-for plugin in $(cat "${HOME}"/.tool-versions | cut -d' ' -f1); do
-  asdf plugin-add "${plugin}"
-done
-asdf install
-
 ## ========== Xcode ==========
 # sudo xcodebuild -license accept
 
