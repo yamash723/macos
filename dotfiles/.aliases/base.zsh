@@ -23,7 +23,6 @@ brew-install() {
 brew-update() {
   brew update -v
   brew upgrade -v
-  brew cask upgrade -v
 }
 brew-clean() {
   brew bundle cleanup --file ./Brewfile -fv

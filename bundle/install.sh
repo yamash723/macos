@@ -24,6 +24,7 @@ rustup component add rls --toolchain stable
 rustup component add rust-src --toolchain stable
 rustup component add rls-preview --toolchain stable
 rustup component add rust-analysis --toolchain stable
+rustup update stable
 cargo install $(cat "${EXEPATH}"/Cargofile)
 
 ## ========== Perl ==========
