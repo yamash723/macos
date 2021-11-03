@@ -34,7 +34,6 @@ call plug#end()
 set nobomb
 set number
 set lazyredraw
-set laststatus=0
 set termguicolors
 set signcolumn=yes
 let $LANG='en_US.UTF-8'
@@ -114,6 +113,9 @@ nm <silent> <Leader>nn <Plug>(coc-diagnostic-next)
 nm <silent> <Leader>pp <Plug>(coc-diagnostic-prev)
 nm <silent> <Leader>see :call CocAction('doHover')<CR>
 nm <silent> <Leader>jj :call CocAction('jumpDefinition','split')<CR>
+nm <silent> <Leader>jv :call CocAction('jumpDefinition','vsplit')<CR>
+nm <silent> <Leader>ii :call CocAction('jumpImplementation','split')<CR>
+nm <silent> <Leader>iv :call CocAction('jumpImplementation','vsplit')<CR>
 
 "" ========== Completion ==========
 ino <expr> <UP> pumvisible() ? '<C-e><UP>' : '<UP>'
@@ -142,7 +144,7 @@ im <expr> <S-Tab> TabShiftComp()| smap <expr> <S-Tab> TabShiftComp()
 "" ========== FzfPreview ==========
 nn <silent> <Leader>gg :<C-u>CocCommand fzf-preview.GitActions<CR>
 nn <silent> <Leader>hist :<C-u>CocCommand fzf-preview.OldFiles<CR>
-nn          <Leader>rg :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
+nn          <Leader>grep :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
 nn <silent> <Leader>ff :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
 let g:fzf_preview_disable_mru = 0
 let g:fzf_preview_command = 'bat --color=always --plain {-1}'
