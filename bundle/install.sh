@@ -13,6 +13,9 @@ brew bundle --file "${EXEPATH}"/Brewfile
 npm update -g npm
 npm install -g $(cat "${EXEPATH}"/Npmfile)
 
+## ========== Go ==========
+go get -u $(cat "${EXEPATH}"/Gofile)
+
 ## ========== Pip ==========
 pip3 install --upgrade pip
 pip3 install -r "${EXEPATH}"/Pipfile
