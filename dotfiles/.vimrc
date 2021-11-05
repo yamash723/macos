@@ -128,12 +128,12 @@ fun! CocActionList() abort
   nn <plug>(quit) :call nvim_win_close(g:win, v:true)<CR>
   nm q <plug>(quit)
   nm <ESC> <plug>(quit)
-  nm <silent> 1 :call CocAction('rename')<CR>
-  nm <silent> 2 :call CocAction('doHover')<CR>
-  nm <silent> 3 :call CocAction('jumpDefinition','split')<CR>
-  nm <silent> 4 :call CocAction('jumpDefinition','vsplit')<CR>
-  nm <silent> 5 :call CocAction('jumpImplementation','split')<CR>
-  nm <silent> 6 :call CocAction('jumpImplementation','vsplit')<CR>
+  nm <buffer> <silent> 1 :call CocAction('rename')<CR>
+  nm <buffer> <silent> 2 :call CocAction('doHover')<CR>
+  nm <buffer> <silent> 3 :call CocAction('jumpDefinition','split')<CR>
+  nm <buffer> <silent> 4 :call CocAction('jumpDefinition','vsplit')<CR>
+  nm <buffer> <silent> 5 :call CocAction('jumpImplementation','split')<CR>
+  nm <buffer> <silent> 6 :call CocAction('jumpImplementation','vsplit')<CR>
 endfunction
 let g:win = -1
 nn <Leader>cc :call CocActionList()<cr>
