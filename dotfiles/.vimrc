@@ -111,11 +111,32 @@ nm <silent> <Leader>gnn <Plug>(coc-git-nextchunk)
 nm <silent> <Leader>gpp <Plug>(coc-git-prevchunk)
 nm <silent> <Leader>nn <Plug>(coc-diagnostic-next)
 nm <silent> <Leader>pp <Plug>(coc-diagnostic-prev)
-nm <silent> <Leader>see :call CocAction('doHover')<CR>
-nm <silent> <Leader>jj :call CocAction('jumpDefinition','split')<CR>
-nm <silent> <Leader>jv :call CocAction('jumpDefinition','vsplit')<CR>
-nm <silent> <Leader>ii :call CocAction('jumpImplementation','split')<CR>
-nm <silent> <Leader>iv :call CocAction('jumpImplementation','vsplit')<CR>
+""" this code is from my friend https://github.com/kat0h
+fun! CocActionList() abort
+  let buf = nvim_create_buf(v:false, v:true)
+  call nvim_buf_set_lines(buf, 0, -1, v:true, [
+    \ "(1) rename",
+    \ "(2) doHover",
+    \ "(3) jumpDefinition",
+    \ "(4) jumpDefinition split",
+    \ "(5) jumpImplementation",
+    \ "(6) jumpImplementation split",
+    \ "(q) quit"
+  \ ])
+  let opts = {'relative': 'cursor', 'anchor': 'NW', 'style': 'minimal', 'width': 30, 'height': 8, 'col': 0, 'row': 1}
+  let g:win = nvim_open_win(buf, v:true, opts)
+  nn <plug>(quit) :call nvim_win_close(g:win, v:true)<CR>
+  nm q <plug>(quit)
+  nm <ESC> <plug>(quit)
+  nm <silent> 1 :call CocAction('rename')<CR>
+  nm <silent> 2 :call CocAction('doHover')<CR>
+  nm <silent> 3 :call CocAction('jumpDefinition','split')<CR>
+  nm <silent> 4 :call CocAction('jumpDefinition','vsplit')<CR>
+  nm <silent> 5 :call CocAction('jumpImplementation','split')<CR>
+  nm <silent> 6 :call CocAction('jumpImplementation','vsplit')<CR>
+endfunction
+let g:win = -1
+nn <Leader>cc :call CocActionList()<cr>
 
 "" ========== Completion ==========
 ino <expr> <UP> pumvisible() ? '<C-e><UP>' : '<UP>'
