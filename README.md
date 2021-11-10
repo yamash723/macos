@@ -2,6 +2,8 @@ If you came here for MacOS full-auto-setup script, [it's here](https://github.co
 
 ## Preview
 
+Currently I'm testing another themes, if you'd like to copy my themes, refer to [this commit](https://github.com/ulwlu/dotfiles/tree/139de843c46fc9be2676ac9270b3f0bb7f2a60d1).
+
 The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
 
 <img alt="elly iterm2" src="https://user-images.githubusercontent.com/41639488/98157819-3f36ca00-1f1d-11eb-962c-17f33996bd48.png">
@@ -16,7 +18,7 @@ The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
 - **Terminal** : [iTerm2](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/Library/Preferences/com.googlecode.iterm2.plist), [tmux](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.tmux.conf)
 - **Fonts** : [HackNerdFontsItalic](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Italic)
 - **Editor** : [Neovim](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.vimrc), [VSCode](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Code/User)
-- **Bar** : [Übersicht](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Uebersicht/widgets/simple-bar)
+- **Bar** : [Uebersicht](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support/Uebersicht/widgets/simple-bar)
 - **Launcher** : [Alfred](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/Library/Application%20Support)
 - **Window Manager** : [Rectangle](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/Library/Preferences/com.knollsoft.Rectangle.plist), [Karabinar](https://github.com/ulwlu/dotfiles/blob/master/dotfiles/.config/karabiner/karabiner.json)
 - **Templates** : [alias](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/.aliases), [snippet](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/.snippets), [git_template](https://github.com/ulwlu/dotfiles/tree/master/dotfiles/.git_template)

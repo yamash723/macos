@@ -158,11 +158,11 @@ General() {
 
 DesktopScreenSaver() {
   # ========== Desktop Picture ==========
-  osascript -e "
-    tell application \"Finder\"
-      set desktop picture to \"${EXEPATH}/desktop.png\" as POSIX file
-    end tell
-  "
+  # osascript -e "
+  #   tell application \"Finder\"
+  #     set desktop picture to \"${EXEPATH}/desktop.png\" as POSIX file
+  #   end tell
+  # "
 
   # ========== desktop ==========
   # !!! You can forcely command below to set, but you SHOULD NOT.
