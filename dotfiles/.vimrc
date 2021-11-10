@@ -15,7 +15,6 @@ if empty(glob(s:plugfile))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin(s:plugdir)
-  Plug 'ulwlu/elly.vim'
   Plug 'ap/vim-css-color'
   Plug 'cohama/lexima.vim'
   Plug 'tpope/vim-fugitive'
@@ -78,9 +77,6 @@ nn <Leader>rr :vertical resize -5<CR>| nn <Leader>ll :vertical resize +5<CR>
 "" ----------------------------------------
 ""  PluginSetting
 "" ----------------------------------------
-"" ========== Theme ==========
-colo elly
-
 "" ========== VimPlug ==========
 nn <Leader>clean :PlugClean<CR>
 nn <Leader>inst :PlugInstall<CR>
@@ -111,32 +107,12 @@ nm <silent> <Leader>gnn <Plug>(coc-git-nextchunk)
 nm <silent> <Leader>gpp <Plug>(coc-git-prevchunk)
 nm <silent> <Leader>nn <Plug>(coc-diagnostic-next)
 nm <silent> <Leader>pp <Plug>(coc-diagnostic-prev)
-""" this code is from my friend https://github.com/kat0h
-fun! CocActionList() abort
-  let buf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(buf, 0, -1, v:true, [
-    \ "(1) rename",
-    \ "(2) doHover",
-    \ "(3) jumpDefinition",
-    \ "(4) jumpDefinition split",
-    \ "(5) jumpImplementation",
-    \ "(6) jumpImplementation split",
-    \ "(q) quit"
-  \ ])
-  let opts = {'relative': 'cursor', 'anchor': 'NW', 'style': 'minimal', 'width': 30, 'height': 8, 'col': 0, 'row': 1}
-  let g:win = nvim_open_win(buf, v:true, opts)
-  nn <plug>(quit) :call nvim_win_close(g:win, v:true)<CR>
-  nm q <plug>(quit)
-  nm <ESC> <plug>(quit)
-  nm <buffer> <silent> 1 :call CocAction('rename')<CR>
-  nm <buffer> <silent> 2 :call CocAction('doHover')<CR>
-  nm <buffer> <silent> 3 :call CocAction('jumpDefinition','split')<CR>
-  nm <buffer> <silent> 4 :call CocAction('jumpDefinition','vsplit')<CR>
-  nm <buffer> <silent> 5 :call CocAction('jumpImplementation','split')<CR>
-  nm <buffer> <silent> 6 :call CocAction('jumpImplementation','vsplit')<CR>
-endfunction
-let g:win = -1
-nn <Leader>cc :call CocActionList()<cr>
+nm <silent> <Leader>rn :call CocAction('rename')<CR>
+nm <silent> <Leader>see :call CocAction('doHover')<CR>
+nm <silent> <Leader>jj :call CocAction('jumpDefinition','split')<CR>
+nm <silent> <Leader>jv :call CocAction('jumpDefinition','vsplit')<CR>
+nm <silent> <Leader>ii :call CocAction('jumpImplementation','split')<CR>
+nm <silent> <Leader>iv :call CocAction('jumpImplementation','vsplit')<CR>
 
 "" ========== Completion ==========
 ino <expr> <UP> pumvisible() ? '<C-e><UP>' : '<UP>'
@@ -168,7 +144,7 @@ nn <silent> <Leader>hist :<C-u>CocCommand fzf-preview.OldFiles<CR>
 nn          <Leader>grep :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
 nn <silent> <Leader>ff :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
 let g:fzf_preview_disable_mru = 0
-let g:fzf_preview_command = 'bat --color=always --plain {-1}'
+let g:fzf_preview_command = 'bat --color=always --theme=ansi --plain {-1}'
 let g:fzf_preview_default_fzf_options = { '--reverse': v:true, '--preview-window': 'wrap:70%' }
 let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading --color=never --hidden'
 let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'

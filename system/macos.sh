@@ -9,11 +9,11 @@ EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 General() {
   # ========== Apprerance ==========
   # - Light
-  # defaults delete .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically > /dev/null 2>&1
-  # defaults delete .GlobalPreferences AppleInterfaceStyle > /dev/null 2>&1
-  # - Dark
   defaults delete .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically > /dev/null 2>&1
-  defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
+  defaults delete .GlobalPreferences AppleInterfaceStyle > /dev/null 2>&1
+  # - Dark
+  # defaults delete .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically > /dev/null 2>&1
+  # defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
   # - Auto
   # defaults write .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically -bool true
 
@@ -65,9 +65,9 @@ General() {
 
   # ========== Automatically hide and show the menu bar ==========
   # - Checked
-  defaults write .GlobalPreferences _HIHideMenuBar -bool true
+  # defaults write .GlobalPreferences _HIHideMenuBar -bool true
   # - Unchecked
-  # defaults write .GlobalPreferences _HIHideMenuBar -bool false
+  defaults write .GlobalPreferences _HIHideMenuBar -bool false
 
   # ========== Show scroll bars ==========
   # - Automatically based on mouse or trackpad
@@ -248,7 +248,7 @@ DesktopScreenSaver() {
 Dock() {
   # ========== Size ==========
   # @int: size
-  defaults write com.apple.dock tilesize -int 30
+  defaults write com.apple.dock tilesize -int 20
 
   # ========== Magnification ==========
   # - Checked

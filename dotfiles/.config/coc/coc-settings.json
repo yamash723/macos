@@ -7,6 +7,7 @@
     "<tab>": "actionMenu",
     "<cr>": ["wait", "expanded?", "collapse", "expand"],
     "cd": ["wait", "expandable?", "cd", "open"],
+    "o": "open:select",
     "s": "open:split",
     "v": "open:vsplit"
   },

@@ -17,7 +17,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="$PATH:${HOME}/.local/bin"
 export PATH="$PATH:/usr/local/opt/openjdk/bin"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 ## ----------------------------------------
 ##  Editor
@@ -96,7 +95,7 @@ alias weather='curl -Acurl wttr.in/Tokyo'
 alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
 alias ydl='youtube-dl -x --audio-format mp3'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
-alias bat='bat --color=always --style=header,grid'
+alias bat='bat --color=always --theme=ansi --style=header,grid'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
 alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
@@ -203,20 +202,20 @@ vink() {
 }
 vigo() {
   nvim -c "call append(0, v:oldfiles)" -c "write! ~/.config/nvim/viminfo.log" -c exit;
-  nvim `cat ~/.config/nvim/viminfo.log | fzf --preview 'bat --color=always {}'`;
+  nvim `cat ~/.config/nvim/viminfo.log | fzf --preview 'bat --color=always --theme=ansi {}'`;
 }
 
 ## ========== Aliases && Snippets ==========
 [ -f ~/.secret_alias ] && source ~/.secret_alias
-alias visn='vi     `ls -d ~/.snippets/* | fzf --preview "bat --color=always {}"`'
-alias vial='vi     `ls -d ~/.aliases/*  | fzf --preview "bat --color=always {}"`'
-alias soal='source `ls -d ~/.aliases/*  | fzf --preview "bat --color=always {}"`'
+alias visn='vi     `ls -d ~/.snippets/* | fzf --preview "bat --color=always --theme=ansi {}"`'
+alias vial='vi     `ls -d ~/.aliases/*  | fzf --preview "bat --color=always --theme=ansi {}"`'
+alias soal='source `ls -d ~/.aliases/*  | fzf --preview "bat --color=always --theme=ansi {}"`'
 
 ## ----------------------------------------
 ##  FZF
 ## ----------------------------------------
 export FZF_DEFAULT_COMMAND="rg --files"
-export FZF_DEFAULT_OPTS='--reverse --height 80% --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
+export FZF_DEFAULT_OPTS='--reverse --height 80%'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## ----------------------------------------

@@ -33,7 +33,6 @@ symlink_dotfiles() {
 
   bulk_symlink_target=(
     "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
-    "./dotfiles/Library/Application Support/Uebersicht/widgets"
     "./dotfiles/.aliases"
     "./dotfiles/.git_template"
     "./dotfiles/.snippets"

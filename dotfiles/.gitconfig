@@ -104,15 +104,9 @@
   helper = osxkeychain
 
 [delta]
+  light = true
   line-numbers = true
-  file-style = "#338ECF"
-  file-decoration-style = "#338ECF" ul
-  commit-decoration-style = "#3D424D" ol
-  hunk-header-decoration-style = "#3D424D" box
-  syntax-theme = Monokai Extended
-  whitespace-error-style = 22 reverse
-  line-numbers-left-style = "#3D424D"
-  line-numbers-right-style = "#3D424D"
+  syntax-theme = Monokai Extended Light
 
 [diff]
   prompt    = false
