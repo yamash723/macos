@@ -17,6 +17,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="$PATH:${HOME}/.local/bin"
 export PATH="$PATH:/usr/local/opt/openjdk/bin"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
+command -v gdircolors > /dev/null 2>&1 && eval $(gdircolors)
 
 ## ----------------------------------------
 ##  Editor
@@ -61,7 +62,7 @@ autoload -Uz compinit && compinit -i && compinit
 autoload -Uz up-line-or-beginning-search && zle -N up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search && zle -N down-line-or-beginning-search
 zstyle ':completion:*:default' menu select=2
-zstyle ':completion:*:default' list-colors ${LS_COLORS}
+zstyle ':completion:*:default' list-colors "$LS_COLORS"
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 ## ----------------------------------------
@@ -88,17 +89,17 @@ alias op='open ./'
 alias grep='ggrep'
 alias pp='pbpaste >'
 alias cdwk='cd ~/work'
-alias python='python3' py='python' pip='pip3'
 alias hf='hyperfine --max-runs 3'
 alias k6run='k6 run --vus 10 --duration 40s'
+alias python='python3' py='python' pip='pip3'
 alias weather='curl -Acurl wttr.in/Tokyo'
+alias bat='bat --color=always --theme=ansi'
 alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
 alias ydl='youtube-dl -x --audio-format mp3'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
-alias bat='bat --color=always --theme=ansi --style=header,grid'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
-alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
+alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
 alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i' rgn='rgi --no-ignore'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
