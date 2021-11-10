@@ -1,6 +1,10 @@
 name: Run All Installations
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'install.sh'
+      - 'system/install.sh'
 
 jobs:
   build:
