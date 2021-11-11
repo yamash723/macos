@@ -21,8 +21,10 @@ call plug#begin(s:plugdir)
   Plug 'tpope/vim-commentary'
   Plug 'bfredl/nvim-miniyank'
   Plug 'machakann/vim-sandwich'
+  Plug 'ulwlu/simple-light.vim'
   Plug 'rhysd/conflict-marker.vim'
   Plug 'bronson/vim-trailing-whitespace'
+  Plug 'ConradIrwin/vim-bracketed-paste'
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'junegunn/fzf.vim' | Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 call plug#end()
@@ -77,6 +79,8 @@ nn <Leader>rr :vertical resize -5<CR>| nn <Leader>ll :vertical resize +5<CR>
 "" ----------------------------------------
 ""  PluginSetting
 "" ----------------------------------------
+colo simple-light
+
 "" ========== VimPlug ==========
 nn <Leader>clean :PlugClean<CR>
 nn <Leader>inst :PlugInstall<CR>
