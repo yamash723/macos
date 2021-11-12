@@ -109,7 +109,7 @@
     }
   },
   "window.title": "${activeEditorLong}${separator}${rootName}",
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "elly",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.fontAliasing": "antialiased",
   "workbench.iconTheme": "material-icon-theme",

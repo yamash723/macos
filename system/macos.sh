@@ -9,11 +9,11 @@ EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 General() {
   # ========== Apprerance ==========
   # - Light
-  defaults delete .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically > /dev/null 2>&1
-  defaults delete .GlobalPreferences AppleInterfaceStyle > /dev/null 2>&1
-  # - Dark
   # defaults delete .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically > /dev/null 2>&1
-  # defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
+  # defaults delete .GlobalPreferences AppleInterfaceStyle > /dev/null 2>&1
+  # - Dark
+  defaults delete .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically > /dev/null 2>&1
+  defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
   # - Auto
   # defaults write .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically -bool true
 

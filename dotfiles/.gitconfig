@@ -104,9 +104,8 @@
   helper = osxkeychain
 
 [delta]
-  light = true
   line-numbers = true
-  syntax-theme = Monokai Extended Light
+  syntax-theme = Monokai Extended
 
 [diff]
   prompt    = false

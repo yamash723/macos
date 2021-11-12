@@ -21,7 +21,7 @@ call plug#begin(s:plugdir)
   Plug 'tpope/vim-commentary'
   Plug 'bfredl/nvim-miniyank'
   Plug 'machakann/vim-sandwich'
-  Plug 'ulwlu/simple-light.vim'
+  Plug 'ulwlu/elly.vim'
   Plug 'rhysd/conflict-marker.vim'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'ConradIrwin/vim-bracketed-paste'
@@ -79,7 +79,7 @@ nn <Leader>rr :vertical resize -5<CR>| nn <Leader>ll :vertical resize +5<CR>
 "" ----------------------------------------
 ""  PluginSetting
 "" ----------------------------------------
-colo simple-light
+colo elly
 
 "" ========== VimPlug ==========
 nn <Leader>clean :PlugClean<CR>
