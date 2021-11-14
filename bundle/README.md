@@ -8,6 +8,9 @@ https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gigh
 ### AWS Extend Switch Roles
 https://chrome.google.com/webstore/detail/aws-extend-switch-roles/jpmkfafbacpgapdghgdpembnojdlgkdl
 
+### Elly
+https://chrome.google.com/webstore/detail/elly-theme/bcgeoaoekdiakmhobofhbdnpeibbhaom
+
 ### Clear Cache
 https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn
 
