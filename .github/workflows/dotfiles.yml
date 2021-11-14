@@ -4,22 +4,22 @@ on:
   push:
     paths:
       - 'install.sh'
-      - 'system/install.sh'
+      - 'system/macos.sh'
 
 jobs:
   build:
     runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Run initial setup.
-      run: |
-        curl https://raw.githubusercontent.com/ulwlu/dotfiles/master/install.sh | /bin/bash -s -- --init --test
+      - name: Run initial setup
+        run: |
+          curl https://raw.githubusercontent.com/ulwlu/dotfiles/master/install.sh | /bin/bash -s -- --init --test
 
-    - name: Run dotfiles setup.
-      run: |
-        /bin/bash install.sh --force --test --dotfiles
+      - name: Run dotfiles setup
+        run: |
+          /bin/bash install.sh --force --test --dotfiles
 
-    - name: Run system setup.
-      run: |
-        /bin/bash install.sh --force --test --system
+      - name: Run system setup
+        run: |
+          /bin/bash install.sh --force --test --system
