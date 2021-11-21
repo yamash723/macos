@@ -79,8 +79,9 @@ cask "rectangle"
 cask "appcleaner"
 cask "sequel-ace"
 cask "google-chrome"
+# cask "android-studio"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "google-japanese-ime"
 cask "db-browser-for-sqlite"
-mas "LINE", id: 539883307
+# mas  "Xcode", id: 497799835
