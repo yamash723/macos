@@ -55,11 +55,13 @@ vscode-plug-install() {
   done
 }
 vscode-plug-clean() {
-  plugin=$(cat ./Vsplug | fzf)
-  code --uninstall-extension ${plugin}
+  plugins=$(diff <(code --list-extensions | sort) <(cat ./Vsplug | sort) | grep '>' | cut -f2 -d' ')
+  for plugin in ${plugins}; do
+    code --uninstall-extension ${plugin}
+  done
 }
 vscode-plug-list() {
-  code --list-extensions > ./bundle/Vsplug
+  code --list-extensions > ./Vsplug
 }
 
 ## ----------------------------------------
