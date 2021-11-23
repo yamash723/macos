@@ -7,6 +7,7 @@ tap "homebrew/services"
 cask_args appdir: "/Applications"
 
 ## ========== Base ==========
+brew "jq"
 brew "fd"
 brew "gh"
 brew "sd"
