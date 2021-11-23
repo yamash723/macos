@@ -73,6 +73,7 @@ bindkey '^B' backward-word
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^W" backward-kill-word
+bindkey '\e[3;5~' kill-word
 bindkey "^U" kill-whole-line
 bindkey "^L" clear-screen
 bindkey "^R" history-incremental-search-backward
@@ -89,12 +90,9 @@ alias op='open ./'
 alias grep='ggrep'
 alias pp='pbpaste >'
 alias cdwk='cd ~/work'
-alias hf='hyperfine --max-runs 3'
-alias k6run='k6 run --vus 10 --duration 40s'
 alias python='python3' py='python' pip='pip3'
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias bat='bat --color=always --theme=ansi'
-alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
 alias ydl='youtube-dl -x --audio-format mp3'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'

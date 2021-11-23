@@ -155,3 +155,6 @@ resize_img() {
     convert -background black -gravity center "$target" -resize ${length}x${length} -extent ${length}x${length} ./resized_"$filename"
   done
 }
+alias hf='hyperfine --max-runs 3'
+alias k6run='k6 run --vus 10 --duration 40s'
+alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
