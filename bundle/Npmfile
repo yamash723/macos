@@ -4,6 +4,7 @@ pnpm
 yarn
 degit
 wscat
+depcheck
 prettier
 typescript
 @squoosh/cli
