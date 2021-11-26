@@ -23,6 +23,7 @@
     "strings": true,
     "comments": true
   },
+  "editor.bracketPairColorization.enabled": true,
   "editor.smoothScrolling": true,
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
