@@ -82,7 +82,6 @@
     "editor.defaultFormatter": "rust-lang.rust"
   },
   "[python]": {
-    "editor.defaultFormatter": null,
     "editor.tabSize": 4,
     "editor.formatOnSave": true
   },
