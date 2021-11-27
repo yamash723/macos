@@ -98,7 +98,7 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-clangd',
   \ 'coc-docker',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-explorer',
   \ 'coc-snippets',
   \ 'coc-tsserver',
