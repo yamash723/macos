@@ -48,15 +48,20 @@ tmux-plug-clean() {
 ##  VSCode
 ## ----------------------------------------
 vscode-plug-install() {
-  # This also updates.
-  plugins=($(cat ./Vsplug))
-  for plugin in ${plugins}; do
+  plugins=$(diff <(code --list-extensions | sort) <(cat ./Vsplug | sort) | grep '>' | cut -f2 -d' ')
+  echo $plugins | while read plugin; do
+    code --install-extension ${plugin}
+  done
+}
+vscode-plug-updates() {
+  plugins=$(code --list-extensions)
+  echo $plugins | while read plugin; do
     code --install-extension ${plugin}
   done
 }
 vscode-plug-clean() {
-  plugins=$(diff <(code --list-extensions | sort) <(cat ./Vsplug | sort) | grep '>' | cut -f2 -d' ')
-  for plugin in ${plugins}; do
+  plugins="$(diff <(cat ./Vsplug | sort) <(code --list-extensions | sort) | grep '>' | cut -f2 -d' ')"
+  echo $plugins | while read plugin; do
     code --uninstall-extension ${plugin}
   done
 }
