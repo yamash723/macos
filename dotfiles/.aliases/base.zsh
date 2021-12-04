@@ -163,3 +163,13 @@ resize_img() {
 alias hf='hyperfine --max-runs 3'
 alias k6run='k6 run --vus 10 --duration 40s'
 alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
+resize_pdf() {
+  for files in $(fd --max-depth=1 pdf); do
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output/"${files}" "${files}"
+  done
+}
+resize_mp4() {
+  for files in $(fd --max-depth=1 mp4); do
+    ffmpeg -i "${files}" -vcodec libx265 -crf 32 output/"${files}"
+  done
+}
