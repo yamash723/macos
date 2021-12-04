@@ -13,6 +13,9 @@ alias gcup='gcloud components update'
 alias gcin='gcloud components install'
 alias gcauthservice='gcloud auth activate-service-account --key-file'
 
+alias gcappdep='gcloud app deploy app.yaml'
+alias gcappbr='gcloud app browse'
+
 alias gsmb='gsutil mb'
 alias gsls='gsutil ls'
 alias gsrm='gsutil rm'
