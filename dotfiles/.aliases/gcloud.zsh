@@ -53,3 +53,11 @@ gcrfirewall() {
   allowname="$3"
   gcloud compute firewallrules create "$firewallname" --network "$networkname" --allow "$allowname"
 }
+
+alias gcldpllist='gcloud deployment-manager types list'
+gcldpdep() {
+  name="$1"
+  configfile="$2"
+  gcloud deployment-manager deployments create "$name" --config="$configfile" --preview
+  echo "run 'gcloud deploy-manager deployments update to deploy actually'"
+}
