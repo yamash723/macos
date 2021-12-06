@@ -61,3 +61,7 @@ gcldpdep() {
   gcloud deployment-manager deployments create "$name" --config="$configfile" --preview
   echo "run 'gcloud deploy-manager deployments update to deploy actually'"
 }
+
+gcbdocker() {
+  gcloud builds submit --tag gcr.io/$DEVSHELL_PROJECT_ID/"$1" .
+}
