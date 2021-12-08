@@ -67,3 +67,9 @@ gcbdocker() {
 }
 
 alias gkecon='gcloud container clusters get-credentials'
+# edit deployment yaml after submit (or use kustomize edit set image)
+# kubectl create deployment *** --image=***
+# kubectl expose deployment *** --type=LoadBalancer --port 80 --target-port 8000
+# kubectl set image deployment/*** {name}=***
+# kubectl edit deployment ***
+# kubectl get deploy *** -o yaml
