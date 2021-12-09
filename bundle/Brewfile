@@ -44,6 +44,8 @@ brew "shellcheck"
 brew "youtube-dl"
 brew "imagemagick"
 brew "git-secrets"
+tap "chevdor/tera-cli", "https://github.com/chevdor/tera-cli"
+brew "chevdor/tera-cli/tera"
 
 ## ========== Shell ==========
 brew "zsh"
