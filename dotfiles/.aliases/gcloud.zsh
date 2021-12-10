@@ -64,6 +64,7 @@ gcldpdep() {
 }
 
 gcbdocker() {
+  # or use --config cloudbuild.yaml . to reveal everything into code and make it pararell
   gcloud builds submit --tag gcr.io/$DEVSHELL_PROJECT_ID/"$1" .
 }
 
