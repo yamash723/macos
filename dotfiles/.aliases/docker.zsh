@@ -119,4 +119,15 @@ alias krun='kubectl run'
 alias kexpose='kubectl expose'
 alias kcreate='kubectl create'
 alias kapply='kubectl apply -f'
-
+alias kclinfo='kubectl config view && kubectl cluster-info'
+alias ktop='kubectl top pods'
+alias khpa='kubectl get hpa'
+khpadis() {
+  kubectl get horizontalpodautoscaler "$1" -o yaml
+}
+alias ktaint='kubectl taint node -l'
+alias klsnp='kubectl get networkpolicy'
+alias kdingress='kubectl describe ingress'
+alias kgetpvc='kubectl get persistentvolumeclaim'
+alias kgensec='kubectl create secret generic'
+alias kgencmap='kubectl create configmap'
