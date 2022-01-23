@@ -1,4 +1,8 @@
 {
+  "C_Cpp.default.includePath": [
+    "/usr/local/opt/ncurses/include",
+    "${workspaceFolder}/**"
+  ],
   "editor.acceptSuggestionOnEnter": "on",
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
