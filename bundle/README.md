@@ -19,3 +19,8 @@ https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechad
 
 ### Wappalyzer
 https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg
+
+### Leoh New Tab
+https://chrome.google.com/webstore/detail/leoh-new-tab/ijhhakihjccpanbibbcceofpjnebokcb
+
+http://cdn.leoh.io/images/base_zero/image_2.jpg
