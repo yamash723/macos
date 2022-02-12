@@ -1,12 +1,10 @@
 If you came here for MacOS full-auto-setup script, [it's here](https://github.com/ulwlu/dotfiles/blob/master/system/macos.sh). Read this article([en](https://ulwlu.github.io/blog/macos-preferences-automation) / [ja](https://zenn.dev/ulwlu/articles/1c3a1da12887ed)) as well.
 
-## Preview
-
-The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
-
 <img alt="elly iterm2" src="https://user-images.githubusercontent.com/41639488/98157819-3f36ca00-1f1d-11eb-962c-17f33996bd48.png">
 
 <img alt="elly.vim" src="https://user-images.githubusercontent.com/41639488/124696330-cced0e00-df1f-11eb-8059-a16a74c24777.png">
+
+The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
 
 ## Configurations Shortcut
 
