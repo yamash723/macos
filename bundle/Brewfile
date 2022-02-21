@@ -7,7 +7,6 @@ tap "homebrew/services"
 cask_args appdir: "/Applications"
 
 ## ========== Base ==========
-brew "bd"
 brew "fd" # alternative find
 brew "gh" # github cli tool
 brew "jq"
@@ -58,6 +57,8 @@ brew "node"
 brew "sqlite"
 brew "go"
 brew "rustup"
+brew "postgresql"
+brew "mysql"
 
 ## ========== Applications ==========
 cask "zoom"
