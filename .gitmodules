@@ -1,3 +1,0 @@
-[submodule "Alfred"]
-	path = dotfiles/Library/Application Support/Alfred
-	url = https://github.com/yamash723/Alfred.git
