@@ -1,7 +1,7 @@
 #! /bin/bash
 set -eux
 TESTMODE=$1
-EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
+# EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
 ## ----------------------------------------
 ##  System Preferences
@@ -85,21 +85,21 @@ General() {
 
   # ========== Default web browser ==========
   # - Google Chrome
-  LSSC=("http" "https" "mailto")
-  LSCT=("public.xhtml" "public.html")
-  PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
-  for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-    THIS_LSSC=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerURLScheme" "${PLIST}" 2> /dev/null)
-    if [[ ${LSSC[@]} =~ $THIS_LSSC ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
-    fi
+  # LSSC=("http" "https" "mailto")
+  # LSCT=("public.xhtml" "public.html")
+  # PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
+  # HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
+  # for idx in $(seq 0 $((HNUM - 1))); do
+  #   THIS_LSSC=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerURLScheme" "${PLIST}" 2> /dev/null)
+  #   if [[ ${LSSC[@]} =~ $THIS_LSSC ]]; then
+  #     /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
+  #   fi
 
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
-    if [[ ${LSCT[@]} =~ $THIS_LSCT ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
-    fi
-  done
+  #   THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
+  #   if [[ ${LSCT[@]} =~ $THIS_LSCT ]]; then
+  #     /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.google.chrome" "${PLIST}"
+  #   fi
+  # done
 
   # ========== Ask to keep changes when closing documents ==========
   # - Checked
@@ -119,27 +119,27 @@ General() {
   # - 10
   # - 15
   # @string: choose preferred item.
-  osascript -e "
-    tell application \"System Preferences\"
-      activate
-      set current pane to pane \"com.apple.preference.general\"
-    end tell
-    tell application \"System Events\"
-      tell application process \"System Preferences\"
-        repeat while not (window 1 exists)
-        end repeat
-        tell window 1
-          tell pop up button 4
-            delay 1
-            click
-            tell menu 1
-              click menu item \"10\"
-            end tell
-          end tell
-        end tell
-      end tell
-    end tell
-  "
+  # osascript -e "
+  #   tell application \"System Preferences\"
+  #     activate
+  #     set current pane to pane \"com.apple.preference.general\"
+  #   end tell
+  #   tell application \"System Events\"
+  #     tell application process \"System Preferences\"
+  #       repeat while not (window 1 exists)
+  #       end repeat
+  #       tell window 1
+  #         tell pop up button 4
+  #           delay 1
+  #           click
+  #           tell menu 1
+  #             click menu item \"10\"
+  #           end tell
+  #         end tell
+  #       end tell
+  #     end tell
+  #   end tell
+  # "
 
   # ========== Allow Handoff between this Mac and your iCloud devices ==========
   # - Checked
@@ -160,7 +160,7 @@ DesktopScreenSaver() {
   # ========== Desktop Picture ==========
   # osascript -e "
   #   tell application \"Finder\"
-  #     set desktop picture to \"${EXEPATH}/desktop.png\" as POSIX file
+  #     set desktop picture to \"${# EXEPATH}/desktop.png\" as POSIX file
   #   end tell
   # "
 
@@ -174,65 +174,60 @@ DesktopScreenSaver() {
   # - Center
   # - Tile
   # @string: choose preferred item.
-  osascript -e "
-    tell application \"System Preferences\"
-      activate
-      reveal pane id \"com.apple.preference.desktopscreeneffect\"
-    end tell
-    tell application \"System Events\"
-      tell application process \"System Preferences\"
-        repeat while not (window 1 exists)
-        end repeat
-        tell window 1
-          tell tab group 1
-            tell pop up button 2
-              click
-              delay 1
-              tell menu 1
-                click menu item \"Fill Screen\"
-              end tell
-            end tell
-          end tell
-        end tell
-      end tell
-    end tell
-  "
+  # osascript -e "
+  #   tell application \"System Preferences\"
+  #     activate
+  #     reveal pane id \"com.apple.preference.desktopscreeneffect\"
+  #   end tell
+  #   tell application \"System Events\"
+  #     tell application process \"System Preferences\"
+  #       repeat while not (window 1 exists)
+  #       end repeat
+  #       tell window 1
+  #         tell tab group 1
+  #           tell pop up button 2
+  #             click
+  #             delay 1
+  #             tell menu 1
+  #               click menu item \"Fill Screen\"
+  #             end tell
+  #           end tell
+  #         end tell
+  #       end tell
+  #     end tell
+  #   end tell
+  # "
 
   # ========== ScreenSaver Picture ==========
-  osascript -e "
-    tell application \"System Preferences\"
-      activate
-      reveal pane id \"com.apple.preference.desktopscreeneffect\"
-    end tell
-    tell application \"System Events\"
-      tell application process \"System Preferences\"
-        repeat while not (window 1 exists)
-        end repeat
-        tell window 1
-          tell tab group 1
-            repeat with current_group in list 1 of list 1 of scroll area 1
-              if name of image of current_group is equal to \"Message\" then
-                click image of current_group
-                every UI element
-              end if
-            end repeat
-          end tell
-        end tell
-      end tell
-    end tell
-  "
+  # osascript -e "
+  #   tell application \"System Preferences\"
+  #     activate
+  #     reveal pane id \"com.apple.preference.desktopscreeneffect\"
+  #   end tell
+  #   tell application \"System Events\"
+  #     tell application process \"System Preferences\"
+  #       repeat while not (window 1 exists)
+  #       end repeat
+  #       tell window 1
+  #         tell tab group 1
+  #           repeat with current_group in list 1 of list 1 of scroll area 1
+  #             if name of image of current_group is equal to \"Message\" then
+  #               click image of current_group
+  #               every UI element
+  #             end if
+  #           end repeat
+  #         end tell
+  #       end tell
+  #     end tell
+  #   end tell
+  # "
 
   # ========== Start After ==========
   # @int: seconds
   defaults -currentHost write com.apple.screensaver idleTime -int 20
 
-  # ========== Show with clock ==========
-  # - Checked
-  # defaults -currentHost write com.apple.screensaver showClock -bool true
-  # - Unchecked
-  defaults -currentHost delete com.apple.screensaver showClock
-
   # ========== Use random screen saver ==========
+  # ToDo
   # - Checked
   # SPLIST=$(ls ~/Library/Preferences/ByHost/com.apple.screensaver*)
   # /usr/libexec/PlistBuddy \
@@ -242,18 +237,19 @@ DesktopScreenSaver() {
   #   -c "Add moduleDict:type integer 8" \
   #   ${SPLIST}
   # - Unchecked
-  defaults -currentHost delete com.apple.screensaver moduleDict
+  # defaults -currentHost delete com.apple.screensaver moduleDict
 }
 
 Dock() {
   # ========== Size ==========
   # @int: size
-  defaults write com.apple.dock tilesize -int 20
+  defaults write com.apple.dock tilesize -int 64
 
   # ========== Magnification ==========
   # - Checked
   # defaults write com.apple.dock magnification -bool true
   # - Unchecked
+  defaults write com.apple.dock magnification -bool true
   defaults delete com.apple.dock magnification
 
   # ========== `Magnification` Bar ==========
@@ -264,6 +260,7 @@ Dock() {
   # - Left
   # defaults write com.apple.dock orientation -string "left"
   # - Bottom
+  defaults write com.apple.dock orientation -string "left"
   defaults delete com.apple.dock orientation
   # - Right
   # defaults write com.apple.dock orientation -string "right"
@@ -606,23 +603,23 @@ Displays() {
   #   - Middle
   #   - Default
   #   - More Space
-  osascript -e "
-    tell application \"System Preferences\"
-      activate
-      reveal anchor \"displaysDisplayTab\" of pane id \"com.apple.preference.displays\"
-    end tell
-    tell application \"System Events\"
-      delay 0.5
-      tell application process \"System Preferences\" to tell window \"Built-in Retina Display\"
-        click radio button \"Scaled\" of radio group 1 of tab group 1
-        click radio button 4 of radio group 1 of group 2 of tab group 1
-        delay 0.5
-        try
-          click button \"OK\" of sheet 1
-        end try
-      end tell
-    end tell
-  "
+  # osascript -e "
+  #   tell application \"System Preferences\"
+  #     activate
+  #     reveal anchor \"displaysDisplayTab\" of pane id \"com.apple.preference.displays\"
+  #   end tell
+  #   tell application \"System Events\"
+  #     delay 0.5
+  #     tell application process \"System Preferences\" to tell window \"Built-in Retina Display\"
+  #       click radio button \"Scaled\" of radio group 1 of tab group 1
+  #       click radio button 4 of radio group 1 of group 2 of tab group 1
+  #       delay 0.5
+  #       try
+  #         click button \"OK\" of sheet 1
+  #       end try
+  #     end tell
+  #   end tell
+  # "
 
   # ========== Show mirroring options in the menu bar when available ==========
   # - Checked
@@ -637,21 +634,21 @@ Displays() {
   # brightness 1
 
   # ========== Nightshift Schedule ==========
-  NPLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
-  CurrentUUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2)
-  CurrentUUID="CBUser-${CurrentUUID}"
-  # - Off
-  # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 0" ${NPLIST}
-  # - Custom
-  # sudo /usr/libexec/PlistBuddy \
-  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueReductionEnabled 1" \
-  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartHour 23" \
-  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartMinute 59" \
-  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartHour 0" \
-  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartMinute 0" \
-  #   ${NPLIST}
-  # - Sunset to Sunrise
-  /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 1" ${NPLIST}
+  # NPLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
+  # CurrentUUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2)
+  # CurrentUUID="CBUser-${CurrentUUID}"
+  # # - Off
+  # # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 0" ${NPLIST}
+  # # - Custom
+  # # sudo /usr/libexec/PlistBuddy \
+  # #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueReductionEnabled 1" \
+  # #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartHour 23" \
+  # #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartMinute 59" \
+  # #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartHour 0" \
+  # #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartMinute 0" \
+  # #   ${NPLIST}
+  # # - Sunset to Sunrise
+  # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 1" ${NPLIST}
 
   # Color Temperature
   # @int: warmest.2700 coldest.6000
@@ -728,14 +725,6 @@ DateTime() {
   # - Unchecked
   # sudo systemsetup -setusingnetworktime off > /dev/null
 
-  # ========== Show date and time in menu bar ==========
-  # - Checked
-  IS_CLOCK=$(defaults read com.apple.systemuiserver menuExtras | grep "Clock")
-  [[ -z ${IS_CLOCK} ]] && /usr/libexec/PlistBuddy -c "Add menuExtras \"/System/Library/CoreServices/Menu Extras/Clock.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
-  # - Unchecked
-  # IS_CLOCK=$(defaults read com.apple.systemuiserver menuExtras | grep "Clock")
-  # [[ -n ${IS_CLOCK} ]] && /usr/libexec/PlistBuddy -c "Delete menuExtras:\"/System/Library/CoreServices/Menu Extras/Clock.menu\"" "${HOME}"/Library/Preferences/com.apple.systemuiserver.plist
-
   # ========== Time options ==========
   # - Digital
   defaults write com.apple.menuextra.clock IsAnalog -bool false
@@ -777,11 +766,6 @@ DateTime() {
   defaults write com.apple.menuextra.clock ShowDayOfMonth -bool true
   # - Unchecked
   # defaults write com.apple.menuextra.clock ShowDayOfMonth -bool false
-}
-
-iCloud() {
-  # Disable All settings
-  # defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool FALSE
 }
 
 TimeMachine() {
@@ -1335,6 +1319,7 @@ ScreenShot() {
 ## ----------------------------------------
 ExtraSettings() {
   # ========== Dock Applications ==========
+  defaults write com.apple.dock persistent-apps -array
   defaults delete com.apple.dock persistent-apps
   # ToDo
   # dockitem=(
@@ -1431,13 +1416,13 @@ ExtraSettings() {
   # - default
   # defaults delete com.apple.dock autohide-delay
   # @int/float: seconds
-  defaults write com.apple.dock autohide-delay -float 1000
+  # defaults write com.apple.dock autohide-delay -float 0
 
   # ========== Dock Appearance Animation time ==========
   # - default
   # defaults delete com.apple.dock autohide-time-modifier
   # @int/float: seconds
-  defaults write com.apple.dock autohide-time-modifier -float 0
+  # defaults write com.apple.dock autohide-time-modifier -float 0
 
   # ========== Dock Icon Bouncing ==========
   # - default
@@ -1492,17 +1477,18 @@ ExtraSettings() {
 ## ----------------------------------------
 ##  Main
 ## ----------------------------------------
+## ToDo
 MACOS=$(/usr/libexec/PlistBuddy -c "Print:ProductVersion" /System/Library/CoreServices/SystemVersion.plist | awk -F. '{print $1"."$2}')
-if [[ "${MACOS}" == "11.2" && ! ${TESTMODE} ]]; then
+if [[ "${MACOS}" == "12.2" && ${TESTMODE} == false ]]; then
   # Big Sur Version is maintained.
   # If the latest version is updated, add warning message here.
   :
 else
-  echo "You are using MacOS lower than BigSur. It may cause errors since this shell isn't maintained with your OS."
+  echo "You are using MacOS lower than Monterey. It may cause errors since this shell isn't maintained with your OS."
   echo 'Canceled' && exit 0
 fi
 
-Appstore
+AppStore
 Bluetooth
 DateTime
 Desktop
@@ -1513,7 +1499,6 @@ EnergySaver
 ExtraSettings
 Finder
 General
-iCloud
 Keyboard
 LanguageRegion
 LaunchPad
