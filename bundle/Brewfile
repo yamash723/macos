@@ -7,45 +7,40 @@ tap "homebrew/services"
 cask_args appdir: "/Applications"
 
 ## ========== Base ==========
+brew "bd"
+brew "fd" # alternative find
+brew "gh" # github cli tool
 brew "jq"
-brew "fd"
-brew "gh"
-brew "sd"
-brew "k6"
-brew "act"
-brew "bat"
-brew "exa"
+brew "sd" # alternative sed
+brew "age"
+brew "act" # run GitHub Actions locally
+brew "bat" # alternative cat
+brew "exa" # alternative ls
 brew "fzf"
-brew "ghq"
+brew "ghq" # repository manager
 brew "git"
-brew 'mas'
+brew "tig"
+brew "mas"
 brew "nkf"
-brew "asdf"
-brew "dust"
+brew "asdf" # version manager
+brew "dust" # disk space checker
+brew "fish"
 brew "grep"
-brew "tmux"
-brew "htmlq"
-brew "shfmt"
-brew "neovim"
+brew "htmlq" # like jq, but for HTML.
+brew "peco"
+brew "shfmt" # formatter for shell script
+brew "awscli"
 brew "ffmpeg"
-brew "httpie"
+brew "httpie" 
 brew "rename"
-brew "git-lfs"
+brew "chezmoi"
 brew "gnu-sed"
 brew "ripgrep"
-brew "kompose"
-brew "lefthook"
-brew "minikube"
-brew "skaffold"
 brew "coreutils"
-brew "git-delta"
+brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
 brew "shellcheck"
 brew "youtube-dl"
-brew "imagemagick"
 brew "git-secrets"
-brew "harelba/q/q"
-tap "chevdor/tera-cli", "https://github.com/chevdor/tera-cli"
-brew "chevdor/tera-cli/tera"
 
 ## ========== Shell ==========
 brew "zsh"
@@ -59,17 +54,10 @@ cask "font-hack-nerd-font"
 ## ========== Language & Databases ==========
 brew "gcc"
 brew "gdb"
-brew "php"
 brew "node"
-brew "mysql"
-brew "golang"
-brew "python"
 brew "sqlite"
+brew "go"
 brew "rustup"
-brew "sccache"
-brew "postgres"
-tap "AdoptOpenJDK/openjdk"
-cask "adoptopenjdk11"
 
 ## ========== Applications ==========
 cask "zoom"
@@ -80,14 +68,22 @@ cask "docker"
 cask "kindle"
 cask "iterm2"
 cask "skitch"
-cask "postman"
-cask "gpg-suite"
+cask "discord"
+cask "todoist"
+cask "Tweeten"
+cask "1password"
+cask "hiddenbar"
 cask "tableplus"
 cask "rectangle"
 cask "appcleaner"
+cask "hyperswitch"
 cask "google-chrome"
-# cask "android-studio"
+cask "the-unarchiver"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "google-japanese-ime"
-# mas  "Xcode", id: 497799835
+cask "google-drive-file-stream"
+
+mas "DayOne", id: 1055511498
+mas "RunCat", id: 1429033973
+mas "Display Menu", id: 549083868

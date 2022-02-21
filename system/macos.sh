@@ -65,9 +65,9 @@ General() {
 
   # ========== Automatically hide and show the menu bar ==========
   # - Checked
-  # defaults write .GlobalPreferences _HIHideMenuBar -bool true
+  defaults write .GlobalPreferences _HIHideMenuBar -bool true
   # - Unchecked
-  defaults write .GlobalPreferences _HIHideMenuBar -bool false
+  # defaults write .GlobalPreferences _HIHideMenuBar -bool false
 
   # ========== Show scroll bars ==========
   # - Automatically based on mouse or trackpad
@@ -109,9 +109,9 @@ General() {
 
   # ========== Close windows when quitting an app ==========
   # - Checked
-  # defaults write .GlobalPreferences NSQuitAlwaysKeepsWindows -bool false
+  defaults write .GlobalPreferences NSQuitAlwaysKeepsWindows -bool false
   # - Unchecked
-  defaults write .GlobalPreferences NSQuitAlwaysKeepsWindows -bool true
+  # defaults write .GlobalPreferences NSQuitAlwaysKeepsWindows -bool true
 
   # ========== Recent items ==========
   # - None
@@ -133,7 +133,7 @@ General() {
             delay 1
             click
             tell menu 1
-              click menu item \"None\"
+              click menu item \"10\"
             end tell
           end tell
         end tell
@@ -143,11 +143,11 @@ General() {
 
   # ========== Allow Handoff between this Mac and your iCloud devices ==========
   # - Checked
-  # defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityReceivingAllowed -bool true
-  # defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool true
+  defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityReceivingAllowed -bool true
+  defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool true
   # - Unchecked
-  defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityReceivingAllowed -bool false
-  defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool false
+  # defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityReceivingAllowed -bool false
+  # defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool false
 
   # ========== Use font smoothing when available ==========
   # - Checked
@@ -224,7 +224,7 @@ DesktopScreenSaver() {
 
   # ========== Start After ==========
   # @int: seconds
-  defaults -currentHost write com.apple.screensaver idleTime -int 0
+  defaults -currentHost write com.apple.screensaver idleTime -int 20
 
   # ========== Show with clock ==========
   # - Checked
@@ -262,9 +262,9 @@ Dock() {
 
   # ========== Position on screen ==========
   # - Left
-  defaults write com.apple.dock orientation -string "left"
+  # defaults write com.apple.dock orientation -string "left"
   # - Bottom
-  # defaults delete com.apple.dock orientation
+  defaults delete com.apple.dock orientation
   # - Right
   # defaults write com.apple.dock orientation -string "right"
 
@@ -521,15 +521,15 @@ Notifications() {
 
   # ========== When the display is sleeping ==========
   # - Checked
-  defaults -currentHost write com.apple.notificationcenterui dndEnabledDisplaySleep -bool true
+  # defaults -currentHost write com.apple.notificationcenterui dndEnabledDisplaySleep -bool true
   # - Unchecked
-  # defaults -currentHost delete com.apple.notificationcenterui dndEnabledDisplaySleep
+  defaults -currentHost delete com.apple.notificationcenterui dndEnabledDisplaySleep
 
   # ========== When mirroring to TVs and projectors ==========
   # - Checked
-  defaults -currentHost delete com.apple.notificationcenterui dndMirroring
+  # defaults -currentHost delete com.apple.notificationcenterui dndMirroring
   # - Unchecked
-  # defaults -currentHost write com.apple.notificationcenterui dndMirroring -bool false
+  defaults -currentHost write com.apple.notificationcenterui dndMirroring -bool false
 
   # ========== Allow calls from everyone ==========
   # - Checked
@@ -544,12 +544,6 @@ Notifications() {
   # - Unchecked
   defaults -currentHost delete com.apple.notificationcenterui dndFacetime
   defaults -currentHost delete com.apple.notificationcenterui dndFacetimeRepeatedCalls
-}
-
-UsersGroups() {
-  # ========== Profile Picture ==========
-  UNM=$(whoami)
-  sudo dscl . create /Users/"${UNM}" Picture "${EXEPATH}/icon.jpg"
 }
 
 SecurityPrivacy() {
@@ -649,19 +643,19 @@ Displays() {
   # - Off
   # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 0" ${NPLIST}
   # - Custom
-  sudo /usr/libexec/PlistBuddy \
-    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueReductionEnabled 1" \
-    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartHour 23" \
-    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartMinute 59" \
-    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartHour 0" \
-    -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartMinute 0" \
-    ${NPLIST}
+  # sudo /usr/libexec/PlistBuddy \
+  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueReductionEnabled 1" \
+  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartHour 23" \
+  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:DayStartMinute 59" \
+  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartHour 0" \
+  #   -c "Set :${CurrentUUID}:CBBlueReductionStatus:BlueLightReductionSchedule:NightStartMinute 0" \
+  #   ${NPLIST}
   # - Sunset to Sunrise
-  # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 1" ${NPLIST}
+  /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueReductionStatus:AutoBlueReductionEnabled 1" ${NPLIST}
 
   # Color Temperature
   # @int: warmest.2700 coldest.6000
-  /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueLightReductionCCTTargetRaw 2700" ${NPLIST}
+  # /usr/libexec/PlistBuddy -c "Set :${CurrentUUID}:CBBlueLightReductionCCTTargetRaw 4350" ${NPLIST}
 }
 
 EnergySaver() {
@@ -691,9 +685,9 @@ EnergySaver() {
 
   # ========== Slightly dim the display while on battery power ==========
   # - Checked
-  # sudo pmset -b lessbright 0
-  # - Unchecked
   sudo pmset -b lessbright 0
+  # - Unchecked
+  # sudo pmset -b lessbright 0
 
   # ========== Enable Power Nap while on battery power ==========
   # - Checked
@@ -703,7 +697,7 @@ EnergySaver() {
 
   # ========== Turn display off after ==========
   # @int: minutes
-  sudo pmset -c displaysleep 3
+  sudo pmset -c displaysleep 10
 
   # ========== Prevent computer from sleeping automatically when the display is off ==========
   sudo pmset -c sleep 0
@@ -787,7 +781,7 @@ DateTime() {
 
 iCloud() {
   # Disable All settings
-  defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool FALSE
+  # defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool FALSE
 }
 
 TimeMachine() {
@@ -868,14 +862,14 @@ Keyboard() {
       "${PLIST}"
   fi
   # - Unchecked
-  if [[ -n ${IS_EMOJI} ]]; then
-    for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-      BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources:${idx}:\"Bundle ID\"" "${PLIST}" 2> /dev/null)
-      if [[ $BUNDLE_ID == "com.apple.CharacterPaletteIM" ]]; then
-        /usr/libexec/PlistBuddy -c "Delete AppleEnabledInputSources:${idx}" "${PLIST}"
-      fi
-    done
-  fi
+  # if [[ -n ${IS_EMOJI} ]]; then
+  #   for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
+  #     BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources:${idx}:\"Bundle ID\"" "${PLIST}" 2> /dev/null)
+  #     if [[ $BUNDLE_ID == "com.apple.CharacterPaletteIM" ]]; then
+  #       /usr/libexec/PlistBuddy -c "Delete AppleEnabledInputSources:${idx}" "${PLIST}"
+  #     fi
+  #   done
+  # fi
 
   # ========== Correct spelling automatically ==========
   # - Checked
@@ -905,82 +899,12 @@ Keyboard() {
   defaults write .GlobalPreferences NSAutomaticDashSubstitutionEnabled -bool false
   defaults write .GlobalPreferences NSAutomaticQuoteSubstitutionEnabled -bool false
 
-  # ========== Input Sources Shortcut ==========
-  osascript -e "
-    tell application \"System Preferences\"
-      activate
-      reveal anchor \"shortcutsTab\" of pane id \"com.apple.preference.keyboard\"
-    end tell
-    tell application \"System Events\"
-      tell application process \"System Preferences\"
-        repeat while not (window 1 exists)
-        end repeat
-      tell window 1
-
-      repeat while not (rows of table 1 of scroll area 1 of splitter group 1 of tab group 1 exists)
-      end repeat
-
-      repeat with current_row in (rows of table 1 of scroll area 1 of splitter group 1 of tab group 1)
-        if value of static text 1 of current_row is equal to \"Input Sources\" then
-          select current_row
-          exit repeat
-        end if
-      end repeat
-
-      repeat while not (rows of outline 1 of scroll area 2 of splitter group 1 of tab group 1 exists)
-      end repeat
-
-      repeat with current_row in rows of outline 1 of scroll area 2 of splitter group 1 of tab group 1
-        if name of UI element 2 of current_row is equal to \"Select next source in input menu\" then
-          select current_row
-          click checkbox of UI element 1 of current_row
-          exit repeat
-        end if
-      end repeat
-
-      end tell
-      end tell
-    end tell
-  "
-
   # ========== Spotlight Shortcut ==========
-  osascript -e "
-    tell application \"System Preferences\"
-      activate
-      reveal anchor \"shortcutsTab\" of pane id \"com.apple.preference.keyboard\"
-    end tell
-    tell application \"System Events\"
-      tell application process \"System Preferences\"
-        repeat while not (window 1 exists)
-        end repeat
-      tell window 1
-
-      repeat while not (rows of table 1 of scroll area 1 of splitter group 1 of tab group 1 exists)
-      end repeat
-
-      repeat with current_row in (rows of table 1 of scroll area 1 of splitter group 1 of tab group 1)
-        if value of static text 1 of current_row is equal to \"Spotlight\" then
-          select current_row
-          exit repeat
-        end if
-      end repeat
-
-      repeat while not (rows of outline 1 of scroll area 2 of splitter group 1 of tab group 1 exists)
-      end repeat
-
-      repeat with current_row in rows of outline 1 of scroll area 2 of splitter group 1 of tab group 1
-        if name of UI element 2 of current_row is equal to \"Show Spotlight search\" then
-          select current_row
-          click checkbox of UI element 1 of current_row
-          exit repeat
-        end if
-      end repeat
-
-      end tell
-      end tell
-    end tell
-  "
-
+  # - Checked
+  # /usr/libexec/PlistBuddy -c "Set AppleSymbolicHotKeys:64:enabled true" ~/Library/Preferences/com.apple.symbolichotkeys.plist
+  # - Unchecked
+  /usr/libexec/PlistBuddy -c "Set AppleSymbolicHotKeys:64:enabled false" ~/Library/Preferences/com.apple.symbolichotkeys.plist
+  
   # ========== Input Sources ==========
   GJIME=$(defaults read com.apple.HIToolbox AppleEnabledInputSources | grep "InputSourceKind = \"Keyboard Input Method\"")
   HNUM=$(/usr/libexec/PlistBuddy -c "Print AppleEnabledInputSources" "${PLIST}" | ggrep -cP '^[\s]*Dict')
@@ -1041,11 +965,11 @@ Trackpad() {
 
   # ========== Tap to click ==========
   # - Checked
-  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  # defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
   # - Unchecked
-  # defaults write com.apple.AppleMultitouchTrackpad Clicking -bool false
-  # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
+  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool false
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
 
   # ========== Click ==========
   # @int:Light.0 Medium.1 Firm.2
@@ -1248,21 +1172,21 @@ Finder() {
 
   # ========== Show warning before removing from iCloud Drive ==========
   # - Checked
-  # defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool true
+  defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool true
   # - Unchecked
-  defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false
+  # defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false
 
   # ========== Show warning before emptying the Trash ==========
   # - Checked
-  # defaults write com.apple.finder WarnOnEmptyTrash -bool true
+  defaults write com.apple.finder WarnOnEmptyTrash -bool true
   # - Unchecked
-  defaults write com.apple.finder WarnOnEmptyTrash -bool false
+  # defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
   # ========== Remove items from the Trash after 30 days ==========
   # - Checked
-  defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+  # defaults write com.apple.finder FXRemoveOldTrashItems -bool true
   # - Unchecked
-  # defaults write com.apple.finder FXRemoveOldTrashItems -bool false
+  defaults write com.apple.finder FXRemoveOldTrashItems -bool false
 
   # ========== View ==========
   # - as Icons
@@ -1395,9 +1319,9 @@ ScreenShot() {
 
   # ========== Rename screenshot default name ==========
   # - Default
-  # defaults delete com.apple.screencapture name
+  defaults delete com.apple.screencapture name
   # - Custom
-  defaults write com.apple.screencapture name -string "ss"
+  # defaults write com.apple.screencapture name -string "ss"
 
   # ========== Remove timestamp ==========
   # - Remove
@@ -1412,6 +1336,7 @@ ScreenShot() {
 ExtraSettings() {
   # ========== Dock Applications ==========
   defaults delete com.apple.dock persistent-apps
+  # ToDo
   # dockitem=(
   #   "Mail"                "com.apple.mail"                            "file:///System/Applications/Mail.app/"
   #   "Docker"              "com.docker.docker"                         "file:///Applications/Docker.app/"
@@ -1474,28 +1399,6 @@ ExtraSettings() {
   killall cfprefsd
   killall Dock
 
-  # ========== Default Application ==========
-  # - Editor - TextEdit
-  LSCT=("public.json" "com.netscape.javascript-source")
-  PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
-  for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
-    if [[ ${LSCT[@]} =~ ${THIS_LSCT} ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.textedit" "${PLIST}"
-    fi
-  done
-
-  # - MP3 - QuickTimePlayer
-  PLIST="${HOME}/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-  HNUM=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:" "${PLIST}" | ggrep -cP '^[\s]*Dict')
-  for idx in $(seq 0 $(expr "${HNUM}" - 1)); do
-    THIS_LSCT=$(/usr/libexec/PlistBuddy -c "Print LSHandlers:${idx}:LSHandlerContentType" "${PLIST}" 2> /dev/null)
-    if [[ "${THIS_LSCT}" == "public.mp3" ]]; then
-      /usr/libexec/PlistBuddy -c "Set LSHandlers:${idx}:LSHandlerRoleAll com.apple.quicktimeplayerx" "${PLIST}"
-    fi
-  done
-
   # ========== Remove Notification ==========
   defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -1513,7 +1416,7 @@ ExtraSettings() {
   defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
   # ========== Disable System Preferences Red Bubble Notification ==========
-  defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
+  # defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
 
   # ========== Crash Reporter to be in Notification but Popup Window ==========
   defaults write com.apple.CrashReporter UseUNC 1
@@ -1550,10 +1453,10 @@ ExtraSettings() {
 
   # ========== Set Computer Name ==========
   # !!!!! This should not be set !!!!!
-  # sudo scutil --set HostName "ulwlu"
-  # sudo scutil --set ComputerName "ulwlu"
-  # sudo scutil --set LocalHostName "ulwlu"
-  # sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "ulwlu"
+  # sudo scutil --set HostName "ComputerName"
+  # sudo scutil --set ComputerName "ComputerName"
+  # sudo scutil --set LocalHostName "ComputerName"
+  # sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "ComputerName"
 
   # ========== Disable Sound on Boot ==========
   sudo nvram SystemAudioVolume=" "
@@ -1625,7 +1528,6 @@ Sound
 Spotlight
 TimeMachine
 Trackpad
-UsersGroups
 
 ## ----------------------------------------
 ##  Cache Clear

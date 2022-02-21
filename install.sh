@@ -4,7 +4,7 @@ set -eux
 ## ----------------------------------------
 ##  By default, you don't have any CLI such as git.
 ##  Run the command below to install dependencies.
-##  curl https://raw.githubusercontent.com/ulwlu/dotfiles/master/install.sh | /bin/bash -s -- --init
+##  curl https://raw.githubusercontent.com/yamash723/dotfiles/master/install.sh | /bin/bash -s -- --init
 ## ----------------------------------------
 
 if [[ "$OSTYPE" != "darwin"* ]]; then
@@ -20,32 +20,8 @@ EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 ##  Functions
 ## ----------------------------------------
 symlink_dotfiles() {
-  handle_symlink_from_path() {
-    file=$1
-    dirpath=$(dirname "${file}") && filename=$(basename "${file}")
-    abspath=$(cd "${dirpath}" && pwd)"/${filename}"
-    relpath=$(echo "${file}" | sed "s|^\./dotfiles/||")
-    target="${HOME}/${relpath}"
-    mkdir -p "$(dirname "${target}")"
-    ln -sfnv "${abspath}" "${target}"
-  }
-  export -f handle_symlink_from_path
-
-  bulk_symlink_target=(
-    "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
-    "./dotfiles/.aliases"
-    "./dotfiles/.git_template"
-    "./dotfiles/.snippets"
-    "./dotfiles/.trashrc"
-  )
-
-  find_exclude=""
-  for i in "${bulk_symlink_target[@]}"; do
-    handle_symlink_from_path "${i}"
-    find_exclude="${find_exclude} -path \"${i}\" -prune -or "
-  done
-  find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
-  eval "${find_command}"
+  brew install chezmoi
+  chezmoi init --apply https://github.com/yamash723/dotfiles.git
 }
 
 configure_system() {
@@ -63,26 +39,21 @@ initialize() {
   if ! ${TESTMODE}; then
     xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
-    mkdir -p "${HOME}"/.ssh
-    ssh-keygen -t rsa -b 4096 -C "ooulwluoo@gmail.com"
-    ssh-keyscan -t rsa github.com >> "${HOME}"/.ssh/known_hosts
-    # Password auth is deprecated at 2020/11/13. This can't be automated now.
-    # curl -u "ulwlu" --data "{\"title\":\"NewSSHKey\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" https://api.github.com/user/keys
-    echo "Please add ~/.ssh/id_rsa.pub into https://github.com/settings/keys manually."
+    sudo softwareupdate --install-rosetta
 
     brew install gh
     gh auth login
-    mkdir -p "${HOME}"/.ghq/github.com/ulwlu/dotfiles && cd "$_" || exit 1
-    git clone --recursive https://github.com/ulwlu/dotfiles .
+    mkdir -p "${HOME}"/.ghq/github.com/yamash723/macos && cd "$_" || exit 1
+    git clone --recursive https://github.com/yamash723/macos .
   fi
 
   brew tap homebrew/bundle
-  brew install zsh
-  sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells'
-  sudo chsh -s /usr/local/bin/zsh
-  chmod 755 /usr/local/share/zsh
-  chmod 755 /usr/local/share/zsh/site-functions
+  brew install fish
+  echo $(which fish) | sudo tee -a /etc/shells
+  chsh -s $(which fish)
 
   mkdir -p "${HOME}"/work
 }
