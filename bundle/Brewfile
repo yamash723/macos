@@ -78,13 +78,14 @@ cask "tableplus"
 cask "rectangle"
 cask "appcleaner"
 cask "hyperswitch"
+cask "cloudmounter"
 cask "google-chrome"
 cask "the-unarchiver"
 cask "karabiner-elements"
 cask "visual-studio-code"
 cask "google-japanese-ime"
-cask "google-drive-file-stream"
 
 mas "DayOne", id: 1055511498
 mas "RunCat", id: 1429033973
 mas "Display Menu", id: 549083868
+mas "Snippety", id: 1530751461
