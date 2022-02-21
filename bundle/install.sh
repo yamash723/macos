@@ -16,16 +16,14 @@ rustup component add rls --toolchain stable
 rustup component add rust-src --toolchain stable
 rustup component add rls-preview --toolchain stable
 rustup component add rust-analysis --toolchain stable
+rustup component add rustfmt --toolchain stable
+rustup component add clippy --toolchain stable
 rustup update stable
 cargo install $(cat "${EXEPATH}"/Cargofile)
 
 ## ========== Fish ==========
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-curl -L https://get.oh-my.fish | fish
-omf install bobthefish
-
-fisher install 0rax/fish-bd
-fisher install jethrokuan/fzf
+echo "fisher update" | fish
 
 ## ========== iTerm2 ==========
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
