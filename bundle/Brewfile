@@ -61,6 +61,7 @@ brew "postgresql"
 brew "mysql"
 
 ## ========== Applications ==========
+cask "fig"
 cask "zoom"
 cask "authy"
 cask "slack"
@@ -89,3 +90,4 @@ mas "DayOne", id: 1055511498
 mas "RunCat", id: 1429033973
 mas "Display Menu", id: 549083868
 mas "Snippety", id: 1530751461
+mas "Focus To-Do", id: 1258530160
