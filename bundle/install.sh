@@ -11,7 +11,10 @@ brew bundle --file "${EXEPATH}"/Brewfile
 
 ## ========== Rust ==========
 rustup-init -y
+
 source "${HOME}"/.cargo/env
+echo "fish_add_path ~/.cargo/bin" | fish
+
 rustup component add rls --toolchain stable
 rustup component add rust-src --toolchain stable
 rustup component add rls-preview --toolchain stable
