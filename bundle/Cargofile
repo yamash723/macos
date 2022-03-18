@@ -6,3 +6,4 @@ cargo-outdated
 cargo-tree
 cargo-watch
 diesel_cli
+cargo-generate

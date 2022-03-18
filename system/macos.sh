@@ -283,17 +283,17 @@ Dock() {
   # - Checked
   # `Double-click a window's title bar to` pop up menu
   #  - minimize
-  defaults write .GlobalPreferences AppleActionOnDoubleClick -string "Minimize"
+  # defaults write .GlobalPreferences AppleActionOnDoubleClick -string "Minimize"
   #  - zoom
-  # defaults write .GlobalPreferences AppleActionOnDoubleClick -string "Maximize"
+  defaults write .GlobalPreferences AppleActionOnDoubleClick -string "Maximize"
   # - Unchecked
   # defaults write .GlobalPreferences AppleActionOnDoubleClick -string "None"
 
   # ========== Minimize windows into application icon ==========
   # - Checked
-  defaults write com.apple.dock minimize-to-application -bool true
+  # defaults write com.apple.dock minimize-to-application -bool true
   # - Unchecked
-  # defaults write com.apple.dock minimize-to-application -bool false
+  defaults write com.apple.dock minimize-to-application -bool false
 
   # ========== Animate opening applications ==========
   # - Checked
@@ -352,6 +352,12 @@ MissionControl() {
   # defaults write com.apple.dashboard db-enabled-state -int 2
   # - As Overlay
   # defaults write com.apple.dashboard db-enabled-state -int 3
+}
+
+Mouse() {
+  # ========== Mouse Trajectory speed ==========
+  # @int:Slow.0 Fast.3
+  defaults write -g com.apple.mouse.scaling 3
 }
 
 Siri() {
@@ -1503,6 +1509,7 @@ Keyboard
 LanguageRegion
 LaunchPad
 MissionControl
+Mouse
 Network
 Notifications
 ScreenShot
