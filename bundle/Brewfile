@@ -7,42 +7,42 @@ tap "homebrew/services"
 cask_args appdir: "/Applications"
 
 ## ========== Base ==========
-brew "fd" # alternative find
-brew "gh" # github cli tool
-brew "jq"
-brew "sd" # alternative sed
-brew "age"
 brew "act" # run GitHub Actions locally
-brew "bat" # alternative cat
-brew "exa" # alternative ls
-brew "fzf"
-brew "ghq" # repository manager
-brew "git"
-brew "tig"
-brew "mas"
-brew "nkf"
+brew "age"
 brew "asdf" # version manager
+brew "awscli"
+brew "bat" # alternative cat
+brew "chezmoi"
+brew "coreutils"
 brew "dust" # disk space checker
-brew "fish"
+brew "exa" # alternative ls
+brew "fd" # alternative find
+brew "ffmpeg"
+brew "fzf"
+brew "gh" # github cli tool
+brew "ghq" # repository manager
+brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
+brew "git-secrets"
+brew "git"
+brew "gnu-sed"
 brew "grep"
 brew "htmlq" # like jq, but for HTML.
-brew "peco"
-brew "shfmt" # formatter for shell script
-brew "awscli"
-brew "ffmpeg"
 brew "httpie" 
+brew "jq"
+brew "kubernetes-cli"
+brew "mas"
+brew "nkf"
+brew "peco"
 brew "rename"
-brew "chezmoi"
-brew "gnu-sed"
 brew "ripgrep"
-brew "coreutils"
-brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
+brew "sd" # alternative sed
 brew "shellcheck"
-brew "youtube-dl"
-brew "git-secrets"
-brew "translate-shell"
+brew "shfmt" # formatter for shell script
+brew "tig"
+brew "z"
 
 ## ========== Shell ==========
+brew "fish"
 brew "zsh"
 brew "zsh-completions"
 
@@ -52,56 +52,49 @@ cask "font-fontawesome"
 cask "font-hack-nerd-font"
 
 ## ========== Language & Databases ==========
-brew "gcc"
-brew "node"
-brew "sqlite"
-brew "go"
 brew "deno"
-brew "rustup"
-brew "postgresql"
+brew "gcc"
+brew "go"
 brew "mysql"
+brew "node"
+brew "postgresql"
+brew "rustup"
+brew "sqlite"
 
 ## ========== Applications ==========
-cask "fig"
-cask "kap"
-cask "obs"
-cask "vlc"
-cask "dash"
-cask "fork"
-cask "zoom"
-cask "authy"
-cask "slack"
-cask "alfred"
-cask "docker"
-cask "kindle"
-cask "iterm2"
-cask "notion"
-cask "skitch"
+cask "1password"
+cask "appcleaner"
 cask "arctype"
+cask "authy"
+cask "dash"
 cask "discord"
+cask "docker"
+cask "elecom-mouse-assistant"
+cask "fig"
+cask "fork"
+cask "google-chrome"
+cask "google-japanese-ime"
+cask "hiddenbar"
+cask "hyperswitch"
+cask "iterm2"
+cask "kap"
+cask "karabiner-elements"
+cask "kindle"
+cask "notion"
 cask "raycast"
+cask "rectangle"
+cask "skitch"
+cask "slack"
+cask "the-unarchiver"
 cask "todoist"
 cask "Tweeten"
-cask "obsidian"
-cask "1password"
-cask "hiddenbar"
-cask "tableplus"
-cask "rectangle"
-cask "appcleaner"
-cask "toggl-track"
-cask "hyperswitch"
-# cask "amazon-music" # Monterey not supported
-cask "cloudmounter"
-cask "google-chrome"
-cask "the-unarchiver"
-cask "karabiner-elements"
 cask "visual-studio-code"
-cask "google-japanese-ime"
+cask "vlc"
+cask "zoom"
 
-mas "LINE", id: 539883307
 mas "DayOne", id: 1055511498
-mas "Kindle", id: 405399194
-mas "RunCat", id: 1429033973
 mas "Display Menu", id: 549083868
+mas "Kindle", id: 405399194
+mas "LINE", id: 539883307
+mas "RunCat", id: 1429033973
 mas "Snippety", id: 1530751461
-mas "Focus To-Do", id: 1258530160
