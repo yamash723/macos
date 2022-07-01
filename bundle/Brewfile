@@ -62,6 +62,7 @@ brew "rustup"
 brew "sqlite"
 
 ## ========== Applications ==========
+caks "gather"
 cask "1password"
 cask "appcleaner"
 cask "arctype"
