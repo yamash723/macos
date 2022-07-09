@@ -9,6 +9,16 @@ brew bundle --file "${EXEPATH}"/Brewfile
 ## ========== Xcode ==========
 # sudo xcodebuild -license accept
 
+## ========== asdf ==========
+asdf plugin add ruby
+asdf install ruby latest
+asdf global ruby $(asdf latest ruby)
+asdf reshim ruby
+
+asdf plugin-add python
+asdf install python latest
+asdf global python $(asdf latest python)
+
 ## ========== Rust ==========
 rustup-init -y
 
