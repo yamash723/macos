@@ -14,6 +14,7 @@ brew "awscli"
 brew "bat" # alternative cat
 brew "chezmoi"
 brew "coreutils"
+brew "direnv"
 brew "dust" # disk space checker
 brew "exa" # alternative ls
 brew "fd" # alternative find
@@ -62,7 +63,6 @@ brew "rustup"
 brew "sqlite"
 
 ## ========== Applications ==========
-caks "gather"
 cask "1password"
 cask "appcleaner"
 cask "arctype"
@@ -70,9 +70,10 @@ cask "authy"
 cask "dash"
 cask "discord"
 cask "docker"
-cask "elecom-mouse-assistant"
+# cask "elecom-mouse-assistant"
 cask "fig"
 cask "fork"
+cask "gather"
 cask "google-chrome"
 cask "google-japanese-ime"
 cask "hiddenbar"
@@ -87,6 +88,7 @@ cask "rectangle"
 cask "skitch"
 cask "slack"
 cask "the-unarchiver"
+cask "ticktick"
 cask "todoist"
 cask "Tweeten"
 cask "visual-studio-code"
@@ -98,4 +100,3 @@ mas "Display Menu", id: 549083868
 mas "Kindle", id: 405399194
 mas "LINE", id: 539883307
 mas "RunCat", id: 1429033973
-mas "Snippety", id: 1530751461
