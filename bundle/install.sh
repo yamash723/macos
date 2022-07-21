@@ -13,11 +13,20 @@ brew bundle --file "${EXEPATH}"/Brewfile
 asdf plugin add ruby
 asdf install ruby latest
 asdf global ruby $(asdf latest ruby)
-asdf reshim ruby
 
 asdf plugin-add python
 asdf install python latest
 asdf global python $(asdf latest python)
+
+asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
+asdf install kubectl latest
+asdf global kubectl $(asdf latest kubectl)
+
+asdf plugin add tfenv
+asdf install tfenv latest
+asdf global tfenv $(asdf latest tfenv)
+
+tfenv install latest
 
 ## ========== Rust ==========
 rustup-init -y
