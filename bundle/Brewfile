@@ -30,6 +30,7 @@ brew "grep"
 brew "htmlq" # like jq, but for HTML.
 brew "httpie" 
 brew "jq"
+brew "kind"
 brew "kubernetes-cli"
 brew "mas"
 brew "nkf"
