@@ -65,6 +65,7 @@ brew "sqlite"
 
 ## ========== Applications ==========
 cask "1password"
+cask "1password-cli"
 cask "appcleaner"
 cask "arctype"
 cask "authy"
