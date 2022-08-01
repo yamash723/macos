@@ -22,6 +22,10 @@ asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
 asdf install kubectl latest
 asdf global kubectl $(asdf latest kubectl)
 
+asdf plugin-add helmfile https://github.com/feniix/asdf-helmfile.git
+asdf install helmfile latest
+asdf global helmfile $(asdf latest helmfile)
+
 asdf plugin add tfenv
 asdf install tfenv latest
 asdf global tfenv $(asdf latest tfenv)
