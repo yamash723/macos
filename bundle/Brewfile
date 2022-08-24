@@ -13,6 +13,7 @@ brew "asdf" # version manager
 brew "awscli"
 brew "bat" # alternative cat
 brew "chezmoi"
+brew "circleci"
 brew "coreutils"
 brew "direnv"
 brew "dust" # disk space checker
