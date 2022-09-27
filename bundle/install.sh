@@ -18,6 +18,10 @@ asdf plugin-add python
 asdf install python latest
 asdf global python $(asdf latest python)
 
+asdf plugin-add nodejs
+asdf install nodejs latest
+asdf global nodejs $(asdf latest nodejs)
+
 asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
 asdf install kubectl latest
 asdf global kubectl $(asdf latest kubectl)
@@ -38,6 +42,11 @@ asdf global tfenv $(asdf latest tfenv)
 tfenv install latest
 
 helm plugin install https://github.com/databus23/helm-diff
+
+## ========== K8s ==========
+
+kubectl krew install stern
+kubectl krew install iexec
 
 ## ========== Rust ==========
 rustup-init -y

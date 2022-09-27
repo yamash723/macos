@@ -24,6 +24,7 @@ brew "fzf"
 brew "gh" # github cli tool
 brew "ghq" # repository manager
 brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
+brew "git-now"
 brew "git-secrets"
 brew "git"
 brew "gnu-sed"
@@ -32,6 +33,7 @@ brew "htmlq" # like jq, but for HTML.
 brew "httpie" 
 brew "jq"
 brew "kind"
+brew "krew"
 brew "kubernetes-cli"
 brew "mas"
 brew "nkf"
