@@ -8,36 +8,37 @@ cask_args appdir: "/Applications"
 
 ## ========== Base ==========
 brew "act" # run GitHub Actions locally
-brew "age"
+brew "age" # a simple, modern and secure encryption tool
 brew "asdf" # version manager
 brew "awscli"
 brew "bat" # alternative cat
+brew "btop" # top/htop alternative
 brew "chezmoi"
 brew "circleci"
 brew "coreutils"
-brew "direnv"
+brew "direnv" # load/unload environment variables based on $PWD
 brew "dust" # disk space checker
 brew "exa" # alternative ls
 brew "fd" # alternative find
 brew "ffmpeg"
-brew "fzf"
+brew "fzf" # fuzzy finder
 brew "gh" # github cli tool
 brew "ghq" # repository manager
 brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
-brew "git-now"
+brew "git-now" # git commit helper
 brew "git-secrets"
 brew "git"
 brew "gnu-sed"
 brew "grep"
 brew "htmlq" # like jq, but for HTML.
-brew "httpie" 
+brew "httpie" # alternative curl
 brew "jq"
-brew "kind"
-brew "krew"
+brew "kind" # kubernetes in docker
+brew "krew" # kubectl plugin manager
 brew "kubernetes-cli"
-brew "mas"
+brew "mas" # mac app store cli
 brew "nkf"
-brew "peco"
+brew "peco" # interactive filtering tool
 brew "rename"
 brew "ripgrep"
 brew "sd" # alternative sed
@@ -45,7 +46,7 @@ brew "shellcheck"
 brew "shfmt" # formatter for shell script
 brew "tig"
 brew "wget"
-brew "z"
+brew "z" # jump around
 
 ## ========== Shell ==========
 brew "fish"
