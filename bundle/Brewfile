@@ -1,8 +1,11 @@
 ## ----------------------------------------
 ##  Brewfile
 ## ----------------------------------------
-tap "homebrew/cask"
+tap "fairwindsops/tap"
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
 tap "homebrew/services"
 cask_args appdir: "/Applications"
 
@@ -15,6 +18,7 @@ brew "bat" # alternative cat
 brew "btop" # top/htop alternative
 brew "chezmoi"
 brew "circleci"
+brew "clamav"
 brew "coreutils"
 brew "direnv" # load/unload environment variables based on $PWD
 brew "dust" # disk space checker
@@ -22,6 +26,7 @@ brew "exa" # alternative ls
 brew "fd" # alternative find
 brew "ffmpeg"
 brew "fzf" # fuzzy finder
+brew "gcc"
 brew "gh" # github cli tool
 brew "ghq" # repository manager
 brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
@@ -29,16 +34,20 @@ brew "git-now" # git commit helper
 brew "git-secrets"
 brew "git"
 brew "gnu-sed"
+brew "gnutls"
 brew "grep"
 brew "htmlq" # like jq, but for HTML.
 brew "httpie" # alternative curl
+brew "hugo"
 brew "jq"
-brew "kind" # kubernetes in docker
-brew "krew" # kubectl plugin manager
-brew "kubernetes-cli"
+brew "libfido2"
+brew "libxml2", link: true
+brew "make"
 brew "mas" # mac app store cli
 brew "nkf"
 brew "peco" # interactive filtering tool
+brew "pre-commit"
+brew "python-yq"
 brew "rename"
 brew "ripgrep"
 brew "sd" # alternative sed
@@ -62,11 +71,31 @@ cask "font-hack-nerd-font"
 brew "deno"
 brew "gcc"
 brew "go"
+brew "mysql-client"
 brew "mysql"
 brew "node"
 brew "postgresql"
+brew "rustup-init"
 brew "rustup"
 brew "sqlite"
+
+## ========== Development ==========
+brew "fairwindsops/tap/pluto" # kubernetes resource analyzer
+brew "infracost" # cost estimator for terraform
+brew "kind" # kubernetes in docker
+brew "krew" # kubectl plugin manager
+brew "kubeconform" # validate Kubernetes YAML files
+brew "kubernetes-cli"
+brew "percona-toolkit"
+brew "pipx" # python package manager
+brew "stern" # tail multiple pods & containers
+brew "tfenv"
+
+tap "reviewdog/tap"
+brew "reviewdog/tap/reviewdog"
+
+tap "robscott/tap" # kube-capacity
+brew "robscott/tap/kube-capacity"
 
 ## ========== Applications ==========
 # cask "elecom-mouse-assistant"
