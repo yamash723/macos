@@ -67,6 +67,9 @@ cargo install $(cat "${EXEPATH}"/Cargofile)
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 echo "fisher update" | fish
 
+## ========== Starship ==========
+curl -sS https://starship.rs/install.sh | sh
+
 ## ========== iTerm2 ==========
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
 
