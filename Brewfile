@@ -1,50 +1,61 @@
 ## ----------------------------------------
 ##  Brewfile
 ## ----------------------------------------
-tap "homebrew/cask"
+tap "fairwindsops/tap"
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
 tap "homebrew/services"
 cask_args appdir: "/Applications"
 
 ## ========== Base ==========
 brew "act" # run GitHub Actions locally
-brew "age"
+brew "age" # a simple, modern and secure encryption tool
 brew "asdf" # version manager
 brew "awscli"
 brew "bat" # alternative cat
+brew "btop" # top/htop alternative
 brew "chezmoi"
+brew "circleci"
+brew "clamav"
 brew "coreutils"
-brew "direnv"
+brew "direnv" # load/unload environment variables based on $PWD
 brew "dust" # disk space checker
 brew "exa" # alternative ls
 brew "fd" # alternative find
 brew "ffmpeg"
-brew "fzf"
+brew "fzf" # fuzzy finder
+brew "gcc"
 brew "gh" # github cli tool
 brew "ghq" # repository manager
 brew "git-delta" # syntax-highlighting pager for git, diff, and grep output
+brew "git-now" # git commit helper
 brew "git-secrets"
 brew "git"
 brew "gnu-sed"
+brew "gnutls"
 brew "grep"
 brew "htmlq" # like jq, but for HTML.
-brew "httpie"
+brew "httpie" # alternative curl
+brew "hugo"
 brew "jq"
-brew "kind"
-brew "kubernetes-cli"
-brew "mas"
+brew "libfido2"
+brew "libxml2", link: true
+brew "make"
+brew "mas" # mac app store cli
 brew "nkf"
-brew "peco"
-brew "ranger"
+brew "peco" # interactive filtering tool
+brew "pre-commit"
+brew "python-yq"
 brew "rename"
 brew "ripgrep"
 brew "sd" # alternative sed
 brew "shellcheck"
 brew "shfmt" # formatter for shell script
-brew "tfenv" # terraform version manager
 brew "tig"
 brew "wget"
-brew "z"
+brew "z" # jump around
 
 ## ========== Shell ==========
 brew "fish"
@@ -60,22 +71,42 @@ cask "font-hack-nerd-font"
 brew "deno"
 brew "gcc"
 brew "go"
+brew "mysql-client"
 brew "mysql"
 brew "node"
 brew "postgresql"
+brew "rustup-init"
 brew "rustup"
 brew "sqlite"
 
+## ========== Development ==========
+brew "fairwindsops/tap/pluto" # kubernetes resource analyzer
+brew "infracost" # cost estimator for terraform
+brew "kind" # kubernetes in docker
+brew "krew" # kubectl plugin manager
+brew "kubeconform" # validate Kubernetes YAML files
+brew "kubernetes-cli"
+brew "percona-toolkit"
+brew "pipx" # python package manager
+brew "stern" # tail multiple pods & containers
+brew "tfenv"
+
+tap "reviewdog/tap"
+brew "reviewdog/tap/reviewdog"
+
+tap "robscott/tap" # kube-capacity
+brew "robscott/tap/kube-capacity"
+
 ## ========== Applications ==========
-cask "1password"
+# cask "elecom-mouse-assistant"
 cask "1password-cli"
+cask "1password"
 cask "appcleaner"
 cask "arctype"
 cask "authy"
 cask "dash"
 cask "discord"
 cask "docker"
-# cask "elecom-mouse-assistant"
 cask "fig"
 cask "fork"
 cask "gather"
@@ -87,6 +118,7 @@ cask "iterm2"
 cask "kap"
 cask "karabiner-elements"
 cask "kindle"
+cask "massCode"
 cask "notion"
 cask "raycast"
 cask "rectangle"

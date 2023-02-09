@@ -1,8 +1,5 @@
 alias bi := brew-install
 
-recipe-name:
-  echo 'This is a recipe!'
-
 brew-install:
   brew bundle --file ./Brewfile
 
