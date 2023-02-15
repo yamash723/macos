@@ -41,6 +41,12 @@ install-devtool-latest: asdf-install-latest && rust-init
   tfenv install latest
   -helm plugin install https://github.com/databus23/helm-diff
 
+install-krew-plugin:
+  kubectrl krew install iexec
+  kubectrl krew install neat
+  kubectrl krew install resource-capacity
+  kubectrl krew install stern
+
 rust-init:
   rustup-init -y
   source "${HOME}"/.cargo/env
