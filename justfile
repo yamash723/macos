@@ -1,7 +1,7 @@
 alias bi := brew-install
 
 brew-install:
-  brew bundle --file ./Brewfile
+  brew bundle --no-upgrade --file ./Brewfile
 
 # 新規マシンを設定する時のコマンド
 machine-init: macos-system-apply brew-install terminal-init install-devtool-latest

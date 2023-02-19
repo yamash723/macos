@@ -56,6 +56,7 @@ brew "shfmt" # formatter for shell script
 brew "tig"
 brew "wget"
 brew "z" # jump around
+brew "zellij" # terminal multiplexer
 
 ## ========== Shell ==========
 brew "fish"
