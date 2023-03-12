@@ -136,6 +136,7 @@ cask "zoom"
 
 mas "DayOne", id: 1055511498
 mas "Display Menu", id: 549083868
+mas "Flow", id: 1423210932
 mas "Kindle", id: 405399194
 mas "LINE", id: 539883307
 mas "RunCat", id: 1429033973
