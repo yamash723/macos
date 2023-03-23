@@ -39,6 +39,7 @@ brew "grep"
 brew "htmlq" # like jq, but for HTML.
 brew "httpie" # alternative curl
 brew "hugo"
+brew "hurl" # http client https://hurl.dev/
 brew "jq"
 brew "libfido2"
 brew "libxml2", link: true

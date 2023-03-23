@@ -1,16 +1,11 @@
-If you came here for MacOS full-auto-setup script, [it's here](https://github.com/yamash723/dotfiles/blob/master/system/macos.sh). Read this article([en](https://ulwlu.github.io/blog/macos-preferences-automation) / [ja](https://zenn.dev/ulwlu/articles/1c3a1da12887ed)) as well.
+# macos setting
 
-<img alt="elly iterm2" src="https://user-images.githubusercontent.com/41639488/98157819-3f36ca00-1f1d-11eb-962c-17f33996bd48.png">
+## requirement
 
-<img alt="elly.vim" src="https://user-images.githubusercontent.com/41639488/124696330-cced0e00-df1f-11eb-8059-a16a74c24777.png">
+- 1password-cli setting
+  - https://developer.1password.com/docs/cli/get-started/#install
+## Usage
 
-The theme is [elly](https://github.com/ulwlu/elly.vim), I created for myself.
-
-## Configurations Shortcut
-
-- **Shell** : [fish](https://github.com/yamash723/dotfiles/blob/master/dotfiles/.zshrc)
-- **Terminal** : [iTerm2](https://github.com/yamash723/dotfiles/blob/master/dotfiles/Library/Preferences/com.googlecode.iterm2.plist), [tmux](https://github.com/yamash723/dotfiles/blob/master/dotfiles/.tmux.conf)
-- **Fonts** : [HackNerdFontsItalic](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Italic)
-- **Editor** : [VSCode](https://github.com/yamash723/dotfiles/tree/master/dotfiles/Library/Application%20Support/Code/User)
-- **Launcher** : [Alfred](https://github.com/yamash723/dotfiles/tree/master/dotfiles/Library/Application%20Support)
-- **Window Manager** : [Rectangle](https://github.com/yamash723/dotfiles/blob/master/dotfiles/Library/Preferences/com.knollsoft.Rectangle.plist), [Karabinar](https://github.com/yamash723/dotfiles/blob/master/dotfiles/.config/karabiner/karabiner.json)
+```sh
+just machine-init
+```
