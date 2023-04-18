@@ -36,6 +36,7 @@ brew "git"
 brew "gnu-sed"
 brew "gnutls"
 brew "grep"
+brew "hadolint" # Docker bestpractice linter
 brew "htmlq" # like jq, but for HTML.
 brew "httpie" # alternative curl
 brew "hugo"
@@ -87,6 +88,7 @@ brew "infracost" # cost estimator for terraform
 brew "kind" # kubernetes in docker
 brew "krew" # kubectl plugin manager
 brew "kubeconform" # validate Kubernetes YAML files
+brew "kubergrunt"
 brew "kubernetes-cli"
 brew "percona-toolkit"
 brew "pipx" # python package manager
@@ -134,6 +136,7 @@ cask "Tweeten"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
+cask "warp"
 
 mas "DayOne", id: 1055511498
 mas "Display Menu", id: 549083868
