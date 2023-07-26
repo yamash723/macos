@@ -26,6 +26,7 @@ asdf-add-plugin:
   -asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
   -asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
   -asdf plugin-add helmfile https://github.com/feniix/asdf-helmfile.git
+  -asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 
 asdf-install-latest: asdf-add-plugin
   asdf install ruby latest
@@ -33,6 +34,7 @@ asdf-install-latest: asdf-add-plugin
   asdf install kubectl latest
   asdf install helm latest
   asdf install helmfile latest
+  asdf install golang latest
 
 install-devtool-latest: asdf-install-latest && rust-init
   asdf global ruby $(asdf latest ruby)
@@ -40,6 +42,7 @@ install-devtool-latest: asdf-install-latest && rust-init
   asdf global kubectl $(asdf latest kubectl)
   asdf global helm $(asdf latest helm)
   asdf global helmfile $(asdf latest helmfile)
+  asdf global golang $(asdf latest golang)
 
   tfenv install latest
   -helm plugin install https://github.com/databus23/helm-diff
