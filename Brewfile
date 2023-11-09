@@ -55,6 +55,7 @@ brew "ripgrep"
 brew "sd" # alternative sed
 brew "shellcheck"
 brew "shfmt" # formatter for shell script
+brew "tailspin" # log file highlighter
 brew "tig"
 brew "wget"
 brew "z" # jump around
