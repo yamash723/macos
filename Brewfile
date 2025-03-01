@@ -12,14 +12,16 @@ cask_args appdir: "/Applications"
 ## ========== Base ==========
 brew "act" # run GitHub Actions locally
 brew "age" # a simple, modern and secure encryption tool
-brew "asdf" # version manager
 brew "awscli"
 brew "bat" # alternative cat
 brew "btop" # top/htop alternative
 brew "chezmoi"
+brew "ctop" # containers monitor
 brew "circleci"
 brew "clamav"
 brew "coreutils"
+brew "csvlens" # csv viewer
+brew "difftastic" # diff tool
 brew "direnv" # load/unload environment variables based on $PWD
 brew "dust" # disk space checker
 brew "exa" # alternative ls
@@ -62,7 +64,6 @@ brew "z" # jump around
 brew "zellij" # terminal multiplexer
 
 ## ========== Shell ==========
-brew "fish"
 brew "zsh"
 brew "zsh-completions"
 
@@ -70,18 +71,6 @@ brew "zsh-completions"
 tap  "homebrew/cask-fonts"
 cask "font-fontawesome"
 cask "font-hack-nerd-font"
-
-## ========== Language & Databases ==========
-brew "deno"
-brew "gcc"
-brew "go"
-brew "mysql-client"
-brew "mysql"
-brew "node"
-brew "postgresql"
-brew "rustup-init"
-brew "rustup"
-brew "sqlite"
 
 ## ========== Development ==========
 brew "fairwindsops/tap/pluto" # kubernetes resource analyzer
@@ -107,15 +96,14 @@ brew "robscott/tap/kube-capacity"
 cask "1password-cli"
 cask "1password"
 cask "appcleaner"
-cask "arctype"
 cask "authy"
 cask "amethyst"
 cask "cscreen"
+cask "cursor"
 cask "dash"
 cask "discord"
 cask "docker"
 cask "microsoft-edge"
-cask "fig"
 cask "fork"
 cask "gather"
 cask "google-chrome"
@@ -135,14 +123,11 @@ cask "skitch"
 cask "slack"
 cask "the-unarchiver"
 cask "ticktick"
-cask "todoist"
-cask "Tweeten"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
 cask "warp"
 
-mas "DayOne", id: 1055511498
 mas "Display Menu", id: 549083868
 mas "Flow", id: 1423210932
 mas "Kindle", id: 405399194
